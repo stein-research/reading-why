@@ -87,6 +87,33 @@ evidence).
 | [`data/`](data/) | where e-SNLI goes (downloaded and checked, not stored) |
 | [`ibm_jobs/`](ibm_jobs/) | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed) |
 
+## A century of the Born rule
+
+> In the summer of 1926, in a short paper on collisions ([Zeitschrift für Physik 37, 863](https://doi.org/10.1007/BF01397477)),
+> Max Born added a note in proof: the probability of an outcome goes not with the wave function itself but with its
+> square. A hundred years later, that one sentence is the whole of how this model reads a sentence. Every attention
+> weight, every product in its feed-forward and every answer it gives is a probability of that kind, a squared
+> overlap counted by a detector or by the shots of a circuit; and because nothing else is used, the reason for an
+> answer can be added up exactly, word by word.
+>
+> We finish this work on 4 November 2026, in the rule's hundredth year, and we want to name what it rests on.
+> Max Born, and the people who in 1925 and 1926 made a quantum theory in which such a rule could be written down.
+> Those who turned superposition into instruments: the builders of interferometers and of the meshes of beam
+> splitters that make any unitary, and those who made reading an overlap from a circuit a routine thing. Those who
+> gave machine learning the transformer, and who asked, and kept asking, what it means for a model to explain itself:
+> integrated gradients, the debate over whether attention is an explanation, the benchmarks that measure
+> faithfulness. The many people, most of them never named, who read pairs of sentences and wrote down, for each,
+> which words made one follow from the other: without their highlights there would be nothing to check our evidence
+> against. The engineers who keep real quantum processors open to researchers far from where they are built, and the
+> communities behind PyTorch, Qiskit and NumPy, who give their work away. The authors of every paper we cite, whose
+> results we leaned on and argued with, and the colleagues and referees who read our drafts and would not let a loose
+> claim stand.
+>
+> If this work stands, it stands on their shoulders. What we add is small: that the rule Born wrote in a note in
+> proof can carry, along with an answer, the reason for it.
+>
+> *The authors, 4 November 2026*
+
 ## Use of AI tools
 
 An AI assistant (Claude, Anthropic) was used under the authors' direction to write and run simulation and analysis
