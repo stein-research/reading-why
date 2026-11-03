@@ -67,7 +67,7 @@ def card(r, marked=None, gold=None, after=None, deleted=None):
     e, a = r["evidence"], r["attention"]
     v = max(float(np.abs(e).max()), 1e-12)
     name = dict(born="Born Transformer", softmax="softmax transformer", poly="Poly-sim-born")[r["model"]]
-    exact = (f"the words' evidence sums to P &minus; 1/3 = {r['explained']:+.4f} (difference {r['gap']:.0e})"
+    exact = (f"the words' evidence sums to P &minus; b = {r['explained']:+.4f} (difference {r['gap']:.0e})"
              if r["model"] != "softmax" else
              f"integrated gradients of the logit; sums to {e.sum():+.3f} against {r['explained']:+.3f} (not exact)")
     head = (f'<div style="font-size:16px;color:{INK};margin-bottom:6px">{name}: <span style="background:'

@@ -7,7 +7,7 @@ and the attention each word receives out.
     r["answer"], r["words"], r["evidence"], r["attention"]
 
 The Born Transformer's evidence is exact: integrated gradients of its class probability with the denominators held,
-by a Gauss-Legendre rule that is exact for that polynomial; the words' evidence sums to P_g - b_g (b_g = 1/3, the
+by a Gauss-Legendre rule that is exact for that polynomial; the words' evidence sums to P_g - b_g (b_g = |S_g| / 256, about 1/3, the
 share of a class when nothing is known). The softmax model's is ordinary integrated gradients (256 nodes) of its
 logit, which does not sum exactly. Attention: the weight each word receives, averaged over the two blocks, the heads
 and the words that look at it.
