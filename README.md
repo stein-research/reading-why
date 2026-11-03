@@ -43,16 +43,16 @@ w_{ij} = \frac{|\langle q_i|k_j\rangle|^4}{\sum_{j'} |\langle q_i|k_{j'}\rangle|
 
 which needs only overlaps (an interference on light, a Hadamard test on qubits) and a sum. The feed-forward is a
 measured product $\mathrm{Re}[(W_1h)\overline{(W_2h)}]$, written back by $W_3$. The readout splits the outcomes into
-one group per class $g$ and reads $P_g$; with no information each class gets its share $b_g = 1/3$. With every
-denominator held at the input, $P_g - b_g$ is a polynomial $f_g(a)$ of fixed degree, so integrated gradients from
+one group per class $g$ and reads $P_g$; with no information each class gets its share $b_g = |S_g|/256$ (86, 85 and 85 of the 256 camera pixels, about 1/3). With every
+denominator held at the input, $F_g(a) = P_g - b_g$ is a polynomial in the word amplitudes (degree 648 at most), so integrated gradients from
 the zero baseline,
 
 ```math
-e_g(t) = a_t \int_0^1 \frac{\partial f_g}{\partial a_t}(s\,a)\,ds, \qquad \sum_t e_g(t) = P_g - b_g,
+e_g(t) = a_t \int_0^1 \frac{\partial F_g}{\partial a_t}(\alpha a)\,d\alpha, \qquad \sum_t e_g(t) = P_g - b_g,
 ```
 
-are computed exactly by Gauss-Legendre quadrature with half the degree in nodes (324 here); the sum holds to about
-$10^{-12}$. Red words push towards the answer, blue words against it.
+are computed with no quadrature error by Gauss-Legendre quadrature (the integrand has degree 647, so 324 nodes); in
+double precision the sum holds to about $10^{-12}$. Red words push towards the answer, blue words against it.
 
 ## What the paper finds (e-SNLI, about 98k parameters outside the embedding, 3 seeds, 1,000 test pairs)
 
