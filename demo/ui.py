@@ -65,7 +65,7 @@ def _bars(p, title):
 
 def card(r, marked=None, gold=None, after=None, deleted=None):
     """One explained pair as HTML: the answer, the evidence per word, the attention per word, and (after) the answer
-    once a word is deleted."""
+    once the words in `deleted` (a string, or a list of them) are deleted."""
     e, a = r["evidence"], r["attention"]
     v = max(float(np.abs(e).max()), 1e-12)
     name = dict(born="Born Transformer", softmax="softmax transformer", poly="Poly-sim-born")[r["model"]]
@@ -86,7 +86,9 @@ def card(r, marked=None, gold=None, after=None, deleted=None):
                 f'highlighted</div>'
     side = _bars(r["probs"], "class probabilities")
     if after is not None:
-        side += "<div style='height:10px'></div>" + _bars(after["probs"], f'without "{html.escape(deleted)}"')
+        gone = [deleted] if isinstance(deleted, str) else list(deleted)
+        side += "<div style='height:10px'></div>" + _bars(
+            after["probs"], "without " + ", ".join(f'"{html.escape(w)}"' for w in gone))
     return (f'<div style="display:flex;gap:28px;flex-wrap:wrap;font-family:sans-serif"><div style="flex:1 1 420px;'
             f'min-width:0">{head}{body}</div><div style="flex:0 0 330px">{side}</div></div>')
 
@@ -135,6 +137,7 @@ def demo(start=0):
         prem.value, hyp.value = p[0], p[1]
 
     def run(_=None, deleted=None):
+        """deleted: the word positions to delete (a list), or None to explain the pair as it is."""
         out.clear_output()
         m = model(which.value)
         with out:
@@ -146,19 +149,27 @@ def demo(start=0):
             p = p if (prem.value, hyp.value) == p[:2] else None      # a typed pair has no annotators
             marked = rw.marked_mask(p) if p else None
             after = None
-            if deleted is not None:
+            if deleted:
                 ids, toks = rw.without(r, deleted)
                 after = rw.explain(m, ids=ids, toks=toks)
             state["r"] = r
-            display(HTML(card(r, marked, p[2] if p else None, after, r["words"][deleted] if after else None)))
-        buttons = []
+            display(HTML(card(r, marked, p[2] if p else None, after,
+                              [r["words"][i] for i in deleted] if after else None)))
+        chosen = set(deleted or [])
+        toggles = []
         for i, w in enumerate(state["r"]["words"]):
             if w == "<sep>":
                 continue
-            b = W.Button(description=w, layout=W.Layout(width="auto"), tooltip=f"delete '{w}'")
-            b.on_click(lambda _, i=i: run(deleted=i))
-            buttons.append(b)
-        words.children = [W.Label("delete a word:")] + buttons
+            t = W.ToggleButton(description=w, value=i in chosen, layout=W.Layout(width="auto"),
+                               button_style="warning" if i in chosen else "", tooltip=f"select '{w}' to delete")
+            t.pos = i
+            t.observe(lambda c, t=t: setattr(t, "button_style", "warning" if c["new"] else ""), names="value")
+            toggles.append(t)
+        delete = W.Button(description="delete selected", button_style="danger", layout=W.Layout(width="auto"))
+        delete.on_click(lambda _: run(deleted=sorted(t.pos for t in toggles if t.value)))
+        clear = W.Button(description="clear", layout=W.Layout(width="auto"))
+        clear.on_click(lambda _: run())
+        words.children = [W.Label("pick words, then delete:")] + toggles + [delete, clear]
 
     prev.on_click(lambda _: step(-1))
     nxt.on_click(lambda _: step(+1))

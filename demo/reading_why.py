@@ -145,9 +145,10 @@ def explain(model, premise=None, hypothesis=None, ids=None, toks=None):
 
 
 def without(r, pos):
-    """The ids of an explained pair with the word at `pos` removed (amplitude 0 / token absent), and its words."""
+    """The ids of an explained pair with the word at `pos` (an index, or a list of them) removed (amplitude 0 /
+    token absent), and its words."""
     ids = r["ids"].clone()
-    ids[0, pos] = 0                      # the paper's deletion: the word's slot stays, empty (positions unchanged)
+    ids[0, list(pos) if isinstance(pos, (list, tuple, set)) else pos] = 0   # the slots stay, empty (as in the paper)
     return ids, r["words"]
 
 
