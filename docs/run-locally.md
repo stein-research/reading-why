@@ -38,7 +38,8 @@ show, restart the kernel and run the setup cell again.
 
 ## In plain Python
 
-From the repository's top folder:
+The code below is [`examples/quickstart.py`](../examples/quickstart.py); run it with `python examples/quickstart.py`
+from the repository's top folder:
 
 ```python
 import sys; sys.path.insert(0, "demo")
@@ -53,6 +54,13 @@ print(r["evidence"].sum(), r["explained"])            # equal (0.643164): the ev
 
 ids, words = rw.without(r, [r["words"].index("sleeping")])   # delete words in place, as the paper does
 print(rw.explain(m, ids=ids, toks=words)["answer"])          # entailment
+```
+
+[`examples/explain.py`](../examples/explain.py) does the same for any pair from the command line:
+
+```bash
+python examples/explain.py "A woman working long hours." "A woman is sleeping." --delete sleeping
+python examples/explain.py --test 3763 --model softmax          # an e-SNLI test pair, with the annotators' words
 ```
 
 ## Train a model
@@ -124,5 +132,6 @@ calibration and raw counts, so the hardware numbers can be checked without an ac
 | `src/hw_attention.py`, `src/ibm_jobs.py`, `src/device_bootstrap.py` | Hadamard tests on a noise model or an IBM device; the job ledger; shot-noise intervals |
 | `src/coherent_circuit.py`, `src/sim_gpu.py`, `src/qubit_resources.py` | the coherent layer as one circuit; GPU statevector; quantum resources and errors |
 | `src/bow_baseline.py` | the bag-of-words references |
+| `examples/quickstart.py`, `examples/explain.py` | the demo in plain Python; one pair from the command line |
 | `demo/reading_why.py` | the demo's engine: load a model, explain a pair (evidence by quadrature, nodes run as one batch), attention, deletion, the e-SNLI download |
 | `demo/ui.py` | the widgets and the HTML card |
