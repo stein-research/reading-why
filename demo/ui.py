@@ -13,7 +13,9 @@ from IPython.display import HTML, display
 
 import reading_why as rw
 
-INK, MUTED, ACCENT, LINE = "#2b2f36", "#6b7280", "#d9480f", "#c9ced6"
+INK, MUTED, ACCENT, LINE = "#2b2f36", "#8a919a", "#d9480f", "#c9ced6"
+# Text on the page background inherits the notebook's colour (light or dark theme); INK only on our own fills.
+# MUTED is a mid grey that reads on white and on Colab's dark grey alike.
 # Seeing Why's evidence colours: red for the answer, blue against it
 EVIDENCE = mc.LinearSegmentedColormap.from_list(
     "evidence", ["#08306b", "#1f78d1", "#9cc9f5", "#f7f7f7", "#f9a77e", "#e8431c", "#7f0d0d"])
@@ -54,7 +56,7 @@ def _bars(p, title):
         top = k == int(np.argmax(p))
         rows.append(
             f'<div style="display:flex;align-items:center;margin:2px 0"><span style="width:105px;font-size:13px;'
-            f'color:{INK};{"font-weight:600" if top else ""}">{lab}</span><span style="display:inline-block;'
+            f'color:inherit;{"font-weight:600" if top else ""}">{lab}</span><span style="display:inline-block;'
             f'height:13px;width:{max(1, 220 * float(p[k])):.0f}px;background:{ACCENT if top else "#adb5bd"};'
             f'border-radius:2px"></span><span style="margin-left:6px;font-size:12px;color:{MUTED}">'
             f'{float(p[k]):.3f}</span></div>')
@@ -70,7 +72,7 @@ def card(r, marked=None, gold=None, after=None, deleted=None):
     exact = (f"the words' evidence sums to P &minus; b = {r['explained']:+.4f} (difference {r['gap']:.0e})"
              if r["model"] != "softmax" else
              f"integrated gradients of the logit; sums to {e.sum():+.3f} against {r['explained']:+.3f} (not exact)")
-    head = (f'<div style="font-size:16px;color:{INK};margin-bottom:6px">{name}: <span style="background:'
+    head = (f'<div style="font-size:16px;color:inherit;margin-bottom:6px">{name}: <span style="color:{INK};background:'
             f'{LABEL_FILL[r["answer"]]};padding:2px 8px;border-radius:4px;font-weight:600">{r["answer"]}</span>'
             + (f' <span style="color:{MUTED};font-size:13px">(annotators: {gold})</span>' if gold else "") + "</div>")
     body = _chips(r["words"], e, EVIDENCE, v, True, marked,
