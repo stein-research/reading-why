@@ -97,17 +97,22 @@ evidence).
 > answer can be added up exactly, word by word.
 >
 > We finish this work on 4 November 2026, in the rule's hundredth year, and we want to name what it rests on.
-> Max Born, and the people who in 1925 and 1926 made a quantum theory in which such a rule could be written down.
-> Those who turned superposition into instruments: the builders of interferometers and of the meshes of beam
-> splitters that realise any unitary, and those who made reading an overlap from a circuit a routine thing. Those who
-> gave machine learning the transformer, and who asked, and kept asking, what it means for a model to explain itself:
+> Max Born, and those who in 1925 and 1926 made, with him and around him, a quantum theory in which such a rule
+> could be written down: Werner Heisenberg and Pascual Jordan, with whom he built matrix mechanics; Erwin
+> Schrödinger, whose waves the rule interprets; Paul Dirac and Wolfgang Pauli; Niels Bohr, whose institute and
+> arguments held them together; and John von Neumann, who a few years later gave the theory its Hilbert space. Those who, decades
+> later, saw that the same rule could compute, and turned superposition into instruments: the builders of
+> interferometers and of the meshes of beam splitters that realise any unitary, and those who made reading an
+> overlap from a circuit a routine thing. Those who gave machine learning the transformer, whose shape this model
+> keeps, block for block; and those who asked, and kept asking, what it means for a model to explain itself:
 > integrated gradients, the debate over whether attention is an explanation, the benchmarks that measure
 > faithfulness. The many people, most of them never named, who read pairs of sentences and wrote down, for each,
 > which words made one follow from the other: without their highlights there would be nothing to check our evidence
 > against. The engineers who keep real quantum processors open to researchers far from where they are built, and the
-> communities behind PyTorch, Qiskit and NumPy, who give their work away. The authors of every paper we cite, whose
-> results we leaned on and argued with, and the colleagues and referees who read our drafts and would not let a loose
-> claim stand.
+> communities behind PyTorch, Qiskit and NumPy, who give their work away. The people of PennyLane and of its demos
+> and tutorials, which this work does not use but where one of us first learned quantum machine learning, by trying,
+> failing and trying again. The authors of every paper we cite, whose results we leaned on and argued with, and the
+> colleagues and referees who read our drafts and would not let a loose claim stand.
 >
 > If this work stands, it stands on their shoulders. What we add is small: that the rule Born wrote in a note in
 > proof can carry, along with an answer, the reason for it.
