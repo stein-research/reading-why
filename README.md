@@ -70,7 +70,8 @@ and explained quantity as the Born evidence. Attention looks most like the annot
 answer less well. The same trained weights compile exactly to optics (interferometers between detectors) and to
 qubits. A coherent attention layer with no measurement before the end is one circuit equal to the model (852 CNOTs on
 23 qubits with brickwall maps). On ibm_kingston the attention overlaps of two short test pairs, and of four
-deletions, were read by Hadamard tests: the device gave the model's answers. The paper also works out what the qubit
+deletions, were read by Hadamard tests: the device gave the model's answers; the evidence itself did not yet survive
+the device. The paper also works out what the qubit
 realisation needs (about 2,000 shots per circuit for 99 % of answers; row calibrations within a few per cent for the
 evidence).
 
