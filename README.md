@@ -33,7 +33,8 @@ its share.
 transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics (the same weights run on qubits),
 and the coherent attention layer drawn as its circuit, wires running upwards (one circuit, one measurement). Bands
 hold the same stage; detector symbols mark the measurements. The encoder is drawn in the layout of the original; our
-softmax baseline uses GELU, places LayerNorm before each sublayer and averages the words before the linear head.*
+softmax baseline uses GELU, places LayerNorm before each sublayer, averages the words before the linear head and has
+N = 2 blocks, as the Born Transformer.*
 
 Each word $t$ enters as a complex field $a_t\,e_t$ with amplitude $a_t$. A block's attention weighs word $j$ for word
 $i$ by
