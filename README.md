@@ -96,7 +96,7 @@ evidence).
 > overlap counted by a detector or by the shots of a circuit; and because nothing else is used, the reason for an
 > answer can be added up exactly, word by word.
 >
-> We finish this work on 4 November 2026, in the rule's hundredth year, and we want to name what it rests on.
+> We finish this work in 2026, the year the rule turns a hundred, and we want to name what it rests on.
 > Max Born, and those who in 1925 and 1926 made, with him and around him, a quantum theory in which such a rule
 > could be written down: Werner Heisenberg and Pascual Jordan, with whom he built matrix mechanics; Erwin
 > Schrödinger, whose waves the rule interprets; Paul Dirac and Wolfgang Pauli; Niels Bohr, whose institute and
