@@ -11,7 +11,9 @@ the training split: id 0 padding, 1 <unk>, 2 <sep>, then words seen at least `mi
 """
 import collections
 import csv
+import hashlib
 import os
+import urllib.request
 
 import numpy as np
 
@@ -33,8 +35,34 @@ def marked(text):
     return toks, flags
 
 
+URL = "https://raw.githubusercontent.com/OanaMariaCamburu/e-SNLI/7b585a3f/dataset/"   # the paper's commit
+SHA256 = {                                                     # data/SHA256SUMS
+    "esnli_train_1.csv": "7311c7bc16ad9f6a9adcd116a62ef991e1803dc0d71e253ce66b975c2aba8ee5",
+    "esnli_train_2.csv": "c8827fa2ba1ef5891f077d6fafbfc2fdb6cab1271968b74257e08d3b2b3cbacc",
+    "esnli_dev.csv": "d7a656d196eea18fd827d6f5486b00f5d4cf469dbf13a252cc211495a186bcb4",
+    "esnli_test.csv": "9269aa8075dbfed0fa8a5012eb2ac9c18a92be139671f05df897f69092592927",
+}
+
+
+def fetch(files=tuple(SHA256)):
+    """Download the e-SNLI files that are not yet in data/esnli (about 200 MB in all), each checked by its SHA-256."""
+    os.makedirs(DATA, exist_ok=True)
+    for name in files:
+        path = os.path.join(DATA, name)
+        if os.path.exists(path):
+            continue
+        print(f"downloading {name} from the e-SNLI repository ...", flush=True)
+        blob = urllib.request.urlopen(URL + name, timeout=300).read()
+        if hashlib.sha256(blob).hexdigest() != SHA256[name]:
+            raise RuntimeError(f"{name}: unexpected SHA-256, not used")
+        with open(path, "wb") as f:
+            f.write(blob)
+        print(f"{name}: {len(blob) / 1e6:.0f} MB", flush=True)
+
+
 def read(split):
     files = ["esnli_train_1.csv", "esnli_train_2.csv"] if split == "train" else [f"esnli_{split}.csv"]
+    fetch(files)                                               # downloads what is missing, once
     out = []
     for fn in files:
         with open(os.path.join(DATA, fn), newline="", encoding="utf-8") as f:

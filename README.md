@@ -7,6 +7,7 @@ University).
 |---|---|
 | Try it: type a premise and a hypothesis and see why the model answers (CPU, no install) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/reading-why/blob/main/demo/demo.ipynb) |
 | Train a model on e-SNLI (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/reading-why/blob/main/demo/train.ipynb) |
+| Run it on your own computer, and the paper's analyses | [docs/run-locally.md](docs/run-locally.md) |
 | Paper | arXiv link to follow |
 | Earlier work | Seeing Why, [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) ([code](https://github.com/stein-research/seeing-why)) |
 
@@ -73,26 +74,14 @@ deletions, were read by Hadamard tests: the device gave the model's answers. The
 realisation needs (about 2,000 shots per circuit for 99 % of answers; row calibrations within a few per cent for the
 evidence).
 
-## Run it on your computer
-
-```bash
-git clone https://github.com/stein-research/reading-why && cd reading-why
-pip install -r requirements.txt jupyterlab
-jupyter lab demo/demo.ipynb
-```
-
-- the notebooks locally, and the demo from plain Python: [`demo/README.md`](demo/README.md)
-- every table and number of the paper, script by script, and training: [`src/README.md`](src/README.md)
-- the trained models: [`results/README.md`](results/README.md); the data: [`data/README.md`](data/README.md); the
-  IBM jobs: [`ibm_jobs/README.md`](ibm_jobs/README.md)
-
 ## Contents
 
 | | |
 |---|---|
 | [`demo/`](demo/) | the two notebooks and their helpers ([`reading_why.py`](demo/reading_why.py), [`ui.py`](demo/ui.py)) |
+| [`docs/`](docs/) | [running it locally and reproducing the paper](docs/run-locally.md); the figures of this page |
 | [`src/`](src/) | the models, the exact evidence, the trainer, the evaluations, the optical and qubit compiles, the quantum-resource analysis, and the scripts that ran the IBM jobs |
-| [`results/`](results/) | the nine trained models of the tables (three models, three seeds), the coherent attention layer, and the vocabulary |
+| [`results/`](results/) | the nine trained models of the tables (three models, three seeds), the coherent attention layer, and the vocabulary; see [`results/README.md`](results/README.md) |
 | [`data/`](data/) | where e-SNLI goes (downloaded and checked, not stored) |
 | [`ibm_jobs/`](ibm_jobs/) | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed) |
 

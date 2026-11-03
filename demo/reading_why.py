@@ -13,11 +13,9 @@ logit, which does not sum exactly. Attention: the weight each word receives, ave
 and the words that look at it.
 """
 import csv
-import hashlib
 import json
 import os
 import sys
-import urllib.request
 
 import numpy as np
 import torch
@@ -33,9 +31,6 @@ from models import Frozen, build        # noqa: E402
 LABELS = esnli.LABELS
 MAX_LEN = 64
 RUNS = {"born": "esnli_Born-p2-ap_b2_s0_e20", "softmax": "esnli_Softmax_b2_s0_e20"}
-# e-SNLI test split, at the commit the paper used (MIT; the SNLI sentences CC BY-SA 4.0)
-TEST_URL = "https://raw.githubusercontent.com/OanaMariaCamburu/e-SNLI/7b585a3f/dataset/esnli_test.csv"
-TEST_SHA256 = "9269aa8075dbfed0fa8a5012eb2ac9c18a92be139671f05df897f69092592927"
 
 WORDS = json.load(open(os.path.join(ROOT, "results", "esnli_vocab.json")))
 WID = {w: i for i, w in enumerate(WORDS)}
@@ -152,32 +147,16 @@ def without(r, pos):
     return ids, r["words"]
 
 
-ESNLI_FILES = {   # the e-SNLI files at the paper's commit, with their SHA-256 (data/SHA256SUMS)
-    "esnli_train_1.csv": "7311c7bc16ad9f6a9adcd116a62ef991e1803dc0d71e253ce66b975c2aba8ee5",
-    "esnli_train_2.csv": "c8827fa2ba1ef5891f077d6fafbfc2fdb6cab1271968b74257e08d3b2b3cbacc",
-    "esnli_dev.csv": "d7a656d196eea18fd827d6f5486b00f5d4cf469dbf13a252cc211495a186bcb4",
-    "esnli_test.csv": TEST_SHA256,
-}
-
-
-def get_esnli(files=ESNLI_FILES):
-    """Download the e-SNLI files that are not yet in data/esnli (about 200 MB in all), each checked by its SHA-256."""
-    os.makedirs(esnli.DATA, exist_ok=True)
-    for name, sha in files.items():
-        path = os.path.join(esnli.DATA, name)
-        if os.path.exists(path):
-            continue
-        blob = urllib.request.urlopen(TEST_URL.rsplit("/", 1)[0] + "/" + name, timeout=300).read()
-        if hashlib.sha256(blob).hexdigest() != sha:
-            raise RuntimeError(f"{name}: unexpected SHA-256, not used")
-        open(path, "wb").write(blob)
-        print(f"{name}: {len(blob) / 1e6:.0f} MB")
+def get_esnli(files=None):
+    """Download the e-SNLI files that are not yet in data/esnli (about 200 MB in all), each checked by its SHA-256
+    (src/esnli.py fetch; the scripts in src/ call it themselves when a file is missing)."""
+    esnli.fetch(files or tuple(esnli.SHA256))
 
 
 def test_pairs():
     """The e-SNLI test split: [(premise, hypothesis, label, premise words marked, hypothesis words marked)]. Reads
     data/esnli/esnli_test.csv, downloading it first (7 MB, checked by its SHA-256) when it is not there."""
-    get_esnli({"esnli_test.csv": TEST_SHA256})
+    get_esnli(["esnli_test.csv"])
     path = os.path.join(esnli.DATA, "esnli_test.csv")
     out = []
     with open(path, newline="", encoding="utf-8") as f:
