@@ -2,7 +2,7 @@
 resampled binomially and the answer recomputed through compile_hw with those overlaps (parametric bootstrap).
 The circuits are the ones that ran; each draw keeps them and redraws only the 2,000 shots.
 
-python device_bootstrap.py [--draws 1000]
+python device_bootstrap.py [--draws 1000] [--only "pair 3765"]   # --only: that run, merged into the saved file
 """
 import json
 import re
@@ -16,8 +16,11 @@ from compile_hw import compiled_probs, load
 tag = "esnli_Born-p2-ap_b2_s0_e20"
 draws = int(sys.argv[sys.argv.index("--draws") + 1]) if "--draws" in sys.argv else 1000
 model, d = load(tag)
-RUNS = {"pair 3763": (None, ["9333cd8540d5532d", "e5ebeafc76390413"]),
-        "pair 3763, aliens deleted": (5, ["f2b655e7ea17e75a", "e39c9915ad92a7bf"])}
+RUNS = {"pair 3763": (3763, None, ["9333cd8540d5532d", "e5ebeafc76390413"]),
+        "pair 3763, aliens deleted": (3763, 5, ["f2b655e7ea17e75a", "e39c9915ad92a7bf"]),
+        "pair 3765": (3765, None, ["76ef8cff395e3d8e", "4b394b02a307ff37"]),
+        "pair 3763, play deleted": (3763, 6, ["0fad1bc55a3b5633", "b20452cbb9603532"]),
+        "pair 3765, hockey deleted": (3765, 2, ["84f6f17b8972561c", "6326910e9c96ef94"])}
 
 
 def readings(keys):
@@ -50,9 +53,18 @@ def overlap_from(table, rng=None):
     return overlap
 
 
+only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
 out = {}
-for name, (delete, keys) in RUNS.items():
-    ids = torch.tensor(d["x_test"][3763:3764]).clone()
+if only:
+    import os
+    if os.path.exists("results/device_bootstrap.json"):
+        out = json.load(open("results/device_bootstrap.json"))
+    elif os.path.exists("results/device_bootstrap_3763.json"):
+        out = json.load(open("results/device_bootstrap_3763.json"))
+for name, (idx, delete, keys) in RUNS.items():
+    if only and name != only:
+        continue
+    ids = torch.tensor(d["x_test"][idx:idx + 1]).clone()
     if delete is not None:
         ids[0, delete] = 0
     table = readings(keys)
@@ -66,4 +78,4 @@ for name, (delete, keys) in RUNS.items():
                      draws=draws)
     print(f"{name}: P {np.round(p_dev, 3).tolist()}  95% [{np.round(lo, 3).tolist()} .. {np.round(hi, 3).tolist()}]  "
           f"answer kept in {flip:.3f} of draws", flush=True)
-json.dump(out, open("results/device_bootstrap_3763.json", "w"), indent=1)
+json.dump(out, open("results/device_bootstrap.json", "w"), indent=1)
