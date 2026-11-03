@@ -9,7 +9,7 @@ history and test accuracy). Tags read `esnli_<model>_b<blocks>_s<seed>_e<epochs>
 | `Born-p2-ap` (the Born Transformer) | seeds 0-2 | 76.98 +- 0.17 % | everything; seed 0 on the device and in the figures |
 | `Softmax` (the softmax transformer) | seeds 0-2 | 76.62 +- 0.36 % | the baseline (Tables 1, 2) |
 | `Poly-sim-born` (polynomial, no measurement constraints) | seeds 0-2 | 78.98 +- 0.31 % | Tables 1, 2, 3 |
-| `Coherent-attn-b12-24` (the coherent attention layer, brickwall maps) | seed 0, 10 epochs | 67.2 % | Section 5; the circuit; qubit resources |
+| `Coherent-attn-b12-24` (the coherent attention layer, brickwall maps) | seed 0, 10 epochs | 67.2 % (seeds 0-2: 67.04 +- 0.12 %) | Section 5; the circuit; qubit resources |
 
 `esnli_vocab.json` is the vocabulary (22,319 entries; CC BY-SA 4.0, see `../data/README.md`).
 
