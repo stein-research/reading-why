@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper."
+title: "Reading Why: Born-Measured Attention with Exact Word Evidence on Light and Qubits"
+type: software
+license: MIT
+repository-code: "https://github.com/stein-research/reading-why"
+version: "1.0"
+authors:
+  - family-names: Tongloy
+    given-names: Teerawat
+    orcid: "https://orcid.org/0009-0001-0670-3124"
+    email: teerawat.to@kmitl.ac.th
+    affiliation: "School of Integrated Innovative Technology, King Mongkut's Institute of Technology Ladkrabang"
+  - family-names: Pongsopa
+    given-names: Jiraporn
+    orcid: "https://orcid.org/0009-0004-7410-9145"
+    affiliation: "Faculty of Science and Technology, Suan Dusit University"
+  - family-names: Jomtarak
+    given-names: Rangsan
+    orcid: "https://orcid.org/0009-0009-5417-5571"
+    affiliation: "Faculty of Science and Technology, Suan Dusit University"
+keywords:
+  - quantum machine learning
+  - optical computing
+  - transformers
+  - attention
+  - explainable AI
+  - natural language inference

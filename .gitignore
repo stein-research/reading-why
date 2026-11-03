@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/esnli/
+results/*_mesh.npz
+results/*_faith.json
+logs/

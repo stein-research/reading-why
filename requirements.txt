@@ -1,0 +1,14 @@
+# The demo needs only the first block (all preinstalled in Colab). Versions are those the paper was run with.
+numpy>=2.0            # 2.5.4
+torch>=2.2            # 2.11.0
+matplotlib>=3.8       # 3.11.2
+ipywidgets>=8         # the notebooks
+
+# circuits, the noise model and the IBM scripts (src/hw_attention.py, src/coherent_circuit.py, src/ibm_jobs.py)
+qiskit==2.6.1
+qiskit-ibm-runtime==0.51.0
+qiskit-aer==0.18.2    # qiskit-aer-gpu 0.18.2 for src/coherent_circuit.py --gpu (QML_GPU_PYTHON)
+
+# the outside check of the optical build (src/mesh_check.py)
+interferometer==1.1.2
+scipy>=1.11           # 1.18.1

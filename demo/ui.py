@@ -1,0 +1,149 @@
+"""The interactive demo (ipywidgets). card() takes an explained pair and returns HTML, so it also works without
+widgets; demo() wires it to controls.
+
+    import ui; ui.demo()
+"""
+import html
+
+import ipywidgets as W
+import matplotlib.colors as mc
+import numpy as np
+from IPython.display import HTML, display
+
+import reading_why as rw
+
+INK, MUTED, ACCENT, LINE = "#2b2f36", "#6b7280", "#d9480f", "#c9ced6"
+# Seeing Why's evidence colours: red for the answer, blue against it
+EVIDENCE = mc.LinearSegmentedColormap.from_list(
+    "evidence", ["#08306b", "#1f78d1", "#9cc9f5", "#f7f7f7", "#f9a77e", "#e8431c", "#7f0d0d"])
+ATTENTION = mc.LinearSegmentedColormap.from_list("attention", ["#ffffff", "#fbe3c4", "#f08c3c", "#7a2a06"])
+LABEL_FILL = dict(entailment="#d6ecd2", neutral="#dcdcf2", contradiction="#f9dcdf")
+_MODELS = {}
+
+
+def model(name):
+    if name not in _MODELS:
+        _MODELS[name] = rw.load(name)
+    return _MODELS[name]
+
+
+def _ink(rgb):
+    r, g, b = rgb[:3]
+    return "#ffffff" if 0.299 * r + 0.587 * g + 0.114 * b < 0.5 else INK
+
+
+def _chips(words, values, cmap, vmax, signed, marked=None, title=""):
+    out = [f'<div style="color:{MUTED};font-size:12px;margin:8px 0 3px">{title}</div><div style="line-height:2.3">']
+    for i, (w, v) in enumerate(zip(words, values)):
+        if w == "<sep>":
+            out.append(f'<span style="color:{MUTED};margin:0 8px">|</span>')
+            continue
+        x = (v / vmax + 1) / 2 if signed else v / vmax
+        rgb = cmap(float(np.clip(x, 0, 1)))
+        under = "border-bottom:3px solid #f2c200;" if marked and i < len(marked) and marked[i] else ""
+        out.append(f'<span title="{v:+.4f}" style="background:{mc.to_hex(rgb)};color:{_ink(rgb)};padding:3px 6px;'
+                   f'margin:1px;border-radius:4px;{under}font-size:15px">{html.escape(w)}</span>')
+    return "".join(out) + "</div>"
+
+
+def _bars(p, title):
+    rows = []
+    for k, lab in enumerate(rw.LABELS):
+        top = k == int(np.argmax(p))
+        rows.append(
+            f'<div style="display:flex;align-items:center;margin:2px 0"><span style="width:105px;font-size:13px;'
+            f'color:{INK};{"font-weight:600" if top else ""}">{lab}</span><span style="display:inline-block;'
+            f'height:13px;width:{max(1, 220 * float(p[k])):.0f}px;background:{ACCENT if top else "#adb5bd"};'
+            f'border-radius:2px"></span><span style="margin-left:6px;font-size:12px;color:{MUTED}">'
+            f'{float(p[k]):.3f}</span></div>')
+    return f'<div style="font-size:12px;color:{MUTED};margin-bottom:3px">{title}</div>' + "".join(rows)
+
+
+def card(r, marked=None, gold=None, after=None, deleted=None):
+    """One explained pair as HTML: the answer, the evidence per word, the attention per word, and (after) the answer
+    once a word is deleted."""
+    e, a = r["evidence"], r["attention"]
+    v = max(float(np.abs(e).max()), 1e-12)
+    name = dict(born="Born Transformer", softmax="softmax transformer", poly="Poly-sim-born")[r["model"]]
+    exact = (f"the words' evidence sums to P &minus; 1/3 = {r['explained']:+.4f} (difference {r['gap']:.0e})"
+             if r["model"] != "softmax" else
+             f"integrated gradients of the logit; sums to {e.sum():+.3f} against {r['explained']:+.3f} (not exact)")
+    head = (f'<div style="font-size:16px;color:{INK};margin-bottom:6px">{name}: <span style="background:'
+            f'{LABEL_FILL[r["answer"]]};padding:2px 8px;border-radius:4px;font-weight:600">{r["answer"]}</span>'
+            + (f' <span style="color:{MUTED};font-size:13px">(annotators: {gold})</span>' if gold else "") + "</div>")
+    body = _chips(r["words"], e, EVIDENCE, v, True, marked,
+                  f"Born evidence per word (BEW) for <b>{r['answer']}</b>: red for it, blue against it; "
+                  f"{exact}" if r["model"] != "softmax" else
+                  f"evidence (integrated gradients) for <b>{r['answer']}</b>: red for it, blue against it; {exact}")
+    body += _chips(r["words"], a, ATTENTION, max(float(a.max()), 1e-12), False, marked,
+                   "attention each word receives (mean over blocks, heads and words)")
+    if marked:
+        body += f'<div style="color:{MUTED};font-size:12px;margin-top:4px">yellow underline: words the annotators ' \
+                f'highlighted</div>'
+    side = _bars(r["probs"], "class probabilities")
+    if after is not None:
+        side += "<div style='height:10px'></div>" + _bars(after["probs"], f'without "{html.escape(deleted)}"')
+    return (f'<div style="display:flex;gap:28px;flex-wrap:wrap;font-family:sans-serif"><div style="flex:1;'
+            f'min-width:340px">{head}{body}</div><div style="min-width:300px">{side}</div></div>')
+
+
+def show(name, premise, hypothesis):
+    """Without widgets: explain one pair with one model and display it."""
+    display(HTML(card(rw.explain(model(name), premise, hypothesis))))
+
+
+def demo(n_examples=60):
+    """Pick a test pair (or type your own), choose the model, see the answer and why; delete a word to test it."""
+    pairs = rw.test_pairs()
+    picks = []
+    for lab in rw.LABELS:                                # the first pairs of each class, in test order
+        picks += [i for i, p in enumerate(pairs) if p[2] == lab][: n_examples // 3]
+    picks.sort()
+    opts = [("(type your own below)", -1)] + [(f"{i}: {pairs[i][0][:48]} / {pairs[i][1][:40]} ({pairs[i][2]})", i)
+                                               for i in picks]
+    pick = W.Dropdown(options=opts, value=picks[0] if picks else -1, description="test pair",
+                      layout=W.Layout(width="760px"))
+    prem = W.Text(description="premise", layout=W.Layout(width="760px"))
+    hyp = W.Text(description="hypothesis", layout=W.Layout(width="760px"))
+    which = W.ToggleButtons(options=[("Born Transformer", "born"), ("softmax", "softmax")], value="born")
+    go = W.Button(description="Explain", button_style="warning")
+    words = W.HBox(layout=W.Layout(flex_flow="row wrap"))
+    out = W.Output()
+    state = {}
+
+    def fill(_=None):
+        if pick.value >= 0:
+            p = pairs[pick.value]
+            prem.value, hyp.value = p[0], p[1]
+
+    def run(_=None, deleted=None):
+        out.clear_output()
+        m = model(which.value)
+        with out:
+            if not prem.value.strip() or not hyp.value.strip():
+                print("Type a premise and a hypothesis.")
+                return
+            r = rw.explain(m, prem.value, hyp.value)
+            p = pairs[pick.value] if pick.value >= 0 and (prem.value, hyp.value) == pairs[pick.value][:2] else None
+            marked = rw.marked_mask(p) if p else None
+            after = None
+            if deleted is not None:
+                ids, toks = rw.without(r, deleted)
+                after = rw.explain(m, ids=ids, toks=toks)
+            state["r"] = r
+            display(HTML(card(r, marked, p[2] if p else None, after, r["words"][deleted] if after else None)))
+        buttons = []
+        for i, w in enumerate(state["r"]["words"]):
+            if w == "<sep>":
+                continue
+            b = W.Button(description=w, layout=W.Layout(width="auto"), tooltip=f"delete '{w}'")
+            b.on_click(lambda _, i=i: run(deleted=i))
+            buttons.append(b)
+        words.children = [W.Label("delete a word:")] + buttons
+
+    pick.observe(lambda c: (fill(), run()), names="value")
+    which.observe(lambda c: run(), names="value")
+    go.on_click(run)
+    fill()
+    display(W.VBox([pick, prem, hyp, W.HBox([which, go]), out, words]))
+    run()
