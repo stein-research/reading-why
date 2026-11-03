@@ -1,5 +1,5 @@
 """Softmax baseline: integrated gradients with 256, 1024 and 4096 nodes on the first 200 test pairs - completeness
-gap and top-3 words against 256 nodes. Writes runs/softmax_ig_nodes_s0.json."""
+gap and top-3 words against 256 nodes. Writes results/softmax_ig_nodes_s0.json."""
 import sys, time, json
 
 import numpy as np, torch

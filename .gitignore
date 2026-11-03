@@ -5,3 +5,13 @@ data/esnli/
 results/*_mesh.npz
 results/*_faith.json
 logs/
+results/*.npz
+results/fairness.json
+results/gradinput.json
+results/qubit_resources.json
+results/attention_agreement*.json
+results/device_bootstrap.json
+results/softmax_ig_nodes_s0.json
+results/*_device_*.json
+results/*_hwatt_*
+results/*_hwev_*

@@ -53,32 +53,48 @@ e_g(t) = a_t \int_0^1 \frac{\partial f_g}{\partial a_t}(s\,a)\,ds, \qquad \sum_t
 are computed exactly by Gauss-Legendre quadrature with half the degree in nodes (324 here); the sum holds to about
 $10^{-12}$. Red words push towards the answer, blue words against it.
 
-## What the paper finds (e-SNLI, about 98k parameters outside the embedding, 3 seeds)
+## What the paper finds (e-SNLI, about 98k parameters outside the embedding, 3 seeds, 1,000 test pairs)
 
 | | Born Transformer | softmax transformer |
 |---|---|---|
 | test accuracy | 76.98 +- 0.17 % | 76.62 +- 0.36 % |
-| evidence sums to the explained score | to 8e-12 at most | no (integrated gradients, 256 nodes) |
-| deleting the word ranked first changes the answer: evidence / attention / random | 45 / 32 / 6 % | 31 / 34 / 5 % |
-| top words that annotators highlighted: evidence / attention (chance 0.35) | 0.51 / 0.50 | 0.47 / 0.54 |
+| evidence sums to the explained score | to 8e-12 at most (no quadrature error) | no (integrated gradients) |
+| deleting the word ranked first changes the answer: evidence / attention x gradient / attention / random | 45 / 37 / 32 / 5 % | 32 / 40 / 34 / 5 % |
+| ... at most (any single deletion, the ceiling) | 53 % | 55 % |
+| deleting the five words ranked last changes it (evidence) | 0.9 % | 10 % |
+| top words that annotators highlighted: evidence / attention (chance 0.35) | 0.51 / 0.50 | 0.46 / 0.54 |
 
-The same trained weights compile exactly to passive optics and to qubits. A coherent attention layer with no
-measurement before the end is one circuit equal to the model (852 CNOTs on 23 qubits with brickwall maps). On
-ibm_kingston, the attention overlaps of one short test pair were read by Hadamard tests and gave the model's answer.
+The softmax model's evidence here is integrated gradients of its probability over one gate per word, the same path
+and explained quantity as the Born evidence. Attention looks most like the annotators' reason, yet accounts for the
+answer less well. The same trained weights compile exactly to optics (interferometers between detectors) and to
+qubits. A coherent attention layer with no measurement before the end is one circuit equal to the model (852 CNOTs on
+23 qubits with brickwall maps). On ibm_kingston the attention overlaps of two short test pairs, and of four
+deletions, were read by Hadamard tests: the device gave the model's answers. The paper also works out what the qubit
+realisation needs (about 2,000 shots per circuit for 99 % of answers; row calibrations within a few per cent for the
+evidence).
+
+## Run it on your computer
+
+```bash
+git clone https://github.com/stein-research/reading-why && cd reading-why
+pip install -r requirements.txt jupyterlab
+jupyter lab demo/demo.ipynb
+```
+
+- the notebooks locally, and the demo from plain Python: [`demo/README.md`](demo/README.md)
+- every table and number of the paper, script by script, and training: [`src/README.md`](src/README.md)
+- the trained models: [`results/README.md`](results/README.md); the data: [`data/README.md`](data/README.md); the
+  IBM jobs: [`ibm_jobs/README.md`](ibm_jobs/README.md)
 
 ## Contents
 
 | | |
 |---|---|
 | [`demo/`](demo/) | the two notebooks and their helpers ([`reading_why.py`](demo/reading_why.py), [`ui.py`](demo/ui.py)) |
-| [`src/`](src/) | the models, the exact evidence, the trainer, the evaluation (deletion, agreement, attention), the optical and qubit compiles, and the scripts that ran the IBM jobs |
-| [`results/`](results/) | the two trained models of the demo (seed 0, 20 epochs) and the vocabulary |
-| [`data/`](data/) | where e-SNLI goes (downloaded and checked, not stored); see [`data/README.md`](data/README.md) |
+| [`src/`](src/) | the models, the exact evidence, the trainer, the evaluations, the optical and qubit compiles, the quantum-resource analysis, and the scripts that ran the IBM jobs |
+| [`results/`](results/) | the nine trained models of the tables (three models, three seeds), the coherent attention layer, and the vocabulary |
+| [`data/`](data/) | where e-SNLI goes (downloaded and checked, not stored) |
 | [`ibm_jobs/`](ibm_jobs/) | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed) |
-
-Scripts run from the repository root, e.g. `python src/train.py --model Born-p2-ap --blocks 2 --epochs 20 --data
-esnli` (after `get_esnli()`), then `python src/faithfulness.py esnli_Born-p2-ap_b2_s0`; they read and write
-`results/`.
 
 ## Use of AI tools
 

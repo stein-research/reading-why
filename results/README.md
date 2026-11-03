@@ -1,0 +1,18 @@
+# Trained models
+
+Each run is a pair: `<tag>.pt` (the weights, PyTorch `state_dict`) and `<tag>.json` (its settings, training
+history and test accuracy). Tags read `esnli_<model>_b<blocks>_s<seed>_e<epochs>`. All were trained on e-SNLI with
+`src/train.py` (20 epochs, Adam 2e-3, cosine decay, batch 64, word dropout 0.1).
+
+| model | runs | test accuracy (3 seeds) | in the paper |
+|---|---|---|---|
+| `Born-p2-ap` (the Born Transformer) | seeds 0-2 | 76.98 +- 0.17 % | everything; seed 0 on the device and in the figures |
+| `Softmax` (the softmax transformer) | seeds 0-2 | 76.62 +- 0.36 % | the baseline (Tables 1, 2) |
+| `Poly-sim-born` (polynomial, no measurement constraints) | seeds 0-2 | 78.98 +- 0.31 % | Tables 1, 2, 3 |
+| `Coherent-attn-b12-24` (the coherent attention layer, brickwall maps) | seed 0, 10 epochs | 67.2 % | Section 5; the circuit; qubit resources |
+
+`esnli_vocab.json` is the vocabulary (22,319 entries; CC BY-SA 4.0, see `../data/README.md`).
+
+The ablations of Table 3 (`Poly-softmax-bil`, `Poly-born-gelu`, `Poly-softmax-gelu`) are not stored; train them
+with `python src/train.py --model <name> --blocks 2 --epochs 20 --data esnli --seed <s>` (about 30-50 min each on a
+laptop GPU). Scripts in `../src/` write their outputs (`*_faith.json`, `fairness.json`, ...) next to these files.

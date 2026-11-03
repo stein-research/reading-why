@@ -266,7 +266,7 @@ def write_index():
                     f"{r.get('purpose', '')} | [{rec.parent.name}]({rec.parent.name}/record.json) |")
     LEDGER.mkdir(exist_ok=True)
     (LEDGER / "index.md").write_text(
-        "# IBM hardware jobs\n\nEvery job sent from this repository (written by `ibm_jobs.py`). Quantum seconds as "
+        "# IBM hardware jobs\n\nEvery job run for the paper (written by `src/ibm_jobs.py`; account details removed). Quantum seconds as "
         "IBM reports them.\n\n| created (UTC) | backend | job id | status | circuits x shots | quantum s | purpose | "
         "record |\n|---|---|---|---|---|---|---|---|\n" + "\n".join(rows) + "\n")
 
