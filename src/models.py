@@ -127,11 +127,11 @@ class PolyTransformer(nn.Module):
             q, k, v = (torch.einsum("btd,ed->bte", h, m).unflatten(-1, (self.heads, dh)) for m in qkvo[:3])
             s = torch.einsum("bihe,bjhe->bhij", q, k)
             if self.attn == "softmax":
-                s = s / math.sqrt(dh)
-                s = (s - s.masked_fill((ids == 0)[:, None, None], -1e9).amax(-1, keepdim=True).detach()).exp()
-                s = s * (ids != 0)[:, None, None].to(s.dtype)
+                s = (s / math.sqrt(dh)).masked_fill((ids == 0)[:, None, None], -1e9)    # padded keys: weight 0
+                s = (s - s.amax(-1, keepdim=True).detach()).exp()
                 s = s / (fz(s.sum(-1, keepdim=True)) + 1e-30)
-                y = torch.einsum("bhij,bjhe->bihe", s, v).flatten(-2)
+                # a padded slot stays empty, as in the polynomial attentions (there q = 0 gives y = 0 by itself)
+                y = torch.einsum("bhij,bjhe->bihe", s, v).flatten(-2) * (ids != 0)[:, :, None].to(s.dtype)
             elif self.attn != "linear":
                 s = s ** 2
             if self.attn == "born":
