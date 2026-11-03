@@ -99,7 +99,7 @@ evidence).
 > We finish this work on 4 November 2026, in the rule's hundredth year, and we want to name what it rests on.
 > Max Born, and the people who in 1925 and 1926 made a quantum theory in which such a rule could be written down.
 > Those who turned superposition into instruments: the builders of interferometers and of the meshes of beam
-> splitters that make any unitary, and those who made reading an overlap from a circuit a routine thing. Those who
+> splitters that realise any unitary, and those who made reading an overlap from a circuit a routine thing. Those who
 > gave machine learning the transformer, and who asked, and kept asking, what it means for a model to explain itself:
 > integrated gradients, the debate over whether attention is an explanation, the benchmarks that measure
 > faithfulness. The many people, most of them never named, who read pairs of sentences and wrote down, for each,
