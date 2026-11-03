@@ -82,9 +82,11 @@ esnli` (after `get_esnli()`), then `python src/faithfulness.py esnli_Born-p2-ap_
 
 ## Use of AI tools
 
-An AI assistant (Claude, Anthropic) was used throughout this work: to write and run simulation and analysis code, to
-prepare and check the hardware jobs, to draw the figures, and to draft and revise the text. All research directions,
-decisions and claims are the authors'.
+An AI assistant (Claude, Anthropic) was used under the authors' direction to write and run simulation and analysis
+code, to prepare and check the hardware jobs, to write the code that draws the figures, to search the literature and
+check the references against their sources, and to draft and revise the text; the authors chose what to cite. The
+authors retained responsibility for the study design, the scientific judgments and the claims, checked the reported
+results against the saved data and the code, and take full responsibility for the content.
 
 ## Licence and citation
 
