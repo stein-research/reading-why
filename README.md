@@ -72,7 +72,7 @@ The softmax model's evidence here is integrated gradients of its probability ove
 and explained quantity as the Born evidence. Attention looks most like the annotators' reason, yet accounts for the
 answer less well. The same trained weights compile exactly to optics (interferometers between detectors) and to
 qubits. A coherent attention layer with no measurement before the end is one circuit equal to the model (852 CNOTs on
-23 qubits with brickwall maps). On ibm_kingston the attention overlaps of three short test pairs, and of four
+23 qubits with brickwall maps). On ibm_kingston the attention overlaps of four short test pairs, and of four
 deletions, were read by Hadamard tests: the device gave the model's answers, and with calibration circuits as deep as
 the overlaps each word's evidence followed the exact one on two pairs chosen in advance (correlations 0.997 and
 0.932, every sign right on both). The paper also works out what the qubit realisation needs (about 2,000 shots per circuit for 99 % of answers;
