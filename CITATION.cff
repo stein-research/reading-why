@@ -26,3 +26,19 @@ keywords:
   - attention
   - explainable AI
   - natural language inference
+preferred-citation:
+  type: article
+  title: "Reading Why: Born-Measured Attention with Exact Word Evidence on Light and Qubits"
+  authors:
+    - family-names: Tongloy
+      given-names: Teerawat
+    - family-names: Pongsopa
+      given-names: Jiraporn
+    - family-names: Jomtarak
+      given-names: Rangsan
+  year: 2026
+  journal: "arXiv preprint"
+  identifiers:
+    - type: other
+      value: "arXiv:2611.05355"
+  url: "https://arxiv.org/abs/2611.05355"

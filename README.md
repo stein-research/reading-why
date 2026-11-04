@@ -8,7 +8,7 @@ University).
 | Try it: type a premise and a hypothesis and see why the model answers (CPU, no install) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/reading-why/blob/main/demo/demo.ipynb) |
 | Train a model on e-SNLI (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/reading-why/blob/main/demo/train.ipynb) |
 | Run it on your own computer, and the paper's analyses | [docs/run-locally.md](docs/run-locally.md) |
-| Paper | arXiv link to follow |
+| Paper | [arXiv:2611.05355](https://arxiv.org/abs/2611.05355) |
 | Earlier work | Seeing Why, [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) ([code](https://github.com/stein-research/seeing-why)) |
 
 ![One test pair through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview.png)
@@ -132,5 +132,5 @@ results against the saved data and the code, and take full responsibility for th
 ## Licence and citation
 
 Code: MIT ([`LICENSE`](LICENSE)). e-SNLI: MIT; SNLI sentences and the vocabulary derived from them: CC BY-SA 4.0
-(see [`data/README.md`](data/README.md)). Please cite the paper ([`CITATION.cff`](CITATION.cff)); the arXiv entry
-follows.
+(see [`data/README.md`](data/README.md)). Please cite the paper ([`CITATION.cff`](CITATION.cff)),
+[arXiv:2611.05355](https://arxiv.org/abs/2611.05355).
