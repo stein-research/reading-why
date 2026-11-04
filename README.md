@@ -9,7 +9,7 @@ University).
 | Train a model on e-SNLI (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/stein-research/reading-why/blob/main/demo/train.ipynb) |
 | Run it on your own computer, and the paper's analyses | [docs/run-locally.md](docs/run-locally.md) |
 | Paper | [arXiv:2611.05355](https://arxiv.org/abs/2611.05355) |
-| Archived copy | v2.0 (arXiv v2): [doi:10.5281/zenodo.23955881](https://doi.org/10.5281/zenodo.23955881); every version, the latest first: [doi:10.5281/zenodo.23938333](https://doi.org/10.5281/zenodo.23938333) |
+| Archived copy (always the latest version) | [doi:10.5281/zenodo.23938333](https://doi.org/10.5281/zenodo.23938333) |
 | Earlier work | Seeing Why, [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) ([code](https://github.com/stein-research/seeing-why)) |
 
 ![One test pair, "a man playing cricket / a woman plays polo", through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview.png)
