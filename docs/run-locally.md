@@ -94,7 +94,8 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 | `python src/faithfulness.py $TAGS` | gap, deletion (AOPC, flip) and agreement (Table 1) | an hour on a CPU, minutes on a GPU |
 | `python src/fairness.py` then `python src/gradinput.py` | every ranking, the leave-one-out ceilings, 95 % intervals (Table 2) | hours on a CPU, about 30 min on a GPU |
 | `python src/attention_agreement.py $TAGS` | attention against the annotators and the answer, rollout (Table 2) | minutes |
-| `python src/ig_nodes.py` | the softmax model's integrated gradients with 256 to 4,096 nodes (2.2) | long; use a GPU |
+| `python src/ig_nodes.py` | the softmax model's integrated gradients of its logit over the embeddings with 256 to 4,096 nodes, seed 0, first 200 pairs (2.2) | long; use a GPU |
+| `python src/gated_converged.py` (after `fairness.py`) then `python src/two_level.py` | the like-for-like comparison's word-gated probability IG at 4,096 nodes on all 1,000 pairs and three seeds, flip@1 on the converged pairs, and the two-level (seeds and pairs) intervals (3.3, Table 2) | long; use a GPU |
 | train the three ablations (3 seeds each), then `faithfulness.py` and `attention_agreement.py` on them | which part gives the evidence its quality (Table 3) | 30-50 min per run on a GPU |
 | `python src/compile_hw.py esnli_Born-p2-ap_b2_s0_e20` (add `--noise` for shot noise and bits) | the compiled optics (4) | minutes |
 | `python src/mesh_check.py esnli_Born-p2-ap_b2_s0_e20 --n 1000` | the build with Clements meshes, with phase errors (4); needs `interferometer` | about an hour (the 256-mode decomposition is cached) |
