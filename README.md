@@ -30,14 +30,17 @@ its share.
 
 ## How it works
 
-![Three models step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the coherent attention layer drawn as its circuit](docs/architectures.png)
+![One model step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the same Born Transformer compiled to qubits](docs/architectures.png)
 
-*Three models step by step, bottom to top, in the box colours of the original transformer figure: a softmax
-transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics (the same weights run on qubits),
-and the coherent attention layer drawn as its circuit, wires running upwards (one circuit, one measurement). Bands
-hold the same stage; detector symbols mark the measurements. The encoder is drawn in the layout of the original; our
-softmax baseline uses GELU, places LayerNorm before each sublayer, averages the words before the linear head and has
-N = 2 blocks, as the Born Transformer.*
+*One model and its realisations step by step, bottom to top, in the box colours of the original transformer figure: a
+softmax transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the same Born
+Transformer, with the same weights, compiled to qubits (amplitudes prepared as states, every reading a Hadamard test,
+linear combinations of unitaries, a readout circuit). Its attention, two Hadamard tests per overlap with calibration
+circuits as deep, is the part run on ibm_kingston; the rest is simulated. Bands hold the same stage; detector symbols
+mark the measurements. The encoder is drawn in the layout of the original; our softmax baseline uses GELU, places
+LayerNorm before each sublayer, averages the words before the linear head and has N = 2 blocks, as the Born
+Transformer. The paper's coherent attention layer, a separate model with no measurement until the end, has its own
+circuit figure.*
 
 Each word $t$ enters as a complex field $a_t\,e_t$ with amplitude $a_t$. A block's attention weighs word $j$ for word
 $i$ by
