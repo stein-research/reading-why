@@ -90,7 +90,7 @@ for evidence that cancels, each row's visibility within a few per cent).
 | [`src/`](src/) | the models, the exact evidence, the trainer, the evaluations, the optical and qubit compiles, the quantum-resource analysis, and the scripts that ran the IBM jobs |
 | [`results/`](results/) | the nine trained models of the tables (three models, three seeds), the coherent attention layer, and the vocabulary; see [`results/README.md`](results/README.md) |
 | [`data/`](data/) | where e-SNLI goes (downloaded and checked, not stored) |
-| [`ibm_jobs/`](ibm_jobs/) | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed) |
+| [`ibm_jobs/`](ibm_jobs/) | the record of every job run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed); to check the hardware numbers from it, or run the jobs again: [docs/check-and-repeat-ibm.md](docs/check-and-repeat-ibm.md) |
 
 ## A century of the Born rule
 

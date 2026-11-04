@@ -107,6 +107,9 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 
 ## The IBM scripts
 
+Checking every hardware number from the recorded jobs (no account), repeating the jobs with your own account, and
+sending the recorded circuits with plain Qiskit: [check-and-repeat-ibm.md](check-and-repeat-ibm.md).
+
 `src/hw_attention.py --device` sent the paper's jobs through the ledger `src/ibm_jobs.py`, which never sends a job
 twice and checks the quota first. Running them again needs your own IBM Quantum account, passed as a keys file
 (`--keys`, one `<email> <token>` per line, kept outside the repository); no account details are in this repository.
@@ -130,7 +133,7 @@ calibration and raw counts, so the hardware numbers can be checked without an ac
 | `src/esnli.py`, `src/data.py`, `src/synth.py` | e-SNLI tokens, highlights and vocabulary; the tokenizer; dataset access |
 | `src/faithfulness.py`, `src/fairness.py`, `src/gradinput.py`, `src/attention_agreement.py`, `src/ig_nodes.py` | the evaluations of the evidence |
 | `src/compile_hw.py`, `src/mesh_check.py` | the compile to optics and qubits; the Clements-mesh check |
-| `src/hw_attention.py`, `src/ibm_jobs.py`, `src/device_bootstrap.py` | Hadamard tests on a noise model or an IBM device; the job ledger; shot-noise intervals |
+| `src/hw_attention.py`, `src/ibm_jobs.py`, `src/device_bootstrap.py`, `src/evidence_bootstrap.py`, `src/device_overlaps.py`, `src/hw_recal.py`, `src/hw_plan.py` | Hadamard tests on a noise model or an IBM device; the job ledger; shot-noise intervals of the answers and of the evidence; the recorded overlaps against their ideal values; the earlier runs replayed under other calibrations; the device simulation that chose pair 4667 |
 | `src/coherent_circuit.py`, `src/sim_gpu.py`, `src/qubit_resources.py` | the coherent layer as one circuit; GPU statevector; quantum resources and errors |
 | `src/bow_baseline.py` | the bag-of-words references |
 | `examples/quickstart.py`, `examples/explain.py` | the demo in plain Python; one pair from the command line |
