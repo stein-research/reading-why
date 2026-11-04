@@ -122,6 +122,11 @@ evidence).
 >
 > *The authors, 4 November 2026*
 
+## Acknowledgements
+
+We acknowledge the use of IBM Quantum services for this work. The views expressed are those of the authors, and do
+not reflect the official policy or position of IBM or the IBM Quantum team.
+
 ## Use of AI tools
 
 An AI assistant (Claude, Anthropic) was used under the authors' direction to write and run simulation and analysis
