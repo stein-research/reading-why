@@ -30,12 +30,17 @@ its share.
 
 ## How it works
 
-![One model step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the same Born Transformer compiled to qubits](docs/architectures.png)
+![Three models step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the coherent attention layer drawn as its circuit](docs/architectures.png)
 
-*One model and its realisations, step by step from bottom to top, in the box colours of the original transformer
-figure: a softmax transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the same
-Born Transformer compiled to qubits, with the part run on ibm_kingston marked (its attention; the rest was computed
-classically). Bands hold the same stage; detector symbols mark the measurements.*
+*Three models step by step, bottom to top, in the box colours of the original transformer figure: a softmax
+transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the coherent attention layer
+drawn as its circuit, wires running upwards (one circuit, one measurement; a separate, smaller model, simulated
+only). Bands hold the same stage; detector symbols mark the measurements.*
+
+<img src="docs/born_qubits.png" alt="The Born Transformer on qubits, stage by stage, with what the runs on ibm_kingston did at each" width="55%">
+
+*The Born Transformer on qubits, stage by stage, and beside each stage what the runs on ibm_kingston did with it:
+the attention read on the device, the rest computed classically.*
 
 Each word $t$ enters as a complex field $a_t\,e_t$ with amplitude $a_t$. A block's attention weighs word $j$ for word
 $i$ by

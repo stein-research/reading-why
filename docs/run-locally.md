@@ -101,8 +101,8 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 | `python src/mesh_check.py esnli_Born-p2-ap_b2_s0_e20 --n 1000` | the build with Clements meshes, with phase errors (4); needs `interferometer` | about an hour (the 256-mode decomposition is cached) |
 | `python src/coherent_circuit.py esnli_Coherent-attn-b12-24_b1_s0 --index 3765 3763 --gpu` | the coherent layer as one circuit, equal to the model (Table 4, Fig. 6); `--cost-only 3` counts gates only | needs qiskit-aer-gpu (`QML_GPU_PYTHON`) for the 23-qubit statevector |
 | `python src/hw_attention.py esnli_Born-p2-ap_b2_s0_e20 --n 50` (and `--evidence 20`) | the answer and the hybrid evidence under the noise model of ibm_torino (6) | hours |
-| `python src/qubit_resources.py --n 300` | shots, visibility, calibration and the coherent layer's post-selection (6, Table 5) | about an hour on a GPU |
-| `python src/device_bootstrap.py` | shot-noise intervals of every device run, from the recorded counts (6, Fig. 7) | 15 min per run on a CPU |
+| `python src/qubit_resources.py --n 300` | shots, visibility, calibration and the coherent layer's post-selection (6, Tables 7 and 8) | about an hour on a GPU |
+| `python src/device_bootstrap.py` | shot-noise intervals of every device run, from the recorded counts (6, Fig. 8) | 15 min per run on a CPU |
 | `python src/bow_baseline.py --data esnli` | the bag-of-words references (3.2) | minutes |
 
 ## The IBM scripts
