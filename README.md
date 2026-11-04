@@ -12,13 +12,15 @@ University).
 | Archived copy (v1.0) | [doi:10.5281/zenodo.23938334](https://doi.org/10.5281/zenodo.23938334) |
 | Earlier work | Seeing Why, [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) ([code](https://github.com/stein-research/seeing-why)) |
 
-![One test pair through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview.png)
+![One test pair, "a man playing cricket / a woman plays polo", through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview.png)
 
 *(a) On light (simulated): one field per word on a modulator; in each of two blocks Born attention weighs the words
 by interference and a measured feed-forward reads a product by homodyne detection; the camera's three regions give
 the class probabilities, and each word's Born evidence (BEW; red for the answer, blue against it) sums to the class
-probability above its share. (b) On IBM's ibm_kingston, with the same weights: every query-key overlap is a Hadamard
-test on five qubits; the rest is computed classically.*
+probability above its share. (b) On IBM's ibm_kingston, with the same weights: every query-key overlap is read by
+Hadamard tests on five qubits, with calibration circuits as deep in the same job; the answer survives, and each word's
+evidence, with exact numerators and the attention row sums the device measured, follows the exact one (r = 0.997,
+95 % interval 0.987-0.999).*
 
 A transformer in which every step is a Born measurement: attention $|\langle q|k\rangle|^4$ normalised over each row,
 a measured product in place of the feed-forward nonlinearity, and a Born readout. Each class probability is then a
@@ -72,11 +74,11 @@ The softmax model's evidence here is integrated gradients of its probability ove
 and explained quantity as the Born evidence. Attention looks most like the annotators' reason, yet accounts for the
 answer less well. The same trained weights compile exactly to optics (interferometers between detectors) and to
 qubits. A coherent attention layer with no measurement before the end is one circuit equal to the model (852 CNOTs on
-23 qubits with brickwall maps). On ibm_kingston the attention overlaps of two short test pairs, and of four
-deletions, were read by Hadamard tests: the device gave the model's answers; the evidence itself did not yet survive
-the device. The paper also works out what the qubit
-realisation needs (about 2,000 shots per circuit for 99 % of answers; row calibrations within a few per cent for the
-evidence).
+23 qubits with brickwall maps). On ibm_kingston the attention overlaps of three short test pairs, and of four
+deletions, were read by Hadamard tests: the device gave the model's answers, and with calibration circuits as deep as
+the overlaps each word's evidence on a pair chosen in advance followed the exact one (correlation 0.997, the same top
+word). The paper also works out what the qubit realisation needs (about 2,000 shots per circuit for 99 % of answers;
+for evidence that cancels, each row's visibility within a few per cent).
 
 ## Contents
 

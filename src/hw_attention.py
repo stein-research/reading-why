@@ -5,10 +5,15 @@ python hw_attention.py <tag> --n 50 [--backend FakeTorino] [--shots 10000]   # f
 python hw_attention.py <tag> --evidence 20 [...]   # first n test pairs: evidence with the measured denominators
 python hw_attention.py <tag> --index 3763 --shots 2000 --device ibm_kingston --account 1 [--submit]   # an IBM device,
 #   through the ledger (ibm_jobs/); without --submit a dry run: transpiled and recorded, not sent;
+#   --offline: no account and no ledger - every circuit transpiled for and run on the --backend noise model
+#   --noisy-dry: the dry run goes on with counts from the --backend noise model instead of ideal ones;
 #   --pilot 30: only the first 30 circuits of block 0 (repeat 1 in the ledger), time and visibility, then stop;
 #   --eta v: use visibility v for every row instead of the self-overlap circuits (which the transpiler makes shallow:
 #   |+>|q> is a product state, 13 CZ against 37), e.g. the pilot's slope;
 #   --delete p --no-evidence: the deletion test on the device - word p removed, the answer only (no calibrations)
+#   --cal-random n: instead of the self-overlap rows, n calibration circuits per block as deep as the overlaps
+#   (Hadamard tests of random state pairs with known overlap); one slope and one readout offset per block are fitted
+#   to them, the offset is taken off every overlap and the row sums are divided by the slope's fourth power
 
 Evidence on hardware (hybrid): the evidence is the exact polynomial's with its denominators held (models.Frozen);
 here the attention row sums sum_j |<q_i|k_j>|^4 are the ones the circuits measured, the numerators stay exact (on
@@ -45,12 +50,15 @@ args = sys.argv[1:]
 opt = lambda k, v: args[args.index(k) + 1] if k in args else v
 tag = [a for i, a in enumerate(args) if not a.startswith("--") and (i == 0 or not args[i - 1].startswith("--"))][0]
 idx, shots, bname = int(opt("--index", 15)), int(opt("--shots", 10000)), opt("--backend", "FakeTorino")
+ncal = int(opt("--cal-random", 0))
 
 model, d = load(tag)
 backend = getattr(fake_provider, bname)()
 noisy_sim, ideal_sim = AerSimulator.from_backend(backend), AerSimulator()
 stats = dict(circuits=0, two_qubit=[], depth=[])
 present = []
+offline = []                                     # --offline: per block, circuits and CZ counts
+calib = []                                       # per block: the fitted slope and offset of --cal-random
 
 
 class Device:
@@ -66,11 +74,20 @@ class Device:
         self.submit, self.purpose, self.folders, self.pilot = submit, purpose, [], pilot
 
     def run(self, circs, where, block):
-        notes = [f"block {block} head {h} q{i} k{j} {('Re', 'Im', 'calibration')[part]}"
-                 for h, i, j, part, _ in where]
+        notes = [f"block {block} head {h} q{i} k{j} {('Re', 'Im', 'calibration')[part]}" if part < 3 else
+                 f"block {block} random calibration {i} ideal {scale:+.6f}" for h, i, j, part, scale in where]
         # the ledger names a circuit by its gates and real parameters: StatePreparation's complex amplitudes become
         # u and cx gates first (deterministic, optimisation 0; the ledger then transpiles for the device)
         circs = transpile(circs, basis_gates=["u", "cx"], optimization_level=0)
+        if "--offline" in args:                  # no account, no ledger: the --backend noise model, CZ counts kept
+            t = transpile(circs, backend, optimization_level=3, seed_transpiler=0)
+            cz = [c.count_ops().get("cz", 0) for c in t]
+            offline.append(dict(block=block, circuits=len(t), cz_median=float(np.median(cz)), cz_max=int(max(cz)),
+                                cz_calibration=[cz[n] for n, w in enumerate(where) if w[3] == 3][:5]))
+            print(f"offline block {block}: {len(t)} circuits, CZ median {np.median(cz):.0f}, max {max(cz)}; "
+                  f"calibration CZ {offline[-1]['cz_calibration']}", flush=True)
+            res = noisy_sim.run(t, shots=shots, seed_simulator=block).result()
+            return res
         if self.pilot:                                                        # the first circuits only, then stop
             from qiskit.quantum_info import Statevector
             circs, notes = circs[:self.pilot], notes[:self.pilot]
@@ -94,8 +111,10 @@ class Device:
                                                 f"{self.purpose}, block {block}", inputs=[f"results/{tag}.pt"],
                                                 circuit_notes=notes, dry_run=not self.submit)
         self.folders.append(str(folder))
-        if counts is None:                                                    # dry run: go on with ideal counts
-            res = ideal_sim.run(transpile(circs, ideal_sim), shots=shots, seed_simulator=block).result()
+        if counts is None:                     # dry run: go on with ideal counts (--noisy-dry: the noise model's)
+            sim = noisy_sim if "--noisy-dry" in args else ideal_sim
+            t = transpile(circs, backend if sim is noisy_sim else sim, optimization_level=3, seed_transpiler=0)
+            res = sim.run(t, shots=shots, seed_simulator=block).result()
             counts = [res.get_counts(n) for n in range(len(circs))]
         return type("Counts", (), {"get_counts": lambda _, n: counts[n]})()
 
@@ -123,9 +142,23 @@ def make_overlap(sim, record, rows=None):
                     for part in (0, 1):
                         jobs.append(circuit(q[h, i] / nq, k[h, j] / nk, part == 1))
                         where.append((h, i, j, part, nq * nk))
-                if rows is not None and np.linalg.norm(q[h, i]) > 0:                # visibility of row i
+                if rows is not None and not ncal and np.linalg.norm(q[h, i]) > 0:   # visibility of row i
                     jobs.append(circuit(q[h, i] / np.linalg.norm(q[h, i]), q[h, i] / np.linalg.norm(q[h, i]), False))
                     where.append((h, i, i, 2, 1.0))
+        if rows is not None and ncal:                     # same-depth calibrations: random pairs, known overlap
+            # each pair its own calibration states (the ledger refuses a circuit already sent); pair 4667's job
+            # was drawn with default_rng(1000 + block), its circuits and ideal overlaps are in the ledger
+            rng = np.random.default_rng(1000 + block if idx == 4667 else [idx, block])
+            for n in range(ncal):
+                a, b = rng.standard_normal((2, 2, q.shape[-1]))
+                a = (a[0] + 1j * a[1]) / np.linalg.norm(a[0] + 1j * a[1])
+                r = b[0] + 1j * b[1]
+                r = r - np.vdot(a, r) * a
+                r /= np.linalg.norm(r)
+                th = np.arccos(rng.uniform(-1, 1))                           # Re<a|b> spread over [-1, 1]
+                bb = np.cos(th) * a + np.sin(th) * r
+                jobs.append(circuit(a, bb, False))
+                where.append((0, n, n, 3, float(np.vdot(a, bb).real)))
         if isinstance(sim, Device):                                          # an IBM device, through the ledger
             res = sim.run(jobs, where, block)
         else:
@@ -139,13 +172,25 @@ def make_overlap(sim, record, rows=None):
         re, im = torch.zeros(1, q.shape[0], L, L, dtype=torch.float64), torch.zeros(1, q.shape[0], L, L,
                                                                                      dtype=torch.float64)
         eta = np.ones((q.shape[0], L))
+        cal = []
         for n, (h, i, j, part, scale) in enumerate(where):
             c = res.get_counts(n)
-            est = (c.get("0", 0) - c.get("1", 0)) / shots * scale
-            if part == 2:
-                eta[h, i] = max(est, 1e-3)
+            p = (c.get("0", 0) - c.get("1", 0)) / shots
+            if part == 3:
+                cal.append((scale, p))
+            elif part == 2:
+                eta[h, i] = max(p * scale, 1e-3)
             else:
-                (im if part else re)[0, h, i, j] = est
+                (im if part else re)[0, h, i, j] = p * scale
+        if cal:                                          # one slope and one readout offset for the block
+            x, y = np.array(cal).T
+            slope, off = np.linalg.lstsq(np.vstack([x, np.ones_like(x)]).T, y, rcond=None)[0]
+            calib.append(dict(block=block, slope=float(slope), offset=float(off), n=len(x),
+                              resid_sd=float(np.std(y - slope * x - off))))
+            for n, (h, i, j, part, scale) in enumerate(where):
+                if part < 2:
+                    (im if part else re)[0, h, i, j] -= off * scale
+            eta[:] = slope
         if rows is not None and "--eta" in args:                            # a visibility measured elsewhere
             eta[:] = float(opt("--eta", 1))
         if rows is not None:
@@ -297,13 +342,14 @@ if "--device" in args:
                submitted=dev.submit, shots=shots, ledger=dev.folders, words=words,
                exact=dict(P=pe[0].tolist(), answer=d["classes"][int(pe.argmax())], evidence=a.tolist()),
                device_run=dict(P=ph[0].tolist(), answer=d["classes"][int(ph.argmax())], evidence=b.tolist(),
-                               eta=[r.tolist() for r in rows], evidence_sum=float(b.sum()), f_diff=float(fh - zh)),
+                               eta=[r.tolist() for r in rows], evidence_sum=float(b.sum()), f_diff=float(fh - zh),
+                               calibration=calib, offline=offline),
                evidence_corr=float(np.corrcoef(a, b)[0, 1]), p_diff_max=float((ph - pe).abs().max()))
     print(f"{idx} ({out['gold']}): exact {out['exact']['answer']} {np.round(pe[0].numpy(), 3).tolist()}  "
           f"{'device' if dev.submit else 'dry run (ideal counts)'} {out['device_run']['answer']} "
           f"{np.round(ph[0].numpy(), 3).tolist()}  |dP| {out['p_diff_max']:.3f}  evidence corr {out['evidence_corr']:.3f}")
     print("  evidence exact / device: " + ", ".join(f"{w} {x:+.3f}/{y:+.3f}" for w, x, y in zip(words, a, b)))
-    eta_tag = f"_eta{opt('--eta', '')}" if "--eta" in args else ""
+    eta_tag = (f"_eta{opt('--eta', '')}" if "--eta" in args else "") + (f"_cal{ncal}" if ncal else "") + (f"_offline_{bname}" if "--offline" in args else "")
     with open(f"results/{tag}_device_{dev.backend_name}_{shots}_i{idx}{eta_tag}{'' if dev.submit else '_dry'}.json", "w") as f:
         json.dump(out, f, indent=1)
     sys.exit()
