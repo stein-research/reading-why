@@ -32,16 +32,10 @@ its share.
 
 ![One model step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the same Born Transformer compiled to qubits](docs/architectures.png)
 
-*One model and its realisations step by step, bottom to top, in the box colours of the original transformer figure: a
-softmax transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the same Born
-Transformer, with the same weights, compiled to qubits (amplitudes prepared as states, every reading a Hadamard test,
-linear combinations of unitaries, a readout circuit). Its attention, two Hadamard tests per overlap with calibration
-circuits as deep, is the part run on ibm_kingston; the rest was computed classically in those runs (the paper also
-simulates every reading as a Hadamard test with its shots). Bands hold the same stage; detector symbols
-mark the measurements. The encoder is drawn in the layout of the original; our softmax baseline uses GELU, places
-LayerNorm before each sublayer, averages the words before the linear head and has N = 2 blocks, as the Born
-Transformer. The paper's coherent attention layer, a separate model with no measurement until the end, has its own
-circuit figure.*
+*One model and its realisations, step by step from bottom to top, in the box colours of the original transformer
+figure: a softmax transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the same
+Born Transformer compiled to qubits, with the part run on ibm_kingston marked (its attention; the rest was computed
+classically). Bands hold the same stage; detector symbols mark the measurements.*
 
 Each word $t$ enters as a complex field $a_t\,e_t$ with amplitude $a_t$. A block's attention weighs word $j$ for word
 $i$ by
