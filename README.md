@@ -62,7 +62,7 @@ double precision the sum holds to about $10^{-12}$. Red words push towards the a
 | | Born Transformer | softmax transformer |
 |---|---|---|
 | test accuracy | 76.98 +- 0.17 % | 76.62 +- 0.36 % |
-| evidence sums to the explained score | to 8e-12 at most (no quadrature error) | no (integrated gradients) |
+| evidence sums to the explained score | to 8e-12 at most (no quadrature error) | numerically approximated (integrated gradients); no finite-node exactness guarantee |
 | deleting the word ranked first changes the answer: evidence / attention x gradient / attention / random | 45 / 37 / 32 / 5 % | 32 / 40 / 34 / 5 % |
 | ... at most (any single deletion, the ceiling) | 53 % | 55 % |
 | deleting the five words ranked last changes it (evidence) | 0.9 % | 10 % |
