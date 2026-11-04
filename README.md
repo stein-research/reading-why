@@ -39,8 +39,9 @@ only). Bands hold the same stage; detector symbols mark the measurements.*
 
 <img src="docs/born_qubits.png" alt="The Born Transformer on qubits, stage by stage, with what the runs on ibm_kingston did at each" width="55%">
 
-*The Born Transformer on qubits, stage by stage, and beside each stage what the runs on ibm_kingston did with it:
-the attention read on the device, the rest computed classically.*
+*The Born Transformer on qubits, stage by stage, and beside each stage what the run of pair 4667 on ibm_kingston did
+with it: the attention read on the device, with calibration circuits as deep, the rest computed classically; its
+evidence is hybrid, exact numerators with the measured row sums.*
 
 Each word $t$ enters as a complex field $a_t\,e_t$ with amplitude $a_t$. A block's attention weighs word $j$ for word
 $i$ by
