@@ -21,7 +21,7 @@ args = sys.argv[1:]
 opt = lambda k, v: args[args.index(k) + 1] if k in args else v
 tag = "esnli_Born-p2-ap_b2_s0_e20"
 idx, draws = int(opt("--index", 4667)), int(opt("--draws", 500))
-RUNS = {4667: ["f5ddb65f08d376c5", "decfe254c3394277"]}
+RUNS = {4667: ["f5ddb65f08d376c5", "decfe254c3394277"], 997: ["11332ef15e172150", "2d43aec1fe77ea84"]}
 model, d = load(tag)
 power = 2 if model.attn == "born2" else 1
 ids = torch.tensor(d["x_test"][idx:idx + 1])

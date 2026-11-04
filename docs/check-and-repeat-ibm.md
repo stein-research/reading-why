@@ -28,7 +28,7 @@ These read only the files in the repository and send nothing.
 | quantum seconds of every job (Table 11) | `python src/ibm_jobs.py list` | the job list, rewritten into `ibm_jobs/index.md` | seconds |
 | the overlaps against their ideal values (6): correlation 0.992 over the 256 of block 1 of pair 3763, visibility 0.82 in the pilot and 0.81 as that slope; 0.82 / 0.81 fitted to the deep calibrations of pair 4667 | `python src/device_overlaps.py` (or name job keys: `... 9333cd8540d5532d cf7fcc3a3c6371ca`) | per job and kind of circuit: correlation, slope (the visibility), offset | a minute |
 | the device runs of Table 5 (answers of pairs 3763 and 3765, with and without a word) and their 95 % intervals | `python src/device_bootstrap.py` (`--only "pair 3763"` for one run) | each run's P on the device, its interval, and the share of redraws that keep the answer | about 15 min a run |
-| the evidence on the device, pair 4667 (6, Table 6, Fig. 1b): correlation 0.997, interval 0.987-0.999, the same top word in every redraw, every sign in 65 %, slopes 0.82 / 0.81 and offsets +0.004 / +0.012 | `python src/evidence_bootstrap.py` (500 redraws; `--draws 20` to see the device values in a minute) | the device's evidence, each word's interval, the correlation and its interval, the fitted calibrations | about an hour |
+| the evidence on the device, pair 4667 (6, Table 6, Fig. 1b): correlation 0.997, interval 0.987-0.999, the same top word in every redraw, every sign in 65 %, slopes 0.82 / 0.81 and offsets +0.004 / +0.012; pair 997 (6): 0.932, interval 0.73-0.99, every sign in every redraw | `python src/evidence_bootstrap.py` (pair 4667; `--index 997` for the other; 500 redraws, `--draws 20` to see the device values in a minute) | the device's evidence, each word's interval, the correlation and its interval, the fitted calibrations | about an hour |
 | the earlier runs replayed under other calibrations (6): pair 3765 0.95 every sign, 3763 0.81, with one visibility per block | `python src/hw_recal.py $TAG --index 3765` (and `--index 3763`) | the evidence under each calibration, with its correlation | a few minutes |
 | the choice of pair 4667 in advance (6): the ten shortest test pairs under a simulation of the device | `python src/hw_plan.py $TAG --max-tokens 9 --draws 12` | per pair: cancellation, median and 10th-percentile correlation, signs, circuits, quantum seconds | hours on a CPU |
 
@@ -39,6 +39,7 @@ prints `already done ... counts from the ledger, nothing sent` for each block):
 
 ```bash
 python src/hw_attention.py $TAG --index 4667 --shots 2000 --device ibm_kingston --cal-random 32
+python src/hw_attention.py $TAG --index 997 --shots 2000 --device ibm_kingston --cal-random 32
 python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston
 python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --delete 5 --no-evidence
 ```

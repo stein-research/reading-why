@@ -5,6 +5,8 @@ Every job run for the paper (written by `src/ibm_jobs.py`; account details remov
 | created (UTC) | backend | job id | status | circuits x shots | quantum s | purpose | record |
 |---|---|---|---|---|---|---|---|
 | 2026-11-03T13:49:30+00:00 | ibm_kingston | dbkucqhkdqps73937m9g | done | 196 x 2000 | 106 | Reading Why: Born-p2-ap attention of e-SNLI test pair 3763 by Hadamard tests, word 6 (play) deleted, block 0 | [0fad1bc55a3b5633](0fad1bc55a3b5633/record.json) |
+| 2026-11-04T09:35:59+00:00 | ibm_kingston | dblfovu74qds73dqe0qg | done | 356 x 2000 | 191 | Reading Why: Born-p2-ap attention of e-SNLI test pair 997 by Hadamard tests, block 0 | [11332ef15e172150](11332ef15e172150/record.json) |
+| 2026-11-04T13:52:54+00:00 | ibm_kingston | dbljhdl8ft8s738t65e0 | done | 356 x 2000 | 191 | Reading Why: Born-p2-ap attention of e-SNLI test pair 997 by Hadamard tests, block 1 | [2d43aec1fe77ea84](2d43aec1fe77ea84/record.json) |
 | 2026-11-03T13:06:24+00:00 | ibm_kingston | dbktojonceqs73amknh0 | done | 272 x 2000 | 147 | Reading Why: Born-p2-ap attention of e-SNLI test pair 3765 by Hadamard tests, block 1 | [4b394b02a307ff37](4b394b02a307ff37/record.json) |
 | 2026-11-03T14:28:07+00:00 | ibm_kingston | dbkuuttgg49c73djmvi0 | done | 196 x 2000 | 106 | Reading Why: Born-p2-ap attention of e-SNLI test pair 3765 by Hadamard tests, word 2 (hockey) deleted, block 1 | [6326910e9c96ef94](6326910e9c96ef94/record.json) |
 | 2026-11-03T10:48:20+00:00 | ibm_kingston | dbkrnt0nceqs73amh5g0 | done | 272 x 2000 | 147 | Reading Why: Born-p2-ap attention of e-SNLI test pair 3765 by Hadamard tests, block 0 | [76ef8cff395e3d8e](76ef8cff395e3d8e/record.json) |

@@ -74,8 +74,8 @@ answer less well. The same trained weights compile exactly to optics (interferom
 qubits. A coherent attention layer with no measurement before the end is one circuit equal to the model (852 CNOTs on
 23 qubits with brickwall maps). On ibm_kingston the attention overlaps of three short test pairs, and of four
 deletions, were read by Hadamard tests: the device gave the model's answers, and with calibration circuits as deep as
-the overlaps each word's evidence on a pair chosen in advance followed the exact one (correlation 0.997, the same top
-word). The paper also works out what the qubit realisation needs (about 2,000 shots per circuit for 99 % of answers;
+the overlaps each word's evidence followed the exact one on two pairs chosen in advance (correlations 0.997 and
+0.932, every sign right on both). The paper also works out what the qubit realisation needs (about 2,000 shots per circuit for 99 % of answers;
 for evidence that cancels, each row's visibility within a few per cent).
 
 ## Contents
