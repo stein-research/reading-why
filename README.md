@@ -36,7 +36,8 @@ its share.
 softmax transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the same Born
 Transformer, with the same weights, compiled to qubits (amplitudes prepared as states, every reading a Hadamard test,
 linear combinations of unitaries, a readout circuit). Its attention, two Hadamard tests per overlap with calibration
-circuits as deep, is the part run on ibm_kingston; the rest is simulated. Bands hold the same stage; detector symbols
+circuits as deep, is the part run on ibm_kingston; the rest was computed classically in those runs (the paper also
+simulates every reading as a Hadamard test with its shots). Bands hold the same stage; detector symbols
 mark the measurements. The encoder is drawn in the layout of the original; our softmax baseline uses GELU, places
 LayerNorm before each sublayer, averages the words before the linear head and has N = 2 blocks, as the Born
 Transformer. The paper's coherent attention layer, a separate model with no measurement until the end, has its own
