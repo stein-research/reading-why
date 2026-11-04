@@ -7,6 +7,7 @@ python hw_attention.py <tag> --index 3763 --shots 2000 --device ibm_kingston --a
 #   through the ledger (ibm_jobs/); without --submit a dry run: transpiled and recorded, not sent;
 #   --offline: no account and no ledger - every circuit transpiled for and run on the --backend noise model
 #   --noisy-dry: the dry run goes on with counts from the --backend noise model instead of ideal ones;
+#   --repeat k: the same circuits again on purpose, as a new job (the ledger's key includes k; the paper's are 0);
 #   --pilot 30: only the first 30 circuits of block 0 (repeat 1 in the ledger), time and visibility, then stop;
 #   --eta v: use visibility v for every row instead of the self-overlap circuits (which the transpiler makes shallow:
 #   |+>|q> is a product state, 13 CZ against 37), e.g. the pilot's slope;
@@ -72,6 +73,7 @@ class Device:
         import ibm_jobs                                                       # src/ibm_jobs.py; ledger in ibm_jobs/
         self.ij, self.backend_name, self.keys, self.account = ibm_jobs, backend_name, keys, account
         self.submit, self.purpose, self.folders, self.pilot = submit, purpose, [], pilot
+        self.measured = 0                                                      # blocks with device counts
 
     def run(self, circs, where, block):
         notes = [f"block {block} head {h} q{i} k{j} {('Re', 'Im', 'calibration')[part]}" if part < 3 else
@@ -109,8 +111,11 @@ class Device:
             sys.exit()
         counts, folder = self.ij.sampler_counts(circs, self.backend_name, shots, self.keys, self.account,
                                                 f"{self.purpose}, block {block}", inputs=[f"results/{tag}.pt"],
-                                                circuit_notes=notes, dry_run=not self.submit)
+                                                circuit_notes=notes, dry_run=not self.submit,
+                                                repeat=int(opt("--repeat", 0)))
         self.folders.append(str(folder))
+        if counts is not None:                   # measured: sent now, or a job already in the ledger (nothing sent)
+            self.measured += 1
         if counts is None:                     # dry run: go on with ideal counts (--noisy-dry: the noise model's)
             sim = noisy_sim if "--noisy-dry" in args else ideal_sim
             t = transpile(circs, backend if sim is noisy_sim else sim, optimization_level=3, seed_transpiler=0)
@@ -326,10 +331,10 @@ if "--device" in args:
                    device_run=dict(P=ph[0].tolist(), answer=d["classes"][int(ph.argmax())]),
                    p_diff_max=float((ph - pe).abs().max()))
         print(f"{idx} {' '.join(out['words'])}: exact {out['exact']['answer']} {np.round(pe[0].numpy(), 3).tolist()}  "
-              f"{'device' if dev.submit else 'dry run (ideal counts)'} {out['device_run']['answer']} "
+              f"{'device' if dev.measured == 2 else 'dry run (ideal counts)'} {out['device_run']['answer']} "
               f"{np.round(ph[0].numpy(), 3).tolist()}  |dP| {out['p_diff_max']:.3f}")
         with open(f"results/{tag}_device_{dev.backend_name}_{shots}_i{idx}_del{opt('--delete', 'none')}"
-                  f"{'' if dev.submit else '_dry'}.json", "w") as f:
+                  f"{'' if dev.measured == 2 else '_dry'}.json", "w") as f:
             json.dump(out, f, indent=1)
         sys.exit()
     target = pe.argmax(1)
@@ -346,11 +351,11 @@ if "--device" in args:
                                calibration=calib, offline=offline),
                evidence_corr=float(np.corrcoef(a, b)[0, 1]), p_diff_max=float((ph - pe).abs().max()))
     print(f"{idx} ({out['gold']}): exact {out['exact']['answer']} {np.round(pe[0].numpy(), 3).tolist()}  "
-          f"{'device' if dev.submit else 'dry run (ideal counts)'} {out['device_run']['answer']} "
+          f"{'device' if dev.measured == 2 else 'dry run (ideal counts)'} {out['device_run']['answer']} "
           f"{np.round(ph[0].numpy(), 3).tolist()}  |dP| {out['p_diff_max']:.3f}  evidence corr {out['evidence_corr']:.3f}")
     print("  evidence exact / device: " + ", ".join(f"{w} {x:+.3f}/{y:+.3f}" for w, x, y in zip(words, a, b)))
     eta_tag = (f"_eta{opt('--eta', '')}" if "--eta" in args else "") + (f"_cal{ncal}" if ncal else "") + (f"_offline_{bname}" if "--offline" in args else "")
-    with open(f"results/{tag}_device_{dev.backend_name}_{shots}_i{idx}{eta_tag}{'' if dev.submit else '_dry'}.json", "w") as f:
+    with open(f"results/{tag}_device_{dev.backend_name}_{shots}_i{idx}{eta_tag}{'' if dev.measured == 2 else '_dry'}.json", "w") as f:
         json.dump(out, f, indent=1)
     sys.exit()
 if "--evidence" in args:
