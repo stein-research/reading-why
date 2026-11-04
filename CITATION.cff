@@ -32,13 +32,21 @@ preferred-citation:
   authors:
     - family-names: Tongloy
       given-names: Teerawat
+      orcid: "https://orcid.org/0009-0001-0670-3124"
     - family-names: Pongsopa
       given-names: Jiraporn
+      orcid: "https://orcid.org/0009-0004-7410-9145"
     - family-names: Jomtarak
       given-names: Rangsan
+      orcid: "https://orcid.org/0009-0009-5417-5571"
   year: 2026
   journal: "arXiv preprint"
+  doi: "10.48550/arXiv.2611.05355"
+  url: "https://arxiv.org/abs/2611.05355"
   identifiers:
+    - type: doi
+      value: "10.48550/arXiv.2611.05355"
+      description: "arXiv DOI"
     - type: other
       value: "arXiv:2611.05355"
-  url: "https://arxiv.org/abs/2611.05355"
+      description: "arXiv identifier"

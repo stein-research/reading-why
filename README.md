@@ -132,5 +132,17 @@ results against the saved data and the code, and take full responsibility for th
 ## Licence and citation
 
 Code: MIT ([`LICENSE`](LICENSE)). e-SNLI: MIT; SNLI sentences and the vocabulary derived from them: CC BY-SA 4.0
-(see [`data/README.md`](data/README.md)). Please cite the paper ([`CITATION.cff`](CITATION.cff)),
-[arXiv:2611.05355](https://arxiv.org/abs/2611.05355).
+(see [`data/README.md`](data/README.md)). Please cite the paper ([`CITATION.cff`](CITATION.cff)).
+
+```bibtex
+@misc{tongloy2026readingwhy,
+  title         = {Reading Why: Born-Measured Attention with Exact Word Evidence on Light and Qubits},
+  author        = {Tongloy, Teerawat and Pongsopa, Jiraporn and Jomtarak, Rangsan},
+  year          = {2026},
+  eprint        = {2611.05355},
+  archivePrefix = {arXiv},
+  primaryClass  = {quant-ph},
+  doi           = {10.48550/arXiv.2611.05355},
+  url           = {https://arxiv.org/abs/2611.05355}
+}
+```
