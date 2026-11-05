@@ -30,7 +30,7 @@ its share.
 
 ## How it works
 
-![Three models step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the coherent attention layer drawn as its circuit](docs/architectures.png)
+![Three models step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the coherent attention layer drawn as its circuit](docs/architectures_v3.png)
 
 *Three models step by step, bottom to top, in the box colours of the original transformer figure: a softmax
 transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the coherent attention layer
