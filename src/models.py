@@ -20,6 +20,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+# added to every denominator against a division by zero (no token present). With the denominators free and the
+# amplitudes scaled towards zero (free_denominators.py), a row sum falls below 1e-30 near alpha ~ 1e-7 and the guard
+# would take over; those scripts set GUARD = 1e-300.
+GUARD = 1e-30
+
 
 class Frozen:
     """Records denominators on the first pass, replays them on later passes."""
@@ -129,13 +134,13 @@ class PolyTransformer(nn.Module):
             if self.attn == "softmax":
                 s = (s / math.sqrt(dh)).masked_fill((ids == 0)[:, None, None], -1e9)    # padded keys: weight 0
                 s = (s - s.amax(-1, keepdim=True).detach()).exp()
-                s = s / (fz(s.sum(-1, keepdim=True)) + 1e-30)
+                s = s / (fz(s.sum(-1, keepdim=True)) + GUARD)
                 # a padded slot stays empty, as in the polynomial attentions (there q = 0 gives y = 0 by itself)
                 y = torch.einsum("bhij,bjhe->bihe", s, v).flatten(-2) * (ids != 0)[:, :, None].to(s.dtype)
             elif self.attn != "linear":
                 s = s ** 2
             if self.attn == "born":
-                s = s / (fz(s.sum(-1, keepdim=True)) + 1e-30)
+                s = s / (fz(s.sum(-1, keepdim=True)) + GUARD)
                 y = torch.einsum("bhij,bjhe->bihe", s, v).flatten(-2)
             elif self.attn != "softmax":
                 y = torch.einsum("bhij,bjhe->bihe", s, v).flatten(-2) / n[:, None, None]
@@ -276,7 +281,7 @@ class BornTransformer(nn.Module):
         a = amp.unsqueeze(-1).to(e.dtype)
         if not self.mean_channel:
             return e * a
-        m = (e * a).sum(1) / (fz(amp.sum(1)) + 1e-30)[:, None].to(e.dtype)    # [B, d]
+        m = (e * a).sum(1) / (fz(amp.sum(1)) + GUARD)[:, None].to(e.dtype)    # [B, d]
         coef = fz(amp).unsqueeze(-1).to(e.dtype)
         return torch.cat((e * a - coef * m[:, None], (self.mean_gain * m)[:, None]), 1)
 
@@ -294,7 +299,7 @@ class BornTransformer(nn.Module):
             if self.attn == "born2":
                 s = s ** 2                                                    # |<q_i|k_j>|^4: two copies
             den = fz(s.sum(-1, keepdim=True))
-            w = s / (den + 1e-30)
+            w = s / (den + GUARD)
             if self.attn == "bhr":
                 w = fz(self._bhr_weights(w, ids))
             y = torch.einsum("bhij,bjhe->bihe", w.to(v.dtype), v).flatten(-2)
@@ -323,7 +328,7 @@ class BornTransformer(nn.Module):
         num, z = self.numerators(ids, self.amplitudes(ids))
         if self.lin_head is not None:
             return num                                                         # logits
-        return num / (z[:, None] + 1e-30) + self.share                         # P_g
+        return num / (z[:, None] + GUARD) + self.share                         # P_g
 
     def forward(self, ids):
         return self.class_probs(ids)
@@ -392,7 +397,7 @@ class CoherentBorn(nn.Module):
 
     def forward(self, ids):
         num, z = self.numerators(ids, self.amplitudes(ids))
-        return num / (z[:, None] + 1e-30) + self.share
+        return num / (z[:, None] + GUARD) + self.share
 
 
 class CoherentAttn(CoherentBorn):

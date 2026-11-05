@@ -104,6 +104,7 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 | `python src/qubit_resources.py --n 300` | shots, visibility, calibration and the coherent layer's post-selection (6, Tables 7 and 8) | about an hour on a GPU |
 | `python src/device_bootstrap.py` | shot-noise intervals of every device run, from the recorded counts (6, Fig. 8) | 15 min per run on a CPU |
 | `python src/bow_baseline.py --data esnli` | the bag-of-words references (3.2) | minutes |
+| `python src/free_denominators.py --nodes 1024 --max-tok 14` then `python src/fig_free_path.py` | the evidence against integrated gradients with the denominators free and the exact Shapley value of the deletion game on pairs of at most 14 tokens; the free path along alpha (Appendix B, Fig. 9); `results/free_denominators_n1024_p1000.json` holds our run | about 1.5 h on a GPU, much longer on a CPU |
 
 ## The IBM scripts
 
@@ -136,6 +137,7 @@ calibration and raw counts, so the hardware numbers can be checked without an ac
 | `src/hw_attention.py`, `src/ibm_jobs.py`, `src/device_bootstrap.py`, `src/evidence_bootstrap.py`, `src/device_overlaps.py`, `src/hw_recal.py`, `src/hw_plan.py` | Hadamard tests on a noise model or an IBM device; the job ledger; shot-noise intervals of the answers and of the evidence; the recorded overlaps against their ideal values; the earlier runs replayed under other calibrations; the device simulation that chose pair 4667 |
 | `src/coherent_circuit.py`, `src/sim_gpu.py`, `src/qubit_resources.py` | the coherent layer as one circuit; GPU statevector; quantum resources and errors |
 | `src/bow_baseline.py` | the bag-of-words references |
+| `src/free_denominators.py`, `src/fig_free_path.py` | the evidence against free-denominator attributions and the deletion game's Shapley value (Appendix B) |
 | `examples/quickstart.py`, `examples/explain.py` | the demo in plain Python; one pair from the command line |
 | `demo/reading_why.py` | the demo's engine: load a model, explain a pair (evidence by quadrature, nodes run as one batch), attention, deletion, the e-SNLI download |
 | `demo/ui.py` | the widgets and the HTML card |

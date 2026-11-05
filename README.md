@@ -70,13 +70,16 @@ double precision the sum holds to about $10^{-12}$. Red words push towards the a
 
 The softmax model's evidence here is integrated gradients of its probability over one gate per word, the same path
 and explained quantity as the Born evidence. Attention looks most like the annotators' reason, yet accounts for the
-answer less well. The same trained weights compile exactly to optics (interferometers between detectors) and to
-qubits. A coherent attention layer with no measurement before the end is one circuit equal to the model (852 CNOTs on
-23 qubits with brickwall maps). On ibm_kingston the attention overlaps of four short test pairs, and of four
+answer less well. The same trained weights compile exactly to optics (simulated; interferometers between detectors), and their
+attention overlaps to Hadamard tests on qubits. A separate coherent attention layer with no measurement before the
+end (67 % accuracy) is one post-selected circuit equal to the model in simulation (852 CNOTs on 23 qubits with
+brickwall maps). On ibm_kingston the attention overlaps of four short test pairs, and of four
 deletions, were read by Hadamard tests: the device gave the model's answers, and with calibration circuits as deep as
 the overlaps each word's evidence followed the exact one on two pairs chosen in advance (correlations 0.997 and
 0.932, every sign right on both). The paper also works out what the qubit realisation needs (about 2,000 shots per circuit for 99 % of answers;
-for evidence that cancels, each row's visibility within a few per cent).
+for evidence that cancels, each row's visibility within a few per cent). Holding the denominators matters:
+integrated gradients with them free add up to the answer above the model's answer for vanishing amplitudes, not
+above the no-information share, and account for deletion less well (32 % against 45 %; Appendix B).
 
 ## Contents
 
