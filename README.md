@@ -93,7 +93,7 @@ for evidence that cancels, each row's visibility within a few per cent).
 ## A century of the Born rule
 
 > In the summer of 1926, in a short paper on collisions ([Zeitschrift für Physik 37, 863](https://doi.org/10.1007/BF01397477)),
-> Max Born added a note in proof: the probability of an outcome goes not with the wave function itself but with its
+> Max Born added a note in proof: the probability of an outcome goes not with the amplitude itself but with its
 > square. A hundred years later, that one sentence is the whole of how this model reads a sentence. Every attention
 > weight, every product in its feed-forward and every answer it gives is a probability of that kind, a squared
 > overlap counted by a detector or by the shots of a circuit; and because nothing else is used, the reason for an
@@ -102,9 +102,8 @@ for evidence that cancels, each row's visibility within a few per cent).
 > We finish this work in 2026, the year the rule turns a hundred, and we want to name what it rests on.
 > Max Born, and those who in 1925 and 1926 made, with him and around him, a quantum theory in which such a rule
 > could be written down: Werner Heisenberg and Pascual Jordan, with whom he built matrix mechanics; Erwin
-> Schrödinger, whose waves the rule interprets; Paul Dirac and Wolfgang Pauli; Niels Bohr, whose institute and
-> arguments held them together; and John von Neumann, who a few years later gave the theory its Hilbert space. Those who, decades
-> later, saw that the same rule could compute, and turned superposition into instruments: the builders of
+> Schrödinger, whose waves the rule interprets; Paul Dirac and Wolfgang Pauli; Niels Bohr, whose institute and arguments were a meeting ground for many of them; and John von Neumann, who a few years later gave the theory its Hilbert space. Those who, decades
+> later, saw that the same theory could compute, and turned superposition into instruments: the builders of
 > interferometers and of the meshes of beam splitters that realise any unitary, and those who made reading an
 > overlap from a circuit a routine thing. Those who gave machine learning the transformer, whose shape this model
 > keeps, block for block; and those who asked, and kept asking, what it means for a model to explain itself:
