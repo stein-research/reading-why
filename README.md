@@ -93,8 +93,8 @@ for evidence that cancels, each row's visibility within a few per cent).
 ## A century of the Born rule
 
 > In June 1926, Max Born submitted [a short paper on collisions](https://doi.org/10.1007/BF01397477) and added a note
-> in proof: probabilities follow the squared modulus of amplitudes. A century later, that rule is at the heart of this
-> model, linking its answers to evidence in the words it reads.
+> in proof: probabilities are proportional to the squared moduli of amplitudes. A century later, that rule is at the
+> heart of this model, linking its answers to evidence in the words it reads.
 >
 > We finish this work in 2026, the year the rule turns a hundred, and we want to name what it rests on. Max Born, and
 > those who built quantum mechanics with him and around him: Werner Heisenberg and Pascual Jordan; Erwin Schrödinger,
@@ -107,13 +107,13 @@ for evidence that cancels, each row's visibility within a few per cent).
 > that justified their relation: without their work, we could not check our evidence against human judgment.
 >
 > The engineers who make quantum processors available to researchers far from where they are built, and the
-> communities behind PyTorch, Qiskit and NumPy. The people behind PennyLane, whose simulator helped us check *Seeing
-> Why*, the work this one builds on, and whose tutorials were where one of us first learned quantum machine learning,
-> by trying, failing and trying again. The authors whose papers we leaned on and argued with, and the colleagues and
-> referees who read our drafts and would not let a loose claim stand.
+> communities behind PyTorch, Qiskit and NumPy. The people behind PennyLane, whose simulator we used to validate the
+> simulations in *Seeing Why*, the work this one builds on, and whose tutorials were where one of us first learned
+> quantum machine learning, by trying, failing and trying again. The authors whose papers we leaned on and argued
+> with, and the colleagues and referees who read our drafts and would not let a loose claim stand.
 >
 > If this work stands, it stands on their shoulders. What we add is small: another way to use Born’s rule, to give an
-> answer and show the words that support it.
+> answer and show how each word contributes to it.
 >
 > *The authors, 4 November 2026*
 
