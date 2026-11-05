@@ -93,22 +93,22 @@ for evidence that cancels, each row's visibility within a few per cent).
 ## A century of the Born rule
 
 > In June 1926, Max Born submitted [a short paper on collisions](https://doi.org/10.1007/BF01397477) and added a note
-> in proof: probabilities are proportional to the squared moduli of amplitudes. A century later, that rule is at the
-> heart of this model, linking its answers to evidence in the words it reads.
+> in proof: the probability of an outcome is proportional to the squared modulus of its amplitude. A century later,
+> that rule is at the heart of this model, linking its answers to evidence in the words it reads.
 >
 > We finish this work in 2026, the year the rule turns a hundred, and we want to name what it rests on. Max Born, and
 > those who built quantum mechanics with him and around him: Werner Heisenberg and Pascual Jordan; Erwin Schrödinger,
 > Paul Dirac and Wolfgang Pauli; Albert Einstein, whose “ghost field” helped inspire Born’s interpretation; Niels
 > Bohr; and John von Neumann, who helped give the theory its rigorous mathematical foundation.
 >
-> Those who saw that quantum theory could compute, and those who built the interferometers, optical meshes and
-> circuits that made its operations practical. Those who gave machine learning the transformer, and those who kept
-> asking what it means for a model to explain itself. The annotators who read sentence pairs and highlighted the words
-> that justified their relation: without their work, we could not check our evidence against human judgment.
+> Those who saw how quantum systems could compute, and those who built the interferometers, optical meshes and
+> circuits that made those ideas practical. Those who gave machine learning the transformer, and those who kept asking
+> what it means for a model to explain itself. The annotators who read sentence pairs and highlighted the words that
+> explained the relation between them: without their work, we could not check our evidence against human judgment.
 >
 > The engineers who make quantum processors available to researchers far from where they are built, and the
-> communities behind PyTorch, Qiskit and NumPy. The people behind PennyLane, whose simulator we used to validate the
-> simulations in *Seeing Why*, the work this one builds on, and whose tutorials were where one of us first learned
+> communities behind PyTorch, Qiskit and NumPy. The people behind PennyLane, whose simulator we used to cross-check
+> the simulations in *Seeing Why*, the work this one builds on. Their tutorials were where one of us first learned
 > quantum machine learning, by trying, failing and trying again. The authors whose papers we leaned on and argued
 > with, and the colleagues and referees who read our drafts and would not let a loose claim stand.
 >
