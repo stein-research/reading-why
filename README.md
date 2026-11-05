@@ -110,7 +110,7 @@ for evidence that cancels, each row's visibility within a few per cent).
 > communities behind PyTorch, Qiskit and NumPy. The people behind PennyLane, whose simulator we used to cross-check
 > the simulations in *Seeing Why*, the work this one builds on. Their tutorials were where one of us first learned
 > quantum machine learning, by trying, failing and trying again. The authors whose papers we leaned on and argued
-> with, and the colleagues and referees who read our drafts and would not let a loose claim stand.
+> with, and the colleagues who read our drafts and would not let a loose claim stand.
 >
 > If this work stands, it stands on their shoulders. What we add is small: another way to use Born’s rule, to give an
 > answer and show how each word contributes to it.
