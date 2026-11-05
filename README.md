@@ -112,9 +112,9 @@ for evidence that cancels, each row's visibility within a few per cent).
 > faithfulness. The many people, most of them never named, who read pairs of sentences and wrote down, for each,
 > which words made one follow from the other: without their highlights there would be nothing to check our evidence
 > against. The engineers who keep real quantum processors open to researchers far from where they are built, and the
-> communities behind PyTorch, Qiskit and NumPy, who give their work away. The people of PennyLane and of its demos
-> and tutorials, which this work does not use but where one of us first learned quantum machine learning, by trying,
-> failing and trying again. The authors of every paper we cite, whose results we leaned on and argued with, and the
+> communities behind PyTorch, Qiskit and NumPy, who give their work away. The people of PennyLane: Seeing Why, the
+> work this one builds on, checked its simulator against it, and its demos and tutorials are where one of us first
+> learned quantum machine learning, by trying, failing and trying again. The authors of every paper we cite, whose results we leaned on and argued with, and the
 > colleagues and referees who read our drafts and would not let a loose claim stand.
 >
 > If this work stands, it stands on their shoulders. What we add is small: that the rule Born wrote in a note in
