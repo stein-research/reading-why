@@ -92,34 +92,28 @@ for evidence that cancels, each row's visibility within a few per cent).
 
 ## A century of the Born rule
 
-> In the summer of 1926, in a short paper on collisions ([Zeitschrift für Physik 37, 863](https://doi.org/10.1007/BF01397477)),
-> Max Born added a note in proof: the probability of an outcome goes not with the amplitude itself but with its
-> square. A hundred years later, that one sentence is the only nonlinear step in how this model reads a sentence.
-> Every attention weight, every product in its feed-forward and every answer it gives is a probability of that kind, a
-> squared overlap counted by a detector or by the shots of a circuit; and because no other nonlinearity is used, the
-> reason for an answer can be added up exactly, word by word.
+> In June 1926, Max Born submitted [a short paper on collisions](https://doi.org/10.1007/BF01397477) and added a note
+> in proof: probabilities follow the squared modulus of amplitudes. A century later, that rule is at the heart of this
+> model, linking its answers to evidence in the words it reads.
 >
 > We finish this work in 2026, the year the rule turns a hundred, and we want to name what it rests on. Max Born, and
-> those who in 1925 and 1926 made, with him and around him, a quantum theory in which such a rule could be written
-> down: Werner Heisenberg and Pascual Jordan, with whom he built matrix mechanics; Erwin Schrödinger, whose waves the
-> rule interprets; Paul Dirac and Wolfgang Pauli; Albert Einstein, whose 'ghost field' for light Born took as his
-> model; Niels Bohr, whose institute and arguments were a meeting ground for many of them; and John von Neumann, who a
-> few years later gave the theory its Hilbert space. Those who, decades later, saw that the same theory could compute,
-> and turned superposition into instruments: the builders of interferometers and of the meshes of beam splitters that
-> realise any unitary, and those who made reading an overlap from a circuit a routine thing. Those who gave machine
-> learning the transformer, whose shape this model keeps, block for block; and those who asked, and kept asking, what
-> it means for a model to explain itself: integrated gradients, the debate over whether attention is an explanation,
-> the benchmarks that measure faithfulness. The many people, most of them never named, who read pairs of sentences and
-> wrote down, for each, which words made one follow from the other: without their highlights there would be nothing to
-> check our evidence against. The engineers who keep real quantum processors open to researchers far from where they
-> are built, and the communities behind PyTorch, Qiskit and NumPy, who give their work away. The people of PennyLane:
-> Seeing Why, the work this one builds on, checked its simulator against it, and its demos and tutorials are where one
-> of us first learned quantum machine learning, by trying, failing and trying again. The authors of every paper we
-> cite, whose results we leaned on and argued with, and the colleagues and referees who read our drafts and would not
-> let a loose claim stand.
+> those who built quantum mechanics with him and around him: Werner Heisenberg and Pascual Jordan; Erwin Schrödinger,
+> Paul Dirac and Wolfgang Pauli; Albert Einstein, whose “ghost field” helped inspire Born’s interpretation; Niels
+> Bohr; and John von Neumann, who helped give the theory its rigorous mathematical foundation.
 >
-> If this work stands, it stands on their shoulders. What we add is small: that the rule Born wrote in a note in proof
-> can carry, along with an answer, the reason for it.
+> Those who saw that quantum theory could compute, and those who built the interferometers, optical meshes and
+> circuits that made its operations practical. Those who gave machine learning the transformer, and those who kept
+> asking what it means for a model to explain itself. The annotators who read sentence pairs and highlighted the words
+> that justified their relation: without their work, we could not check our evidence against human judgment.
+>
+> The engineers who make quantum processors available to researchers far from where they are built, and the
+> communities behind PyTorch, Qiskit and NumPy. The people behind PennyLane, whose simulator helped us check *Seeing
+> Why*, the work this one builds on, and whose tutorials were where one of us first learned quantum machine learning,
+> by trying, failing and trying again. The authors whose papers we leaned on and argued with, and the colleagues and
+> referees who read our drafts and would not let a loose claim stand.
+>
+> If this work stands, it stands on their shoulders. What we add is small: another way to use Born’s rule, to give an
+> answer and show the words that support it.
 >
 > *The authors, 4 November 2026*
 
