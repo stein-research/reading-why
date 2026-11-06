@@ -12,7 +12,7 @@ University).
 | Archived copy (always the latest version) | [doi:10.5281/zenodo.23938333](https://doi.org/10.5281/zenodo.23938333) |
 | Earlier work | Seeing Why, [arXiv:2611.01993](https://arxiv.org/abs/2611.01993) ([code](https://github.com/stein-research/seeing-why)) |
 
-![One test pair, "a man playing cricket / a woman plays polo", through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview.png)
+![One test pair, "a man playing cricket / a woman plays polo", through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview_v3.png)
 
 *(a) On light (simulated): one field per word on a modulator; in each of two blocks Born attention weighs the words
 by interference and a measured feed-forward reads a product by homodyne detection; the camera's three regions give
@@ -30,7 +30,7 @@ its share.
 
 ## How it works
 
-![Three models step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the coherent attention layer drawn as its circuit](docs/architectures_v3.png)
+![Three models step by step, bottom to top: a softmax transformer encoder, the Born Transformer drawn as optics, and the coherent attention layer drawn as its circuit](docs/architectures_v3b.png)
 
 *Three models step by step, bottom to top, in the box colours of the original transformer figure: a softmax
 transformer encoder after Vaswani et al. 2017, the Born Transformer drawn as optics, and the coherent attention layer
