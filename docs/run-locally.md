@@ -104,6 +104,7 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 | `python src/qubit_resources.py --n 300` | shots, visibility, calibration and the coherent layer's post-selection (6, Tables 7 and 8) | about an hour on a GPU |
 | `python src/device_bootstrap.py` | shot-noise intervals of every device run, from the recorded counts (6, Fig. 8) | 15 min per run on a CPU |
 | `python src/bow_baseline.py --data esnli` | the bag-of-words references (3.2) | minutes |
+| `python src/softmax_held.py` (after `gated_converged.py` and `fairness.py`) | the softmax model's integrated gradients with its denominators held: on how many pairs they are finite and complete, and every ranking on those pairs (3.3) | about an hour on a GPU |
 | `python src/path_check.py` | the held path of each pair: how steeply it rises near its end (k of alpha^k), its peak, and gradient x input with the denominators held against BEW (3.3) | about an hour on a GPU |
 | `python src/free_denominators.py --nodes 1024 --max-tok 14` then `python src/fig_free_path.py` | the evidence against integrated gradients with the denominators free and the exact Shapley value of the deletion game on pairs of at most 14 tokens; the free path along alpha (Appendix B, Fig. 9); `results/free_denominators_n1024_p1000.json` holds our run | about 1.5 h on a GPU, much longer on a CPU |
 
@@ -133,7 +134,7 @@ calibration and raw counts, so the hardware numbers can be checked without an ac
 | `src/evidence.py` | the exact evidence: integrated gradients with the denominators held, Gauss-Legendre quadrature |
 | `src/train.py` | training (one recipe for every model) |
 | `src/esnli.py`, `src/data.py`, `src/synth.py` | e-SNLI tokens, highlights and vocabulary; the tokenizer; dataset access |
-| `src/faithfulness.py`, `src/fairness.py`, `src/gradinput.py`, `src/attention_agreement.py`, `src/ig_nodes.py`, `src/gated_converged.py`, `src/gated_baseline.py`, `src/path_check.py` | the evaluations of the evidence |
+| `src/faithfulness.py`, `src/fairness.py`, `src/gradinput.py`, `src/attention_agreement.py`, `src/ig_nodes.py`, `src/gated_converged.py`, `src/gated_baseline.py`, `src/path_check.py`, `src/softmax_held.py` | the evaluations of the evidence |
 | `src/compile_hw.py`, `src/mesh_check.py` | the compile to optics and qubits; the Clements-mesh check |
 | `src/hw_attention.py`, `src/ibm_jobs.py`, `src/device_bootstrap.py`, `src/evidence_bootstrap.py`, `src/device_overlaps.py`, `src/hw_recal.py`, `src/hw_plan.py` | Hadamard tests on a noise model or an IBM device; the job ledger; shot-noise intervals of the answers and of the evidence; the recorded overlaps against their ideal values; the earlier runs replayed under other calibrations; the device simulation that chose pair 4667 |
 | `src/coherent_circuit.py`, `src/sim_gpu.py`, `src/qubit_resources.py` | the coherent layer as one circuit; GPU statevector; quantum resources and errors |
