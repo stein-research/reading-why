@@ -95,7 +95,7 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 | `python src/fairness.py` then `python src/gradinput.py` | every ranking, the leave-one-out ceilings, 95 % intervals (Table 2) | hours on a CPU, about 30 min on a GPU |
 | `python src/attention_agreement.py $TAGS` | attention against the annotators and the answer, rollout (Table 2) | minutes |
 | `python src/ig_nodes.py` | the softmax model's integrated gradients of its logit over the embeddings with 256 to 4,096 nodes, seed 0, first 200 pairs (2.2) | long; use a GPU |
-| `python src/gated_converged.py` (after `fairness.py`) then `python src/two_level.py` and `python src/gated_baseline.py` | the like-for-like comparison's word-gated probability IG at 4,096 nodes on all 1,000 pairs and three seeds, flip@1 on the converged pairs, the two-level (seeds and pairs) intervals, and the softmax model's answer with every gate at zero (3.3, Table 2) | long; use a GPU |
+| `python src/gated_converged.py` (after `fairness.py`) then `python src/two_level.py` and `python src/gated_baseline.py` | the like-for-like comparison's word-gated probability IG at 4,096 nodes on all 1,000 pairs and three seeds, flip@1 on the converged pairs, the two-level (seeds and pairs) intervals, and the softmax model's answer with every gate at zero (3.3, Table 2); `results/gated_baseline.json` holds our run of the last | long; use a GPU |
 | train the three ablations (3 seeds each), then `faithfulness.py` and `attention_agreement.py` on them | which part gives the evidence its quality (Table 3) | 30-50 min per run on a GPU |
 | `python src/compile_hw.py esnli_Born-p2-ap_b2_s0_e20` (add `--noise` for shot noise and bits) | the compiled optics (4) | minutes |
 | `python src/mesh_check.py esnli_Born-p2-ap_b2_s0_e20 --n 1000` | the build with Clements meshes, with phase errors (4); needs `interferometer` | about an hour (the 256-mode decomposition is cached) |
@@ -104,8 +104,8 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 | `python src/qubit_resources.py --n 300` | shots, visibility, calibration and the coherent layer's post-selection (6, Tables 7 and 8) | about an hour on a GPU |
 | `python src/device_bootstrap.py` | shot-noise intervals of every device run, from the recorded counts (6, Fig. 8) | 15 min per run on a CPU |
 | `python src/bow_baseline.py --data esnli` | the bag-of-words references (3.2) | minutes |
-| `python src/softmax_held.py` (after `gated_converged.py` and `fairness.py`) | the softmax model's integrated gradients with its denominators held: on how many pairs they are finite and complete, and every ranking on those pairs (3.3) | about an hour on a GPU |
-| `python src/path_check.py` | the held path of each pair: how steeply it rises near its end (k of alpha^k), its peak, and gradient x input with the denominators held against BEW (3.3) | about an hour on a GPU |
+| `python src/softmax_held.py` (after `gated_converged.py` and `fairness.py`) | the softmax model's integrated gradients with its denominators held: on how many pairs they are finite and complete, and every ranking on those pairs (3.3); `results/softmax_held.json` holds our run | about an hour on a GPU |
+| `python src/path_check.py` | the held path of each pair: how steeply it rises near its end (k of alpha^k), its peak, and gradient x input with the denominators held against BEW (3.3); `results/path_check.json` holds our run | about an hour on a GPU |
 | `python src/free_denominators.py --nodes 1024 --max-tok 14` then `python src/fig_free_path.py` | the evidence against integrated gradients with the denominators free and the exact Shapley value of the deletion game on pairs of at most 14 tokens; the free path along alpha (Appendix B, Fig. 9); `results/free_denominators_n1024_p1000.json` holds our run | about 1.5 h on a GPU, much longer on a CPU |
 
 ## The IBM scripts

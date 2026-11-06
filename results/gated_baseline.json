@@ -1,0 +1,45 @@
+{
+ "classes": [
+  "entailment",
+  "neutral",
+  "contradiction"
+ ],
+ "seeds": {
+  "0": {
+   "p_zero": [
+    0.009949695640904706,
+    0.9795908142314477,
+    0.010459490127647797
+   ],
+   "p_zero_spread": 1.661754131860408e-17,
+   "baseline_answer": "neutral",
+   "share_answered_so": 0.329,
+   "gated_flip1_answered_so": 0.3252279635258359,
+   "gated_flip1_others": 0.34575260804769004
+  },
+  "1": {
+   "p_zero": [
+    0.0278308265443216,
+    0.9216104313313785,
+    0.05055874212429971
+   ],
+   "p_zero_spread": 1.0131975246784119e-16,
+   "baseline_answer": "neutral",
+   "share_answered_so": 0.333,
+   "gated_flip1_answered_so": 0.34234234234234234,
+   "gated_flip1_others": 0.3073463268365817
+  },
+  "2": {
+   "p_zero": [
+    0.12724510160655492,
+    0.7774685019436093,
+    0.09528639644983591
+   ],
+   "p_zero_spread": 1.9666277170369885e-16,
+   "baseline_answer": "neutral",
+   "share_answered_so": 0.324,
+   "gated_flip1_answered_so": 0.3271604938271605,
+   "gated_flip1_others": 0.28846153846153844
+  }
+ }
+}
