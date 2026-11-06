@@ -95,7 +95,7 @@ TAGS=$(for m in Born-p2-ap Softmax Poly-sim-born; do for s in 0 1 2; do echo esn
 | `python src/fairness.py` then `python src/gradinput.py` | every ranking, the leave-one-out ceilings, 95 % intervals (Table 2) | hours on a CPU, about 30 min on a GPU |
 | `python src/attention_agreement.py $TAGS` | attention against the annotators and the answer, rollout (Table 2) | minutes |
 | `python src/ig_nodes.py` | the softmax model's integrated gradients of its logit over the embeddings with 256 to 4,096 nodes, seed 0, first 200 pairs (2.2) | long; use a GPU |
-| `python src/gated_converged.py` (after `fairness.py`) then `python src/two_level.py` | the like-for-like comparison's word-gated probability IG at 4,096 nodes on all 1,000 pairs and three seeds, flip@1 on the converged pairs, and the two-level (seeds and pairs) intervals (3.3, Table 2) | long; use a GPU |
+| `python src/gated_converged.py` (after `fairness.py`) then `python src/two_level.py` and `python src/gated_baseline.py` | the like-for-like comparison's word-gated probability IG at 4,096 nodes on all 1,000 pairs and three seeds, flip@1 on the converged pairs, the two-level (seeds and pairs) intervals, and the softmax model's answer with every gate at zero (3.3, Table 2) | long; use a GPU |
 | train the three ablations (3 seeds each), then `faithfulness.py` and `attention_agreement.py` on them | which part gives the evidence its quality (Table 3) | 30-50 min per run on a GPU |
 | `python src/compile_hw.py esnli_Born-p2-ap_b2_s0_e20` (add `--noise` for shot noise and bits) | the compiled optics (4) | minutes |
 | `python src/mesh_check.py esnli_Born-p2-ap_b2_s0_e20 --n 1000` | the build with Clements meshes, with phase errors (4); needs `interferometer` | about an hour (the 256-mode decomposition is cached) |
@@ -132,7 +132,7 @@ calibration and raw counts, so the hardware numbers can be checked without an ac
 | `src/evidence.py` | the exact evidence: integrated gradients with the denominators held, Gauss-Legendre quadrature |
 | `src/train.py` | training (one recipe for every model) |
 | `src/esnli.py`, `src/data.py`, `src/synth.py` | e-SNLI tokens, highlights and vocabulary; the tokenizer; dataset access |
-| `src/faithfulness.py`, `src/fairness.py`, `src/gradinput.py`, `src/attention_agreement.py`, `src/ig_nodes.py` | the evaluations of the evidence |
+| `src/faithfulness.py`, `src/fairness.py`, `src/gradinput.py`, `src/attention_agreement.py`, `src/ig_nodes.py`, `src/gated_converged.py`, `src/gated_baseline.py` | the evaluations of the evidence |
 | `src/compile_hw.py`, `src/mesh_check.py` | the compile to optics and qubits; the Clements-mesh check |
 | `src/hw_attention.py`, `src/ibm_jobs.py`, `src/device_bootstrap.py`, `src/evidence_bootstrap.py`, `src/device_overlaps.py`, `src/hw_recal.py`, `src/hw_plan.py` | Hadamard tests on a noise model or an IBM device; the job ledger; shot-noise intervals of the answers and of the evidence; the recorded overlaps against their ideal values; the earlier runs replayed under other calibrations; the device simulation that chose pair 4667 |
 | `src/coherent_circuit.py`, `src/sim_gpu.py`, `src/qubit_resources.py` | the coherent layer as one circuit; GPU statevector; quantum resources and errors |

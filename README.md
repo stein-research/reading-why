@@ -69,7 +69,8 @@ double precision the sum holds to about $10^{-12}$. Red words push towards the a
 | top words that annotators highlighted: evidence / attention (chance 0.35) | 0.51 / 0.50 | 0.46 / 0.54 |
 
 The softmax model's evidence here is integrated gradients of its probability over one gate per word, the same path
-and explained quantity as the Born evidence. Attention looks most like the annotators' reason, yet accounts for the
+as the Born evidence (with every gate at zero that model answers "neutral", so its evidence sums to the probability above
+that answer; its flip@1 is about the same on the pairs it answers "neutral" and on the others). Attention looks most like the annotators' reason, yet accounts for the
 answer less well. The same trained weights compile exactly to optics (simulated; interferometers between detectors), and their
 attention overlaps to Hadamard tests on qubits. A separate coherent attention layer with no measurement before the
 end (67 % accuracy) is one post-selected circuit equal to the model in simulation (852 CNOTs on 23 qubits with
