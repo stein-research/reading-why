@@ -15,14 +15,14 @@ University).
 ![One test pair, "men play hockey . / men play", through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview_v4.png)
 
 *(a) On light (simulated): one field per word on a modulator; in each of two blocks Born attention weighs the words
-by interference and a measured feed-forward reads a product by homodyne detection; the camera's three regions give
+by interference and a measured feed-forward reads a product by a balanced interferometric reading; the camera's three regions give
 the class probabilities, and each word's Born evidence (BEW; red for the answer, blue against it) sums to the class
 probability above its share. (b) On IBM's ibm_kingston, with the same weights: every query-key overlap is read by
 Hadamard tests on five qubits, with calibration circuits as deep in the same job; the answer survives, and each word's
 evidence, with exact numerators and the attention row sums the device measured, follows the exact one (r = 0.997,
 95 % interval 0.988-0.999).*
 
-A transformer in which every nonlinearity is a quadratic detection (an interference, a homodyne reading or a camera)
+A transformer in which every nonlinearity is a quadratic detection (an interference, a balanced interferometric reading or a camera)
 and the output is a Born probability: attention $|\langle q|k\rangle|^2$, in the form of the Born rule, normalised
 over each row, a measured product in place of the feed-forward nonlinearity, and a Born readout; between detections a
 classical controller squares, divides, rescales and re-encodes. Each class probability is then a

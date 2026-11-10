@@ -10,13 +10,13 @@ Light count, as amplitude factors on the state (source power 1 = the token field
   present (1/sqrt n); Re and Im of <q_i|k_j> take one more split (1/sqrt 2). The weighted sum y_i = sum_j w_ij v_j
   is passive (sum_j w_ij^2 <= 1). The residual combiner: alpha h / 2 + beta O y / (2 sqrt n), |alpha|^2 +
   |beta|^2 <= 1, which keeps 1 / (2 sqrt(1 + g^2 n)) of h + g O y, g = sigma_V sigma_O.
-- MLP: h is split three ways (W, V, residual: 1/sqrt 3); Re[(W h)_c conj(V h)_c] is a balanced homodyne reading.
+- MLP: h is split three ways (W, V, residual: 1/sqrt 3); Re[(W h)_c conj(V h)_c] is a balanced interferometric reading.
   The update U (gain * mid) is fresh light from the modulator (fields <= 1), so the combiner keeps
   alpha / sqrt 3 of h + update with alpha^2 (1 + u^2 / 3) <= 1, u the largest update relative to it.
 - readout: the token fields add coherently in one combiner (1/sqrt n), then the camera.
 
 Noise (optional): Poisson photon counts at every measurement for `photons` source photons per sentence - balanced
-pairs for <q|k> (Re, Im) and the MLP homodyne, plain counts at the readout camera; and modulator precision, `bits`
+pairs for <q|k> (Re, Im) and the MLP's balanced reading, plain counts at the readout camera; and modulator precision, `bits`
 per real part of every encoded field (token fields, attention weights, MLP update) and `wbits` per entry of every
 fixed matrix (each relative to its largest value).
 

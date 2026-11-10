@@ -1,17 +1,17 @@
-"""Check the optical compile with an outside implementation: every fixed matrix as Clements meshes of beam splitters.
+"""Check the optical compile with an outside implementation: every fixed matrix as Clements meshes of Mach-Zehnder interferometers.
 
 python mesh_check.py <tag> [--n 1000] [--sigma 0 0.01 0.02 0.05 0.1] [--draws 2]
 
 Each fixed matrix M of the compiled pass (Q, K, V, O, the MLP's W, V and U of every block, the readout) is built as
-an interferometer the way a chip would: M = s U diag(S) V^H (SVD), U and V^H each a rectangular Clements mesh of
-beam splitters (theta, phi) plus output phases, found by William R. Clements' own `interferometer` package (MIT;
+an interferometer the way a chip would: M = s U diag(S) V^H (SVD), U and V^H each a full square mesh (full SVD: a 170 x 32 matrix gets a
+170-mode mesh on one side) in the Clements layout of Mach-Zehnder interferometers (theta, phi) plus output phases, found by William R. Clements' own `interferometer` package (MIT;
 `square_decomposition`), S attenuators and s the classical gain compile_hw already puts on measured numbers. The
 meshes are rebuilt from their phases, optionally with Gaussian phase errors (sigma, in radians, on every theta, phi
 and output phase), and the model with the rebuilt matrices runs through compile_hw.compiled_probs (noise-free
 otherwise) on the first n test pairs. Gains follow the built matrices (a device is calibrated on what it built).
 
-The rebuild multiplies the 2 x 2 beam splitters onto two rows at a time (the package's `calculate_transformation`
-forms an N x N matrix per beam splitter, minutes at N = 170); it is checked against `calculate_transformation` on a
+The rebuild multiplies the 2 x 2 interferometers onto two rows at a time (the package's `calculate_transformation`
+forms an N x N matrix per interferometer, minutes at N = 170); it is checked against `calculate_transformation` on a
 32-mode mesh with errors. Decompositions are cached in results/<tag>_mesh.npz (the 256-mode readout takes ~25 min).
 """
 import json
