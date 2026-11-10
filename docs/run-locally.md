@@ -6,8 +6,9 @@ the paper's scripts, from a clone.
 ## What you need
 
 - Python 3.10 or newer (the paper used 3.12) and git.
-- About 250 MB of disk for the clone (the trained models and the IBM job records included), 200 MB for e-SNLI, and a few hundred MB for the
-  packages.
+- About 250 MB of disk for the clone (the trained models and the IBM job records included) and 200 MB for e-SNLI. The
+  packages take about 6 GB with PyTorch's default build on Linux, which brings its CUDA libraries; with the CPU-only
+  build (below) they take much less.
 - A CPU is enough for the demo and for the lighter scripts below. A GPU (CUDA) makes training and the evaluations
   minutes instead of hours.
 
@@ -22,7 +23,13 @@ pip install -r requirements.txt jupyterlab
 ```
 
 `requirements.txt` lists what the demo needs first, then what the circuits, the IBM scripts and the optics check add.
-For the demo alone, the first block and `jupyterlab` are enough.
+For the demo alone, the first block and `jupyterlab` are enough. Without a GPU, install PyTorch's CPU-only build first,
+which is much smaller, and then the rest:
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt jupyterlab
+```
 
 ## The notebooks
 

@@ -2,7 +2,7 @@
 
 Every hardware number in the paper comes from jobs run on IBM's ibm_kingston, and every job is recorded in
 [`ibm_jobs/`](../ibm_jobs/): the circuits as built and as sent, the backend's calibration at the time and the raw
-counts (the list of jobs: [`ibm_jobs/index.md`](../ibm_jobs/index.md)). The jobs of the paper's earlier version
+counts (what each file holds: [`ibm_jobs/README.md`](../ibm_jobs/README.md); the list of jobs: [`ibm_jobs/index.md`](../ibm_jobs/index.md)). The jobs of the paper's earlier version
 (attention squared again, arXiv v1-v2) are in this repository's history, at commit 7d94f41 ("Version 3.1"). This page shows three things, from the least to the most work:
 
 1. check the paper's hardware numbers from those records, with no IBM account;
