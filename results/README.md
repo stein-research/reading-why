@@ -1,5 +1,9 @@
 # Trained models
 
+Model names: `Born-ap` is the Born Transformer, attention weight |<q|k>|^2 over its row sum; `Born-p2-ap` squares
+that weight again ("p2": the Born probability to the power 2, so |<q|k>|^4); "ap" stands for the additive position
+fields both Born models use.
+
 Each run is a pair: `<tag>.pt` (the weights, PyTorch `state_dict`) and `<tag>.json` (its settings, training
 history and test accuracy). Tags read `esnli_<model>_b<blocks>_s<seed>_e<epochs>`. All were trained on e-SNLI with
 `src/train.py` (20 epochs, Adam 2e-3, cosine decay, batch 64, word dropout 0.1).
