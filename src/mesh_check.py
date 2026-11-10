@@ -29,8 +29,19 @@ args = sys.argv[1:]
 tag = args[0]
 opt = lambda k, dflt: args[args.index(k) + 1] if k in args else dflt
 n_test, draws = int(opt("--n", 1000)), int(opt("--draws", 2))
-sigmas = [float(a) for a in args[args.index("--sigma") + 1:] if a[0].isdigit()] if "--sigma" in args \
-    else [0, 0.01, 0.02, 0.05, 0.1]
+
+
+def values(flag):
+    """The numbers after `flag`, up to the next option (a later option's value is not one of them)."""
+    out = []
+    for a in args[args.index(flag) + 1:]:
+        if a.startswith("--"):
+            break
+        out.append(float(a))
+    return out
+
+
+sigmas = values("--sigma") if "--sigma" in args else [0, 0.01, 0.02, 0.05, 0.1]
 
 model, d = load(tag)                                                      # float64, CPU
 C = lambda p: (p[0] + 1j * p[1]).detach().numpy()

@@ -46,8 +46,10 @@ B = min(100, N)
 
 
 def probs_fn(model):
-    bhr = BHR(model.share).to(dev).double() if model.family == "B" else None
-    return lambda ids: (bhr(model(ids)) if bhr is not None else F.log_softmax(model(ids), -1)).exp()
+    # P_g itself for the Born models (trained on its cross-entropy; the answer is argmax P_g). Until 2026-11-10 this
+    # scored BHR(P_g), Seeing Why's sharp headroom softmax: flips and agreement were the same, AOPC and the gradient
+    # of attention x gradient were of BHR(P_g).
+    return lambda ids: model(ids) if model.family == "B" else F.log_softmax(model(ids), -1).exp()
 
 
 # ------------------------------------------------------------------------------------------- attention and gradient
@@ -163,8 +165,13 @@ def score(prob, ids, target, s):
 
 
 per_pair, meta = {}, {}
-for fam, model_name in (("born", "Born-p2-ap"), ("softmax", "Softmax"), ("poly", "Poly-sim-born")):
-    for seed in range(3):
+# FAIR_MODELS="born:Born-ap" / FAIR_SEEDS="0,1" / FAIR_OUT=fairness_sq: another model set, written to its own files
+MODELS = [tuple(m.split(":")) for m in os.environ["FAIR_MODELS"].split(",")] if "FAIR_MODELS" in os.environ else \
+    [("born", "Born-ap"), ("softmax", "Softmax"), ("poly", "Poly-sim-born")]
+SEEDS = [int(x) for x in os.environ.get("FAIR_SEEDS", "0,1,2").split(",")]
+OUT = os.environ.get("FAIR_OUT", "fairness")
+for fam, model_name in MODELS:
+    for seed in SEEDS:
         tag = f"esnli_{model_name}_b2_s{seed}_e20"
         cfg = json.load(open(f"results/{tag}.json"))
         model = build(cfg["model"], V, C, blocks=cfg["blocks"], max_len=IDS.shape[1]).to(dev)
@@ -212,7 +219,7 @@ for fam, model_name in (("born", "Born-p2-ap"), ("softmax", "Softmax"), ("poly",
             meta[f"{fam}_s{seed}_gated_gap"] = dict(median=float(np.median(gg)), max=float(np.max(gg)))
         print(tag, "done", flush=True)
 
-np.savez("results/fairness.npz", **per_pair)
+np.savez(f"results/{OUT}.npz", **per_pair)
 
 # ---------------------------------------------------------------------------------------- summary with intervals
 rng = np.random.default_rng(1)
@@ -221,9 +228,9 @@ boot = rng.integers(0, N, size=(2000, N))
 
 def pooled(fam, m, key, only_correct=False):
     """Seed-pooled per-pair mean (mean over seeds of each pair, NaN-aware) and its 95 % bootstrap interval."""
-    a = np.stack([per_pair[f"{fam}_s{s}_{m}_{key}"] for s in range(3)])            # [3, 1000]
+    a = np.stack([per_pair[f"{fam}_s{s}_{m}_{key}"] for s in SEEDS])            # [seeds, 1000]
     if only_correct:
-        a = np.where(np.stack([per_pair[f"{fam}_s{s}_correct"] for s in range(3)]), a, np.nan)
+        a = np.where(np.stack([per_pair[f"{fam}_s{s}_correct"] for s in SEEDS]), a, np.nan)
     pp = np.nanmean(a, 0)
     ok = ~np.isnan(pp)
     means = [np.nanmean(pp[b][ok[b]]) for b in boot]
@@ -231,10 +238,11 @@ def pooled(fam, m, key, only_correct=False):
 
 
 summary = {"meta": meta}
-for fam in ("born", "softmax", "poly"):
+FAMS = [f for f, _ in MODELS]
+for fam in FAMS:
     summary[fam] = {}
     for m in ("evidence", "gated", "attention", "attgrad", "loo", "random"):
-        if per_pair[f"{fam}_s0_{m}_flip1"].size == 0:
+        if per_pair[f"{fam}_s{SEEDS[0]}_{m}_flip1"].size == 0:
             continue
         summary[fam][m] = {}
         for key in ("flip1", "flip5_low", "agree"):
@@ -242,21 +250,22 @@ for fam in ("born", "softmax", "poly"):
             summary[fam][m][key] = [v, ci]
         v, ci, _ = pooled(fam, m, "agree", only_correct=True)
         summary[fam][m]["agree_correct"] = [v, ci]
-    c = np.stack([per_pair[f"{fam}_s{s}_ceiling"] for s in range(3)]).mean(0)
+    c = np.stack([per_pair[f"{fam}_s{s}_ceiling"] for s in SEEDS]).mean(0)
     summary[fam]["ceiling_flip1"] = [float(c.mean()), [float(np.percentile([c[b].mean() for b in boot], q)) for q in (2.5, 97.5)]]
 
 # paired differences, Born evidence against the softmax model's methods (same pairs; seed-pooled)
-_, _, b_ev = pooled("born", "evidence", "flip1")
 summary["paired_flip1"] = {}
-for m in ("evidence", "gated", "attgrad", "loo"):
+if "born" in FAMS and "softmax" in FAMS:
+    _, _, b_ev = pooled("born", "evidence", "flip1")
+for m in (("evidence", "gated", "attgrad", "loo") if "born" in FAMS and "softmax" in FAMS else ()):
     _, _, s_m = pooled("softmax", m, "flip1")
     diff = b_ev - s_m
     ok = ~np.isnan(diff)
     ds = [np.nanmean(diff[b][ok[b]]) for b in boot]
     summary["paired_flip1"][f"born evidence - softmax {m}"] = [float(np.nanmean(diff[ok])),
                                                                 [float(np.percentile(ds, 2.5)), float(np.percentile(ds, 97.5))]]
-json.dump(summary, open("results/fairness.json", "w"), indent=1)
-for fam in ("born", "softmax", "poly"):
+json.dump(summary, open(f"results/{OUT}.json", "w"), indent=1)
+for fam in FAMS:
     print(fam, "ceiling flip@1 %.3f" % summary[fam]["ceiling_flip1"][0])
     for m, r in summary[fam].items():
         if m == "ceiling_flip1":

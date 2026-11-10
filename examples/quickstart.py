@@ -12,10 +12,10 @@ import reading_why as rw    # noqa: E402
 
 m = rw.load("born")                    # the Born Transformer; or "softmax", or the tag of a run in results/
 r = rw.explain(m, "A woman working long hours.", "A woman is sleeping.")
-print(r["answer"], r["probs"])         # contradiction [0.019 0.006 0.975]
+print(r["answer"], r["probs"].round(3))   # contradiction [0.004 0.001 0.995]
 for w, e, a in zip(r["words"], r["evidence"], r["attention"]):
     print(f"{w:>10s}  evidence {e:+.4f}  attention {a:.3f}")
-print(r["evidence"].sum(), r["explained"])            # equal (0.643164): the evidence sums to P_g - b_g
+print(r["evidence"].sum(), r["explained"])            # equal (0.662817): the evidence sums to P_g - b_g
 
 ids, words = rw.without(r, [r["words"].index("sleeping")])   # delete words in place, as the paper does
 print(rw.explain(m, ids=ids, toks=words)["answer"])          # entailment

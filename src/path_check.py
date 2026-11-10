@@ -46,7 +46,7 @@ def deletion(model, ids, target, score):                # as in free_denominator
 
 out = {}
 for seed in range(3):
-    tag = f"esnli_Born-p2-ap_b2_s{seed}_e20"
+    tag = f"esnli_Born-ap_b2_s{seed}_e20"
     cfg = json.load(open(f"results/{tag}.json"))
     model = build(cfg["model"], len(d["words"]), len(d["classes"]), blocks=cfg["blocks"], max_len=IDS.shape[1]).to(dev)
     model.load_state_dict(torch.load(f"results/{tag}.pt", map_location=dev))

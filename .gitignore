@@ -15,3 +15,7 @@ results/softmax_ig_nodes_s0.json
 results/*_device_*.json
 results/*_hwatt_*
 results/*_hwev_*
+results/deletion_*.json
+results/*_nodes_check.json
+results/*_evidence_bootstrap_*.json
+results/qubit_resources_*.json

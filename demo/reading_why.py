@@ -30,7 +30,7 @@ from models import Frozen, build        # noqa: E402
 
 LABELS = esnli.LABELS
 MAX_LEN = 64
-RUNS = {"born": "esnli_Born-p2-ap_b2_s0_e20", "softmax": "esnli_Softmax_b2_s0_e20"}
+RUNS = {"born": "esnli_Born-ap_b2_s0_e20", "softmax": "esnli_Softmax_b2_s0_e20"}
 
 WORDS = json.load(open(os.path.join(ROOT, "results", "esnli_vocab.json")))
 WID = {w: i for i, w in enumerate(WORDS)}

@@ -1,15 +1,16 @@
 """Which test pairs would show the hybrid evidence on ibm_kingston, and at what cost? A Monte Carlo of the device
-whose noise is the one the recorded runs measured (hw_recal.py), no circuits simulated and no device used.
+whose noise is set from recorded runs (device_overlaps.py), no circuits simulated and no device used.
 
 python hw_plan.py <tag> [--index 3763,3765] [--max-tokens 8] [--draws 50] [--shots 2000] [--cal 32]
 
 Each overlap circuit reads eta_b (1 + s_row r_i) <q|k> + c + s_abs e_c plus binomial shot noise: eta_b the block's
-visibility (one per job), r_i a row's own offset, c a readout offset, e_c a circuit's own error. From the recorded
-runs (a straight-line fit of measured against ideal, hw_recal.py): slopes 0.77 - 0.82, offsets +0.004 to +0.012,
-residual sd 0.027 against 0.021 from shots alone (s_abs = 0.0165), row offsets about 3.5 %. The slope and offset are
+visibility (one per job), r_i a row's own offset, c a readout offset, e_c a circuit's own error. The defaults of
+--s-abs and --s-row come from the runs of the paper's earlier version (a straight-line fit of measured against ideal:
+slopes 0.77 - 0.82, offsets +0.004 to +0.012, residual sd 0.027 against 0.021 from shots alone, row offsets about
+3.5 %); the current jobs' slopes are 0.66 - 0.82 (device_overlaps.py). The slope and offset are
 estimated from `--cal` calibration circuits of the same depth (Hadamard tests of random state pairs with known
-overlap, as noisy as the overlap circuits); every overlap is corrected by the offset and the row sums divided by the
-slope's fourth power, so the calibration's error is part of the draw.
+overlap, as noisy as the overlap circuits); every overlap is corrected by the offset and divided by the slope, so
+the calibration's error is part of the draw.
 """
 import json
 import math

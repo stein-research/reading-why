@@ -78,8 +78,10 @@ def weights(model):
 
 
 def probs_fn(model):
-    bhr = BHR(model.share).to(dev).double() if model.family == "B" else None
-    return lambda x: (bhr(model(x)) if bhr is not None else F.log_softmax(model(x), -1)).exp()
+    # P_g itself for the Born models (trained on its cross-entropy; the answer is argmax P_g). Until 2026-11-10 this
+    # scored BHR(P_g), Seeing Why's sharp headroom softmax: flips and agreement were the same, AOPC and the gradient
+    # of attention x gradient were of BHR(P_g).
+    return lambda x: model(x) if model.family == "B" else F.log_softmax(model(x), -1).exp()
 
 
 def deletion(model, score):

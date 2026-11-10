@@ -2,7 +2,7 @@
 
 Born Transformer (seed 0), attention overlaps read by Hadamard tests, everything else exact, as on ibm_kingston:
   C1  shot noise: each <q_i|k_j> estimated from S shots per circuit (Re and Im, P(0) - P(1) of normalised states,
-      then times |q_i||k_j|); answer agreement with the exact model and |dP| against S; how the fourth power and the
+      then times |q_i||k_j|); answer agreement with the exact model and |dP| against S; how the power in the weight and the
       row normalisation pass the overlap error on to the weights;
   C2  the hybrid evidence: exact numerators, attention row sums from the noisy overlaps; its correlation and top-3
       agreement with the exact evidence against S, and the cancellation ratio sum_t|e_t| / |sum_t e_t| that makes it
@@ -16,7 +16,7 @@ Coherent attention layer (all maps brickwall):
       slots; repetitions to one accepted shot, 1/P, and with amplitude amplification, about pi / (4 sqrt P) rounds of
       two passes each.
 
-python qubit_resources.py [--n 300]   -> results/qubit_resources.json
+python qubit_resources.py [--n 300] [--tag esnli_Born-ap_b2_s0_e20]   -> results/qubit_resources_<tag>.json
 """
 import json
 import math
@@ -44,7 +44,10 @@ def load(tag):
     return m.double().eval()
 
 
-model = load("esnli_Born-p2-ap_b2_s0_e20")
+TAG = sys.argv[sys.argv.index("--tag") + 1] if "--tag" in sys.argv else "esnli_Born-ap_b2_s0_e20"
+model = load(TAG)
+POWER = 2 if model.attn == "born2" else 1               # weight = |<q|k>|^(2 POWER)
+NODES = math.ceil(model.degree() / 2)                    # exact Gauss-Legendre nodes, as evidence.py
 
 NOISE = {"S": None, "sigma": 0.0}                     # read by the einsum hook while set
 
@@ -108,10 +111,10 @@ def frozen(ids, S=None):
     return fz
 
 
-def evidence_with(ids, target, fz, n_nodes=324):
+def evidence_with(ids, target, fz, n_nodes=None):
     x0, f = _score_fn(model, ids)
     total = torch.zeros_like(x0)
-    for t, w in zip(*nodes01(n_nodes)):
+    for t, w in zip(*nodes01(n_nodes or NODES)):
         x = (float(t) * x0).requires_grad_(True)
         out = f(x, fz.start_replay()).gather(1, target[:, None]).sum()
         (g,) = torch.autograd.grad(out, x)
@@ -120,7 +123,7 @@ def evidence_with(ids, target, fz, n_nodes=324):
 
 
 ids_all = torch.tensor(d["x_test"][pick]).to(dev)
-res = {"pairs": N}
+res = {"tag": TAG, "pairs": N, "nodes": NODES}
 
 # ---- exact pass
 with torch.no_grad():
@@ -136,7 +139,7 @@ for S in (100, 300, 1000, 2000, 10000, 100000):
                         dP_p95=float(dP.quantile(0.95)))
     print("C1", S, res["C1"][S], flush=True)
 
-# error passed from an overlap to a weight: relative error of |<q|k>|^4 vs of |<q|k>| at 2,000 shots
+# error passed from an overlap to a weight: relative error of |<q|k>|^(2 POWER) vs of |<q|k>| at 2,000 shots
 cap = {}
 
 
@@ -158,9 +161,10 @@ NOISE.update(S=None)
 mag, magn = ov.abs(), ovn.abs()
 big = mag > mag.flatten().quantile(0.5)                                   # the overlaps that carry the weight
 rel1 = ((magn - mag).abs() / mag)[big].median()
-rel4 = ((magn ** 4 - mag ** 4).abs() / mag ** 4)[big].median()
-res["C1_amplification"] = dict(shots=2000, rel_err_overlap=float(rel1), rel_err_fourth_power=float(rel4),
-                               ratio=float(rel4 / rel1))
+e = 2 * POWER
+relw = ((magn ** e - mag ** e).abs() / mag ** e)[big].median()
+res["C1_amplification"] = dict(shots=2000, exponent=e, rel_err_overlap=float(rel1), rel_err_weight=float(relw),
+                               ratio=float(relw / rel1))
 print("C1 amplification", res["C1_amplification"], flush=True)
 
 # ---- C2 hybrid evidence
@@ -196,7 +200,7 @@ for S in (2000, 10000, 100000, 1000000):
     res["C2"][S] = dict(corr_median=float(np.median(corr)), top3=float(np.mean(top)))
     print("C2", S, res["C2"][S], flush=True)
 # row sums are held denominators: unlike the weights, they feel the visibility. A calibration of each row's eta off
-# by a relative sigma scales its row sum by (1 + sigma z)^4 (here with 10^4 shots on top)
+# by a relative sigma scales its row sum by (1 + sigma z)^(2 POWER) (here with 10^4 shots on top)
 res["C2_calibration"] = {}
 for sig in (0.01, 0.03, 0.1, 0.3):
     corr, top = [], []
@@ -205,7 +209,7 @@ for sig in (0.01, 0.03, 0.1, 0.3):
         t = ans_ex[i:i + 1]
         fe, fn = frozen(ids), frozen(ids, 10000)
         hy = Frozen()
-        hy.values = [vn * (1 + sig * torch.randn(vn.shape, generator=gen, device=dev, dtype=vn.dtype)) ** 4
+        hy.values = [vn * (1 + sig * torch.randn(vn.shape, generator=gen, device=dev, dtype=vn.dtype)) ** (2 * POWER)
                      if ve.dim() == 4 else ve for ve, vn in zip(fe.values, fn.values)]
         e = evidence_with(ids, t, hy)[0]
         pres = ids[0] != 0
@@ -275,4 +279,4 @@ for p in sorted(set(rows[:, 1].astype(int))):
 lg = np.polyfit(np.log(rows[:, 0]), np.log(rows[:, 2]), 1)
 res["C4_fit"] = dict(exponent=float(lg[0]), note="pass ~ slots^exponent over the test pairs")
 print("C4 fit", res["C4_fit"])
-json.dump(res, open("results/qubit_resources.json", "w"), indent=1)
+json.dump(res, open(f"results/qubit_resources_{TAG.split('/')[-1]}.json", "w"), indent=1)

@@ -40,7 +40,7 @@ dev = "cuda" if torch.cuda.is_available() else "cpu"
 d = synth.get("esnli")
 pick = np.random.default_rng(0).choice(len(d["x_test"]), 1000, replace=False)      # the tables' 1,000 pairs
 IDS = torch.tensor(d["x_test"][pick]).to(dev)
-tag = "esnli_Born-p2-ap_b2_s0_e20"
+tag = "esnli_Born-ap_b2_s0_e20"
 cfg = json.load(open(f"results/{tag}.json"))
 model = build(cfg["model"], len(d["words"]), len(d["classes"]), blocks=cfg["blocks"], max_len=IDS.shape[1]).to(dev)
 model.load_state_dict(torch.load(f"results/{tag}.pt", map_location=dev))

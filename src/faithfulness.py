@@ -2,7 +2,7 @@
 
 Deletion: on a fixed sample of test queries, explain the predicted class, remove the k tokens of highest evidence
 (k = 1..5; only queries with more than k tokens), and measure the drop of the model's own probability of that class
-(BHR p-hat for B, softmax for S and P1) and how often the prediction changes. Orders compared: evidence, random,
+(P_g itself for B, softmax for S and P1) and how often the prediction changes. Orders compared: evidence, random,
 lowest evidence first. Removing a token is id 0: absent for S and P1, amplitude 0 (then renormalised) for B.
 AOPC = mean drop over k = 1..5. S's evidence is the same zero-baseline IG (256 nodes), not exact there.
 
@@ -45,8 +45,10 @@ def dataset(name):
 
 
 def probs_fn(model):
-    bhr = BHR(model.share).to(dev).double() if model.family == "B" else None
-    return lambda ids: (bhr(model(ids)) if bhr is not None else F.log_softmax(model(ids), -1)).exp()
+    # P_g itself for the Born models (trained on its cross-entropy; the answer is argmax P_g). Until 2026-11-10 this
+    # scored BHR(P_g), Seeing Why's sharp headroom softmax: flips and agreement were the same, AOPC and the gradient
+    # of attention x gradient were of BHR(P_g).
+    return lambda ids: model(ids) if model.family == "B" else F.log_softmax(model(ids), -1).exp()
 
 
 def remove(ids, order, k):

@@ -3,7 +3,7 @@ counts, overlaps and calibrations alike, are redrawn binomially (parametric boot
 for the answer); each draw refits the block's slope and offset from its calibration circuits and recomputes the
 hybrid evidence (exact numerators, measured row sums). The circuits are the ones that ran.
 
-python evidence_bootstrap.py [--index 4667] [--draws 500]
+python evidence_bootstrap.py [--tag esnli_Born-ap_b2_s0_e20] [--index 3763] [--draws 500]
 """
 import json
 import math
@@ -19,9 +19,11 @@ from models import Frozen
 
 args = sys.argv[1:]
 opt = lambda k, v: args[args.index(k) + 1] if k in args else v
-tag = "esnli_Born-p2-ap_b2_s0_e20"
-idx, draws = int(opt("--index", 4667)), int(opt("--draws", 500))
-RUNS = {4667: ["f5ddb65f08d376c5", "decfe254c3394277"], 997: ["11332ef15e172150", "2d43aec1fe77ea84"]}
+tag = opt("--tag", "esnli_Born-ap_b2_s0_e20")
+idx, draws = int(opt("--index", 3763)), int(opt("--draws", 500))
+# the ledger keys of each pair's two blocks (with --cal-random 32), per model
+RUNS = {"esnli_Born-ap_b2_s0_e20": {3763: ["ae3d09c69431cc3d", "26df20031defaaa7"],
+                                   3765: ["a1d6be83e81a3267", "4327c6e5c51fae25"]}}[tag]
 model, d = load(tag)
 power = 2 if model.attn == "born2" else 1
 ids = torch.tensor(d["x_test"][idx:idx + 1])

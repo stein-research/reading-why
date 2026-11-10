@@ -1,0 +1,7154 @@
+{
+ "purpose": "Reading Why: Born-ap attention of e-SNLI test pair 3763 by Hadamard tests, block 0",
+ "backend": "ibm_kingston",
+ "shots": 2000,
+ "n_circuits": 288,
+ "repeat": 0,
+ "circuit_keys": [
+  "8337b31c9d301257",
+  "778799688f8ab9e1",
+  "681a9f30e2e8d076",
+  "9b8a2e0010dc5cc9",
+  "a55bdc9bb23aec00",
+  "17d4d60cea2cddfe",
+  "9dcca5cd417a1d4a",
+  "2c0b6c6ba2b578c4",
+  "0ba6b8f575822e93",
+  "e6a2829654ffdc8d",
+  "d2cf63fc93e52b57",
+  "664414caa448fcbf",
+  "5ce1c0bc368e369f",
+  "d5064ccb7049f1d1",
+  "91d3f97a270a4385",
+  "4beb6751e0c06709",
+  "afc68397e9e3a3d4",
+  "44fc16fc274446ca",
+  "d92765a3443326a4",
+  "9f67e45e65f50ea4",
+  "2ad50d3c1ac1fd05",
+  "998fae7fe28b6c6a",
+  "0fbd5c9046cb9f95",
+  "97fd901a219d99ac",
+  "2a016576d3a2b621",
+  "4f297d408e8e1adf",
+  "05f385e0c55b63da",
+  "209d1d71895fd9e7",
+  "e8fa88bd03faa7c7",
+  "8dd6733908b67f29",
+  "ff46d511034c111f",
+  "f9cea6b7a9800d3f",
+  "0e78e951647ec75d",
+  "cc773d1c586246f8",
+  "fe87a1d76a9f07a4",
+  "85cda052e81ee859",
+  "0a4c32c2184113ba",
+  "6297dc3da5739a62",
+  "f84ec9895cb1f4de",
+  "9fedaadffe9f4e3f",
+  "703c42a394b8b68d",
+  "09c6604c96dd1bd9",
+  "af4c7d5745291ba8",
+  "6be28205a29a8333",
+  "6e4740037574867e",
+  "970210dd9448b85a",
+  "bc3dc9bbd78404b0",
+  "53d84fd47f8f60a0",
+  "7b6b2e4622c02033",
+  "7bc700fbf13534ae",
+  "3154117c3b76baa4",
+  "a6f014c3557dfd1c",
+  "773a91ac95431dba",
+  "f4e7b2e72ef9151d",
+  "2d489485f69ea4ff",
+  "dd97344092781ae2",
+  "4b44020cd13c8841",
+  "8c9f22cceacb49aa",
+  "dab6bb06934208e3",
+  "b9227320f438942a",
+  "25af95d6a9ec4a17",
+  "37b7e54dcb96cdd5",
+  "739fdc8edfd4d9f9",
+  "c746979412054d8c",
+  "8c23eb3db2902527",
+  "40526a2f98ef0a09",
+  "5813f3894466b5a7",
+  "52d929d21865ccdb",
+  "377b5a6f83289c56",
+  "651c884283467ca0",
+  "eeb4dbafdcbd92bc",
+  "a3fa152dd090290b",
+  "7b51f49bd1eaa415",
+  "8a3a5808b6f46adf",
+  "533dd8dd44b940ad",
+  "dd5c73f3ccaf4505",
+  "57409c0045dde986",
+  "d921d4aef21df3e6",
+  "3a09e0d88d014fcf",
+  "abdc197983e8479e",
+  "4c3f3b65e27062b8",
+  "8bbe10ebef1235fe",
+  "191dbf44d3da3fca",
+  "f3cc2ab5bc7d8061",
+  "cae0a2d42c11c0d9",
+  "1f68698fb02e7347",
+  "ef2e4af2fb82997c",
+  "468a5f7bd980e138",
+  "2708ec21a480be28",
+  "a1eb8c6ccf09d83f",
+  "2808bc3a6fed0f4a",
+  "bf9b778bb0ac74d9",
+  "f8adead2148eb142",
+  "a3f5ae488aa7ab6b",
+  "ef4dd92dd12d6f5f",
+  "f6683300143d4f90",
+  "db033c9ef38cb939",
+  "d518fedf828e96a8",
+  "c9fb118fdc6d438c",
+  "f1e74bc4d80df5a5",
+  "8c7145cf0b26d227",
+  "199e871be937739f",
+  "608949ebee381112",
+  "4ef9ba3c5fcedd54",
+  "e823d9d140132f54",
+  "faf93b3a48b08ae7",
+  "7c033e47da108a49",
+  "8565252638d0692a",
+  "f6f57b7078269d84",
+  "a46372ee897bc667",
+  "c83b3b189d03500d",
+  "e9e33ce345f20c67",
+  "8423e340542fea86",
+  "94b4d0b9cc65ccae",
+  "6920db1d790d8ea9",
+  "079fd7d81c63a97c",
+  "52f81526c97f0dfc",
+  "21bb04da99a37fad",
+  "62f206cc61766a24",
+  "a19f318721098e33",
+  "49ff7286ac757029",
+  "c55680104cdd1e4f",
+  "d7c79c402d3d78d2",
+  "331f68e4c4694445",
+  "156b2a2634e10bfc",
+  "5e8efcbb016976d5",
+  "033094bb1a1e887e",
+  "6df1ad5ac3fe49c6",
+  "64790591e8107438",
+  "b857c4c3c9a3f44e",
+  "a7dcd93503001892",
+  "7316b9aa6c57ee0a",
+  "d0eae0f2128b6af7",
+  "cd30b123b069b8bd",
+  "bd9c416c9b4d6690",
+  "599e698de734944e",
+  "2a4aabcd59efb6c4",
+  "13d99b4e80b9840d",
+  "5cf5cc0cd369efed",
+  "74d466bd97d0ad9c",
+  "7382d85e90b7dc9b",
+  "7d266de208eaf795",
+  "867013f83c7dd8cc",
+  "f7721573e40ffc76",
+  "5ede7078d47d61c4",
+  "d4adf249d1a7a152",
+  "0cffc9d9f9afa080",
+  "0beaeab31855bb1c",
+  "d5b8b79efa38c950",
+  "e0c5c88bb65d1828",
+  "6f714822ac4cd1a6",
+  "0e0c4e1e815472a2",
+  "f81dccd1557df97b",
+  "fe20817d7f1e15a5",
+  "2bafca47184923e1",
+  "719970606ad8eb17",
+  "dff39efdef87bb3c",
+  "402b470e5c031f6f",
+  "4573e7dcb16e1ffc",
+  "889d48affa19e36c",
+  "e5cbfb459b028462",
+  "9f39de6002812a84",
+  "da3545a022606433",
+  "88e565b0843ac2e4",
+  "e9000da1098ce556",
+  "7afc837c2f59c8ee",
+  "bc848a41fc4b8298",
+  "94bf935f13e6a521",
+  "964491dadada3028",
+  "1764a2ecb23d0cad",
+  "3de792fe8ab503a6",
+  "8caec8842d414024",
+  "eac9942d458ae278",
+  "25d7d60a82776f74",
+  "54815c5296ba3e46",
+  "81a4ba07524d1aa6",
+  "0b8ce48465ddc441",
+  "727f2d929b477c64",
+  "ce98030069ed59eb",
+  "ccbe4ae2d78c84cc",
+  "9f4999da9c4e7c93",
+  "0e5ac6192d17dd98",
+  "308b74b2e20ff2a0",
+  "3a87b22aab391817",
+  "6995784b794380a4",
+  "7730e8521c090920",
+  "e70e12c3d70e5758",
+  "a484ee6332f50098",
+  "376554752770956d",
+  "04c1bdb05e4a61d1",
+  "f33f36ce4ef3ee0d",
+  "d7048b5f9686ea91",
+  "e13bb60760268ca8",
+  "159cd2519c28df85",
+  "d4efd4ee2294e3c0",
+  "c9241f0a992ca320",
+  "330b1f35d5f810d8",
+  "fcf691ba478b1fa8",
+  "c2fd1aa3f85b2fed",
+  "12a7c7f8ab6168de",
+  "fc4ed8ec5a213e14",
+  "f870c9cf8f397c3c",
+  "960f77be6dbe6036",
+  "172f7e11a11ad4fe",
+  "aa1ddac79b8cbb9b",
+  "bab82d40c3cf26fb",
+  "767ddb21054b0699",
+  "b8ea42ea1c0f77c4",
+  "9da75a31852707ae",
+  "0ae51f88b7c8c9c7",
+  "118d8dbe89c13074",
+  "f14a3e3066a04477",
+  "70b7b878e3348a57",
+  "630616de3a66764b",
+  "e95338c7d8ff20c8",
+  "86e6b8269a929fab",
+  "4885c7a10cd8b878",
+  "d9c4a22d95b5655c",
+  "fb40f08f591cd9df",
+  "604ffe06e0f7b9b1",
+  "81c8a06e15401b1b",
+  "f167c6264672c15e",
+  "d7d1c96da50edbd3",
+  "09e6475f9e3b9d36",
+  "1ea91b2f522d6a5e",
+  "e5446a0b448e807f",
+  "aa709bc75d566f13",
+  "5972203a2ebd04de",
+  "b7584a54da7d0e35",
+  "aecb4e7bceb53872",
+  "9cc09a6065b91eec",
+  "292e282dd15f70fc",
+  "45eccfc545a03594",
+  "3cf3bc8fbc530f3c",
+  "f48a5a76649b27b8",
+  "e97e1af8d4a3516e",
+  "4eeb0fe83416dfa1",
+  "31bca5e4c076409d",
+  "e253e14437f25a72",
+  "2d6bc7b03bf50660",
+  "28b31244ab91ae59",
+  "51006cb46e3e69be",
+  "cf5faacebfd48641",
+  "710cf7c8de4e2d29",
+  "dabc5d658f3fee35",
+  "5e09da304ec693ca",
+  "7c89bece15fdc6bb",
+  "94a0554b866f7dcb",
+  "166af01fe6363511",
+  "3d8186d25d360355",
+  "4f7bed6ff197ef40",
+  "8f1e4d05ec3c2cb5",
+  "e62ca58cf5505572",
+  "6e7ccb81f87e25e7",
+  "5eae1e45a032ad27",
+  "2b99eb87352e264a",
+  "83b57210c6f5ea02",
+  "d4d8d2777bfe305f",
+  "ed3a9cfb6475304c",
+  "50affdca240a8ac3",
+  "fed41013115d3892",
+  "586b61c47bcd3642",
+  "7d243d66926ad2d0",
+  "cb66e571e7a4f77c",
+  "8f8affa9e610b5f5",
+  "0b8498b3951938d7",
+  "1eb2ee056ff1aeea",
+  "6572cfe9ff5de61f",
+  "35ae576267c12dea",
+  "b1f0b56be83be3dd",
+  "09ee9b29ba1736ea",
+  "c7549baa02d05c4e",
+  "53f004e1903a4dd8",
+  "4e3adddef74394f0",
+  "68141814fdb74d7a",
+  "649692ae120f8c56",
+  "2b8ff6dc9630d566",
+  "0e2b15bb3f04b789",
+  "eb5eec730b135691",
+  "4427ad7b365f417b",
+  "d081b0cf334bca08",
+  "896f335c61e07a02",
+  "c513a70e8618485c",
+  "8ec81812f38191ea",
+  "b073f187a20ca4d8",
+  "d71d9f2a189e2f74",
+  "c0788c4d38494bcf",
+  "eca50f1b44acc46f"
+ ],
+ "command": "hw_attention.py esnli_Born-ap_b2_s0_e20 --shots 2000 --device ibm_kingston --submit --index 3763 --cal-random 32",
+ "code": {
+  "git_commit": "f7f22a516860a3569b041219a664df49e367d437",
+  "uncommitted_changes": true
+ },
+ "versions": {
+  "python": "3.12.3",
+  "qiskit": "2.6.1",
+  "qiskit_ibm_runtime": "0.51.0"
+ },
+ "inputs": [
+  {
+   "file": "results/esnli_Born-ap_b2_s0_e20.pt",
+   "sha256": "64f542e5892df1b51d33f29ac44b49e3a1d0b514910f04dac838c247dba742fa"
+  }
+ ],
+ "transpile": {
+  "optimization_level": 3,
+  "seeds_tried": 8,
+  "per_circuit": [
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9311429733405688,
+    "seed0": 0.9252973635044841
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.931287431895761,
+    "seed0": 0.9250787225852284
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309229511469698,
+    "seed0": 0.9250491995220809
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9307488441609217,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9314913673476626,
+    "seed0": 0.9256140292438085
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9316966563953807,
+    "seed0": 0.9252973635044841
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9315521343624932,
+    "seed0": 0.925455682829847
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9314913673476626,
+    "seed0": 0.9256140292438085
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9307488441609217,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9311429733405688,
+    "seed0": 0.9250639609358775
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9313022928557542,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9313630475360716,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.931635879953088,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312185772516047,
+    "seed0": 0.9252825983662403
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9252825983662403
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9250787225852284
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9314913673476626,
+    "seed0": 0.9253805467975325
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.93073399203241,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9311281149228662,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9249057086230653
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9312037176274767,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309836810804522,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.93073399203241,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9248909497345297
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9311281149228662,
+    "seed0": 0.9250787225852284
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9305747697374425,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9309688252046051,
+    "seed0": 0.9251390712630855
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9308095627363152,
+    "seed0": 0.9247327270190469
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9251243086507398
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   },
+   {
+    "seed": 5,
+    "expected_fidelity": 0.9310444149757284,
+    "seed0": 0.9249660460141382
+   }
+  ]
+ },
+ "dynamical_decoupling": "XY4",
+ "circuits": [
+  {
+   "note": "block 0 head 0 q0 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "rz": 96,
+    "sx": 96,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q0 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q1 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 166,
+   "ops": {
+    "sx": 94,
+    "rz": 89,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 95,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q2 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 95,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q3 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 164,
+   "ops": {
+    "sx": 93,
+    "rz": 88,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "rz": 97,
+    "sx": 96,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q4 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 165,
+   "ops": {
+    "sx": 94,
+    "rz": 92,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 95,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 88,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "rz": 96,
+    "sx": 96,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q5 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "rz": 96,
+    "sx": 96,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "rz": 95,
+    "sx": 95,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 164,
+   "ops": {
+    "sx": 92,
+    "rz": 89,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q6 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 87,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 88,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 87,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 95,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 0 q64 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "rz": 96,
+    "sx": 96,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q0 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 164,
+   "ops": {
+    "sx": 92,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 95,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q1 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 166,
+   "ops": {
+    "sx": 93,
+    "rz": 88,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 165,
+   "ops": {
+    "sx": 92,
+    "rz": 86,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 165,
+   "ops": {
+    "sx": 94,
+    "rz": 86,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q2 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 164,
+   "ops": {
+    "sx": 93,
+    "rz": 89,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 94,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q3 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 88,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q4 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 88,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q5 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 161,
+   "ops": {
+    "sx": 89,
+    "rz": 87,
+    "cz": 37,
+    "x": 3,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q6 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 88,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k0 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k0 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k1 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k1 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k2 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k2 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k3 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k3 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k4 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k4 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 164,
+   "ops": {
+    "sx": 92,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k5 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k5 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 90,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k6 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k6 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k64 Re",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 94,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 head 1 q64 k64 Im",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 0 ideal -0.157455",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 1 ideal +0.305212",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 2 ideal -0.474484",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 3 ideal +0.870725",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 4 ideal +0.895950",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 5 ideal +0.861115",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 6 ideal -0.594439",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 7 ideal +0.293106",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 8 ideal +0.979369",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 9 ideal +0.125355",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 10 ideal -0.930343",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 11 ideal +0.879819",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 12 ideal +0.892796",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 13 ideal +0.480200",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "rz": 95,
+    "sx": 95,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 14 ideal +0.708900",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 15 ideal -0.454330",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 16 ideal -0.986552",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 166,
+   "ops": {
+    "sx": 94,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 17 ideal +0.615442",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 18 ideal +0.960888",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 167,
+   "ops": {
+    "sx": 95,
+    "rz": 91,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 19 ideal -0.209625",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 20 ideal -0.849657",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "x": 2,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 21 ideal -0.331777",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 168,
+   "ops": {
+    "sx": 95,
+    "rz": 94,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 22 ideal -0.986855",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 23 ideal -0.095887",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 24 ideal -0.898271",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 89,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 25 ideal -0.852690",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 90,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 26 ideal +0.010140",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "x": 1,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 27 ideal +0.266593",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 94,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 28 ideal +0.408362",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 92,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 29 ideal -0.559052",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 170,
+   "ops": {
+    "sx": 96,
+    "rz": 93,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 30 ideal -0.037847",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  },
+  {
+   "note": "block 0 random calibration 31 ideal +0.709170",
+   "logical_qubits": 5,
+   "physical_qubits": [
+    72,
+    71,
+    73,
+    58,
+    70
+   ],
+   "depth": 169,
+   "ops": {
+    "sx": 96,
+    "rz": 91,
+    "cz": 37,
+    "measure": 1
+   }
+  }
+ ],
+ "status": "done",
+ "job_id": "dbormf5t7fqc7388atrg",
+ "created": "2026-11-09T12:23:24+00:00",
+ "finished": "2026-11-09T12:47:39+00:00",
+ "quantum_seconds": 155,
+ "ibm_metrics": {
+  "caller": "qiskit_ibm_runtime~sampler.py",
+  "qiskit_version": "qiskit_ibm_runtime-0.51.0,qiskit-2.6.1*,qiskit_aer-0.18.2*",
+  "timestamps": {
+   "created": "2026-11-09T12:23:24.214138Z",
+   "finished": "2026-11-09T12:47:32.873167Z",
+   "running": "2026-11-09T12:43:13.440069Z"
+  },
+  "usage": {
+   "qpu_charge_time_seconds": 155,
+   "value": 2.57682,
+   "unit": "resource_units",
+   "status": "complete",
+   "details": [
+    {
+     "value": 2.57682,
+     "unit": "resource_units",
+     "metric": {
+      "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+      "value": 155
+     }
+    }
+   ]
+  },
+  "circuits_execution_time_ns": 152330086912
+ },
+ "result_metadata": {
+  "execution": {
+   "execution_spans": "ExecutionSpans([DoubleSliceSpan(<start='2026-11-09 12:44:50', stop='2026-11-09 12:45:44', size=200000>), DoubleSliceSpan(<start='2026-11-09 12:45:44', stop='2026-11-09 12:46:38', size=202000>), DoubleSliceSpan(<start='2026-11-09 12:46:38', stop='2026-11-09 12:47:25', size=174000>)])"
+  },
+  "version": 2
+ }
+}

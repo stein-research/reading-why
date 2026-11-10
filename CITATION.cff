@@ -5,7 +5,7 @@ type: software
 license: MIT
 repository-code: "https://github.com/stein-research/reading-why"
 doi: "10.5281/zenodo.23938333"
-version: "3.1"
+version: "3.2"
 authors:
   - family-names: Tongloy
     given-names: Teerawat

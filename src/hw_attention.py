@@ -1,9 +1,9 @@
 """Attention read by quantum circuits under an IBM device's noise model (simulated; no device used).
 
-python hw_attention.py <tag> [--index 15] [--backend FakeTorino] [--shots 10000]
-python hw_attention.py <tag> --n 50 [--backend FakeTorino] [--shots 10000]   # first n test pairs, noisy only
+python hw_attention.py <tag> [--index 15] [--backend FakeKingston] [--shots 10000]
+python hw_attention.py <tag> --n 50 [--backend FakeKingston] [--shots 10000]   # first n test pairs, noisy only
 python hw_attention.py <tag> --evidence 20 [...]   # first n test pairs: evidence with the measured denominators
-python hw_attention.py <tag> --index 3763 --shots 2000 --device ibm_kingston --account 1 [--submit]   # an IBM device,
+python hw_attention.py <tag> --index 3763 --shots 2000 --device ibm_kingston [--submit]   # an IBM device,
 #   through the ledger (ibm_jobs/); without --submit a dry run: transpiled and recorded, not sent;
 #   --offline: no account and no ledger - every circuit transpiled for and run on the --backend noise model
 #   --noisy-dry: the dry run goes on with counts from the --backend noise model instead of ideal ones;
@@ -14,13 +14,15 @@ python hw_attention.py <tag> --index 3763 --shots 2000 --device ibm_kingston --a
 #   --delete p --no-evidence: the deletion test on the device - word p removed, the answer only (no calibrations)
 #   --cal-random n: instead of the self-overlap rows, n calibration circuits per block as deep as the overlaps
 #   (Hadamard tests of random state pairs with known overlap); one slope and one readout offset per block are fitted
-#   to them, the offset is taken off every overlap and the row sums are divided by the slope's fourth power
+#   to them, the offset is taken off every overlap and every overlap is divided by the slope (so a row sum by the
+#   slope squared, or to the fourth power when the weight is squared again)
 
 Evidence on hardware (hybrid): the evidence is the exact polynomial's with its denominators held (models.Frozen);
-here the attention row sums sum_j |<q_i|k_j>|^4 are the ones the circuits measured, the numerators stay exact (on
+here the attention row sums sum_j |<q_i|k_j>|^2 are the ones the circuits measured, the numerators stay exact (on
 the computer). The device's loss of visibility eta shrinks every measured overlap; the weights do not feel it (it
 cancels in each row) but a held denominator would, so each row's eta is measured by a calibration circuit (the
-Hadamard test of q_i with itself, which reads 1 on a perfect device) and the row sum is divided by eta^4.
+Hadamard test of q_i with itself, which reads 1 on a perfect device) and the row sum is divided by eta^2 (eta^4 when
+the weight is squared again).
 
 Every <q_i|k_j> of every head and block of one e-SNLI test pair is read by a Hadamard test on 5 qubits: the state
 (|0>|q_i> + |1>|k_j>) / sqrt 2 (q, k normalised; one head is 16 complex modes = 4 qubits, plus the ancilla) is
@@ -50,7 +52,7 @@ from models import Frozen
 args = sys.argv[1:]
 opt = lambda k, v: args[args.index(k) + 1] if k in args else v
 tag = [a for i, a in enumerate(args) if not a.startswith("--") and (i == 0 or not args[i - 1].startswith("--"))][0]
-idx, shots, bname = int(opt("--index", 15)), int(opt("--shots", 10000)), opt("--backend", "FakeTorino")
+idx, shots, bname = int(opt("--index", 15)), int(opt("--shots", 10000)), opt("--backend", "FakeKingston")
 ncal = int(opt("--cal-random", 0))
 
 model, d = load(tag)
@@ -151,8 +153,8 @@ def make_overlap(sim, record, rows=None):
                     jobs.append(circuit(q[h, i] / np.linalg.norm(q[h, i]), q[h, i] / np.linalg.norm(q[h, i]), False))
                     where.append((h, i, i, 2, 1.0))
         if rows is not None and ncal:                     # same-depth calibrations: random pairs, known overlap
-            # each pair its own calibration states (the ledger refuses a circuit already sent); pair 4667's job
-            # was drawn with default_rng(1000 + block), its circuits and ideal overlaps are in the ledger
+            # each pair its own calibration states (the ledger refuses a circuit already sent); one job of the
+            # paper's earlier version drew them with default_rng(1000 + block), kept so its circuits rebuild
             rng = np.random.default_rng(1000 + block if idx == 4667 else [idx, block])
             for n in range(ncal):
                 a, b = rng.standard_normal((2, 2, q.shape[-1]))
@@ -307,11 +309,11 @@ def evidence_batch(n):
 
 
 if "--device" in args:
-    # one test pair on an IBM device (--device ibm_kingston --account <keys line> [--submit]); without --submit a dry
+    # one test pair on an IBM device (--device ibm_kingston [--submit]); without --submit a dry
     # run. Answer and hybrid evidence against the exact pass, as evidence_batch does under the noise model.
     dev = Device(opt("--device", "ibm_kingston"), opt("--keys", None),
-                 int(opt("--account", 1)), "--submit" in args,
-                 f"Reading Why: Born-p2-ap attention of e-SNLI test pair {idx} by Hadamard tests",
+                 int(opt("--account", 0)), "--submit" in args,
+                 f"Reading Why: {tag.split('_')[1]} attention of e-SNLI test pair {idx} by Hadamard tests",
                  pilot=int(opt("--pilot", 0)))
     ids = torch.tensor(d["x_test"][idx:idx + 1]).clone()
     if "--delete" in args:                         # the deletion test on the device: one word's amplitude set to 0

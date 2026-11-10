@@ -60,7 +60,7 @@ def score(prob, ids, target, s, present, ntok, gt):
 
 
 per = {}
-for fam, name in (("born", "Born-p2-ap"), ("softmax", "Softmax"), ("poly", "Poly-sim-born")):
+for fam, name in (("born", "Born-ap"), ("softmax", "Softmax"), ("poly", "Poly-sim-born")):
     for seed in range(3):
         tag = f"esnli_{name}_b2_s{seed}_e20"
         cfg = json.load(open(f"results/{tag}.json"))

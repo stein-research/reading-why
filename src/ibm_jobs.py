@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """A ledger of IBM hardware jobs: every job sent is kept, so its results are never paid for twice and anyone who asks
-can be shown what ran (owner 2026-10-31).
+can be shown what ran.
 
 `sampler_counts(...)` is the one way the scripts reach hardware. Before sending it hashes the logical circuits with the
 backend and the shots into a key, and looks in ibm_jobs/<key>/:
@@ -15,8 +15,8 @@ Each folder holds:
                    IBM's own metrics (job.metrics(): timestamps, usage, qiskit version on their side), the qubits each
                    circuit landed on, the command line, the code version (git commit, uncommitted changes or not), the
                    versions of Python / Qiskit / qiskit-ibm-runtime, the inputs (file name + sha256) and the caller's
-                   description of every circuit; the account as its line number in the keys file and a fingerprint
-                   (the first 12 hex digits of the token's sha256: names the account, cannot give the token back)
+                   description of every circuit, and a fingerprint of the key that sent it (the first 12 hex digits
+                   of its sha256, which cannot give the key back; the published records leave it out)
   circuits.qpy     the logical circuits as built
   transpiled.qpy   the circuits as sent (after transpiling for the backend)
   counts.json      the raw counts of every circuit, bitstring -> count
@@ -24,13 +24,11 @@ Each folder holds:
 ibm_jobs/index.md lists every job, one line each (rewritten after every change).
 
 Run:  python src/ibm_jobs.py list                       every job
-      python src/ibm_jobs.py check --keys <file>        log in with every account, mark the unusable
+      python src/ibm_jobs.py check --keys <file>        log in (sends no job): usable or not, quota left
       python src/ibm_jobs.py show <key or job id>       one job's record and counts (local, no network)
-      python src/ibm_jobs.py fetch <job id> --keys <file> [--account k]
-                                                                    (without --account every line is tried)
-IBM shows a job only to the account that ran it, so reading one back needs that account's token: the keys file stays
-the only place tokens live; the fingerprint finds the right line even after lines are added or reordered.
-                                                                    bring a job run before the ledger in (reads, sends nothing)
+      python src/ibm_jobs.py fetch <job id> --keys <file>   bring a job run before the ledger in (reads, sends nothing)
+IBM shows a job only to the account that ran it, so reading one back needs that account's key; the keys file
+(outside the repository) stays the only place a key lives.
 """
 import datetime
 import hashlib
@@ -107,7 +105,7 @@ def status_file(keys):
 
 
 def check(keys):
-    """Log in with every account (no job is sent) and record which work and their quota left, by fingerprint, in
+    """Log in with each key of the keys file (no job is sent) and record which work and their quota left, by fingerprint, in
     ibmq_accounts_status.json next to the keys file (outside git; no token in it). accounts() then skips the bad ones."""
     from qiskit_ibm_runtime import QiskitRuntimeService
     out = []
@@ -129,7 +127,7 @@ def check(keys):
         print(f"line {i:2d} {email:28s} {'ok ' if row['ok'] else 'BAD'} "
               f"{row.get('usage', row.get('error', ''))}", flush=True)
     status_file(keys).write_text(json.dumps(out, indent=1))
-    print(f"{sum(r['ok'] for r in out)} of {len(out)} accounts usable -> {status_file(keys)}")
+    print(f"{sum(r['ok'] for r in out)} of {len(out)} keys usable -> {status_file(keys)}")
 
 
 def fingerprint(token):
@@ -452,7 +450,7 @@ def show(ref, top=8):
 
 def fetch(job_id, keys, account=None, purpose=""):
     """Bring a job already run on IBM into the ledger by its id (reads it; sends nothing): status, backend, times,
-    usage, IBM's metrics, the circuits as sent and the counts. account None: every line of the keys file is tried
+    usage, IBM's metrics, the circuits as sent and the counts. account None: each key of the keys file is tried
     until one can see the job (IBM shows a job only to the account that ran it)."""
     from qiskit import qpy
     for rec in LEDGER.glob("*/record.json"):
@@ -504,15 +502,15 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="the IBM job ledger")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("list", help="every job in the ledger (rewrites ibm_jobs/index.md)")
-    k = sub.add_parser("check", help="log in with every account of the keys file (sends no job); mark the bad ones")
+    k = sub.add_parser("check", help="log in with the keys file (sends no job): usable or not, quota left")
     k.add_argument("--keys", required=True)
     s = sub.add_parser("show", help="one job's record and results")
     s.add_argument("ref", help="ledger key or job id")
     s.add_argument("--top", type=int, default=8, help="most frequent outcomes shown per circuit")
     f = sub.add_parser("fetch", help="bring a job already run on IBM into the ledger by its id (sends nothing)")
     f.add_argument("job_id")
-    f.add_argument("--keys", required=True, help="keys file, one '<email> <token>' per line (outside git)")
-    f.add_argument("--account", type=int, default=None, help="line of --keys (default: try every line)")
+    f.add_argument("--keys", required=True, help="keys file, '<name> <API key>' (outside git)")
+    f.add_argument("--account", type=int, default=None, help="which key of --keys (default: the first that can see the job)")
     f.add_argument("--purpose", default="")
     a = ap.parse_args()
     if a.cmd == "list":
