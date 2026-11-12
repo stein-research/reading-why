@@ -1,7 +1,9 @@
 # Reading Why: Born-Measured Attention with Exact Word Evidence on Light and Qubits
 
-Interactive companion to the paper by Teerawat Tongloy (KMITL), Jiraporn Pongsopa and Rangsan Jomtarak (Suan Dusit
-University).
+Interactive companion to the paper by Teerawat Tongloy<sup>1</sup>, Jiraporn Pongsopa<sup>2</sup> and Rangsan Jomtarak<sup>2</sup>.
+
+<sup>1</sup> School of Integrated Innovative Technology, King Mongkut's Institute of Technology Ladkrabang (KMITL), Bangkok, Thailand<br>
+<sup>2</sup> Faculty of Science and Technology, Suan Dusit University, Bangkok, Thailand
 
 | | |
 |---|---|
