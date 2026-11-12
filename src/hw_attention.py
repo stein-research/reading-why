@@ -16,6 +16,10 @@ python hw_attention.py <tag> --index 3763 --shots 2000 --device ibm_kingston [--
 #   (Hadamard tests of random state pairs with known overlap); one slope and one readout offset per block are fitted
 #   to them, the offset is taken off every overlap and every overlap is divided by the slope (so a row sum by the
 #   slope squared, or to the fourth power when the weight is squared again)
+#   --cu: compute-uncompute instead of Hadamard tests: prepare |q_i> on 4 qubits, undo the preparation of |k_j>,
+#   measure all 4; P(0000) = |<k_j|q_i>|^2, the attention weight's numerator itself as a Born probability (one
+#   circuit per overlap, no Re/Im). With --cal-random n the calibrations are random state pairs of known |<a|b>|^2
+#   spread over [0, 1], as deep; every reading is corrected to (p - offset) / slope before use (square model only)
 
 Evidence on hardware (hybrid): the evidence is the exact polynomial's with its denominators held (models.Frozen);
 here the attention row sums sum_j |<q_i|k_j>|^2 are the ones the circuits measured, the numerators stay exact (on
@@ -54,6 +58,7 @@ opt = lambda k, v: args[args.index(k) + 1] if k in args else v
 tag = [a for i, a in enumerate(args) if not a.startswith("--") and (i == 0 or not args[i - 1].startswith("--"))][0]
 idx, shots, bname = int(opt("--index", 15)), int(opt("--shots", 10000)), opt("--backend", "FakeKingston")
 ncal = int(opt("--cal-random", 0))
+CU = "--cu" in args
 
 model, d = load(tag)
 backend = getattr(fake_provider, bname)()
@@ -79,7 +84,10 @@ class Device:
 
     def run(self, circs, where, block):
         notes = [f"block {block} head {h} q{i} k{j} {('Re', 'Im', 'calibration')[part]}" if part < 3 else
-                 f"block {block} random calibration {i} ideal {scale:+.6f}" for h, i, j, part, scale in where]
+                 f"block {block} random calibration {i} ideal {scale:+.6f}" if part == 3 else
+                 f"block {block} head {h} q{i} k{j} |<k|q>|^2 compute-uncompute" if part == 4 else
+                 f"block {block} random compute-uncompute calibration {i} ideal {scale:.6f}"
+                 for h, i, j, part, scale in where]
         # the ledger names a circuit by its gates and real parameters: StatePreparation's complex amplitudes become
         # u and cx gates first (deterministic, optimisation 0; the ledger then transpiles for the device)
         circs = transpile(circs, basis_gates=["u", "cx"], optimization_level=0)
@@ -135,6 +143,23 @@ def circuit(q, k, imag):
     return qc
 
 
+def circuit_cu(q, k):
+    """Compute-uncompute on 4 qubits: prepare |q>, undo the preparation of |k>; P(0000) = |<k|q>|^2."""
+    pk = QuantumCircuit(4)
+    pk.append(StatePreparation(k), range(4))
+    pk = transpile(pk, basis_gates=["u", "cx"], optimization_level=0)
+    qc = QuantumCircuit(4, 4)
+    qc.append(StatePreparation(q), range(4))
+    qc.compose(pk.inverse(), range(4), inplace=True)
+    qc.measure(range(4), range(4))
+    return qc
+
+
+def p_zero(c, shots):
+    """P(all zeros) from a counts dict (bit strings, possibly with spaces)."""
+    return sum(v for kk, v in c.items() if set(kk.replace(" ", "")) == {"0"}) / shots
+
+
 def make_overlap(sim, record, rows=None):
     """rows: a list that receives, per block, the measured row sums over the exact ones, [H, L] (calibrated)."""
     def overlap(qi, kj, block):
@@ -146,13 +171,29 @@ def make_overlap(sim, record, rows=None):
                     nq, nk = np.linalg.norm(q[h, i]), np.linalg.norm(k[h, j])
                     if nq == 0 or nk == 0:
                         continue
+                    if CU:
+                        jobs.append(circuit_cu(q[h, i] / nq, k[h, j] / nk))
+                        where.append((h, i, j, 4, nq * nk))
+                        continue
                     for part in (0, 1):
                         jobs.append(circuit(q[h, i] / nq, k[h, j] / nk, part == 1))
                         where.append((h, i, j, part, nq * nk))
-                if rows is not None and not ncal and np.linalg.norm(q[h, i]) > 0:   # visibility of row i
+                if rows is not None and not ncal and not CU and np.linalg.norm(q[h, i]) > 0:   # visibility of row i
                     jobs.append(circuit(q[h, i] / np.linalg.norm(q[h, i]), q[h, i] / np.linalg.norm(q[h, i]), False))
                     where.append((h, i, i, 2, 1.0))
-        if rows is not None and ncal:                     # same-depth calibrations: random pairs, known overlap
+        if CU and ncal:                                   # same-depth calibrations: known |<a|b>|^2 over [0, 1]
+            rng = np.random.default_rng([idx, block, 2])
+            for n in range(ncal):
+                a, b = rng.standard_normal((2, 2, q.shape[-1]))
+                a = (a[0] + 1j * a[1]) / np.linalg.norm(a[0] + 1j * a[1])
+                r = b[0] + 1j * b[1]
+                r = r - np.vdot(a, r) * a
+                r /= np.linalg.norm(r)
+                u = (n + rng.uniform()) / ncal                                # stratified over [0, 1]
+                bb = np.sqrt(u) * a + np.sqrt(1 - u) * np.exp(1j * rng.uniform(0, 2 * np.pi)) * r
+                jobs.append(circuit_cu(bb, a))
+                where.append((0, n, n, 5, float(abs(np.vdot(a, bb)) ** 2)))
+        elif rows is not None and ncal:                   # same-depth calibrations: random pairs, known overlap
             # each pair its own calibration states (the ledger refuses a circuit already sent); one job of the
             # paper's earlier version drew them with default_rng(1000 + block), kept so its circuits rebuild
             rng = np.random.default_rng(1000 + block if idx == 4667 else [idx, block])
@@ -180,8 +221,13 @@ def make_overlap(sim, record, rows=None):
                                                                                      dtype=torch.float64)
         eta = np.ones((q.shape[0], L))
         cal = []
+        cu_read = []
         for n, (h, i, j, part, scale) in enumerate(where):
             c = res.get_counts(n)
+            if part >= 4:
+                p = p_zero(c, shots)
+                (cal if part == 5 else cu_read).append((scale, p) if part == 5 else (h, i, j, scale, p))
+                continue
             p = (c.get("0", 0) - c.get("1", 0)) / shots
             if part == 3:
                 cal.append((scale, p))
@@ -189,6 +235,16 @@ def make_overlap(sim, record, rows=None):
                 eta[h, i] = max(p * scale, 1e-3)
             else:
                 (im if part else re)[0, h, i, j] = p * scale
+        if CU:                                           # (p - offset) / slope, then sqrt as the overlap's modulus
+            slope, off = 1.0, 0.0
+            if cal:
+                x, y = np.array(cal).T
+                slope, off = np.linalg.lstsq(np.vstack([x, np.ones_like(x)]).T, y, rcond=None)[0]
+                calib.append(dict(block=block, slope=float(slope), offset=float(off), n=len(x),
+                                  resid_sd=float(np.std(y - slope * x - off)), raw=[list(t) for t in cal]))
+            for h, i, j, scale, p in cu_read:
+                re[0, h, i, j] = math.sqrt(max((p - off) / slope, 0.0)) * scale
+            cal = []
         if cal:                                          # one slope and one readout offset for the block
             x, y = np.array(cal).T
             slope, off = np.linalg.lstsq(np.vstack([x, np.ones_like(x)]).T, y, rcond=None)[0]
@@ -313,7 +369,8 @@ if "--device" in args:
     # run. Answer and hybrid evidence against the exact pass, as evidence_batch does under the noise model.
     dev = Device(opt("--device", "ibm_kingston"), opt("--keys", None),
                  int(opt("--account", 0)), "--submit" in args,
-                 f"Reading Why: {tag.split('_')[1]} attention of e-SNLI test pair {idx} by Hadamard tests",
+                 f"Reading Why: {tag.split('_')[1]} attention of e-SNLI test pair {idx} by "
+                 f"{'compute-uncompute circuits' if CU else 'Hadamard tests'}",
                  pilot=int(opt("--pilot", 0)))
     ids = torch.tensor(d["x_test"][idx:idx + 1]).clone()
     if "--delete" in args:                         # the deletion test on the device: one word's amplitude set to 0
@@ -335,7 +392,7 @@ if "--device" in args:
         print(f"{idx} {' '.join(out['words'])}: exact {out['exact']['answer']} {np.round(pe[0].numpy(), 3).tolist()}  "
               f"{'device' if dev.measured == 2 else 'dry run (ideal counts)'} {out['device_run']['answer']} "
               f"{np.round(ph[0].numpy(), 3).tolist()}  |dP| {out['p_diff_max']:.3f}")
-        with open(f"results/{tag}_device_{dev.backend_name}_{shots}_i{idx}_del{opt('--delete', 'none')}"
+        with open(f"results/{tag}_device_{dev.backend_name}_{shots}_i{idx}{'_cu' if CU else ''}_del{opt('--delete', 'none')}"
                   f"{'' if dev.measured == 2 else '_dry'}.json", "w") as f:
             json.dump(out, f, indent=1)
         sys.exit()
@@ -356,7 +413,7 @@ if "--device" in args:
           f"{'device' if dev.measured == 2 else 'dry run (ideal counts)'} {out['device_run']['answer']} "
           f"{np.round(ph[0].numpy(), 3).tolist()}  |dP| {out['p_diff_max']:.3f}  evidence corr {out['evidence_corr']:.3f}")
     print("  evidence exact / device: " + ", ".join(f"{w} {x:+.3f}/{y:+.3f}" for w, x, y in zip(words, a, b)))
-    eta_tag = (f"_eta{opt('--eta', '')}" if "--eta" in args else "") + (f"_cal{ncal}" if ncal else "") + (f"_offline_{bname}" if "--offline" in args else "")
+    eta_tag = ("_cu" if CU else "") + (f"_eta{opt('--eta', '')}" if "--eta" in args else "") + (f"_cal{ncal}" if ncal else "") + (f"_offline_{bname}" if "--offline" in args else "")
     with open(f"results/{tag}_device_{dev.backend_name}_{shots}_i{idx}{eta_tag}{'' if dev.measured == 2 else '_dry'}.json", "w") as f:
         json.dump(out, f, indent=1)
     sys.exit()

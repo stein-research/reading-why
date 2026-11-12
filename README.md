@@ -14,21 +14,12 @@ University).
 
 ![One test pair, "men play hockey . / men play", through the trained model: (a) on light, (b) on IBM's ibm_kingston](docs/overview_v4.png)
 
-*(a) On light (simulated): one field per word on a modulator; in each of two blocks Born attention weighs the words
-by interference and a measured feed-forward reads a product by a balanced interferometric reading; the camera's three regions give
-the class probabilities, and each word's Born evidence (BEW; red for the answer, blue against it) sums to the class
-probability above its share. (b) On IBM's ibm_kingston, with the same weights: every query-key overlap is read by
-Hadamard tests on five qubits, with calibration circuits as deep in the same job; the answer survives, and each word's
-evidence, with exact numerators and the attention row sums the device measured, follows the exact one (r = 0.997,
-95 % interval 0.988-0.999).*
+*One test pair through the trained model: (a) on light (simulated), (b) on IBM's ibm_kingston, where only the
+attention overlaps ran. Red words push towards the answer, blue against it; each word's Born evidence (BEW) sums to
+the class probability above its share.*
 
-A transformer in which every nonlinearity is a quadratic detection (an interference, a balanced interferometric reading or a camera)
-and the output is a Born probability: attention $|\langle q|k\rangle|^2$, in the form of the Born rule, normalised
-over each row, a measured product in place of the feed-forward nonlinearity, and a Born readout; between detections a
-classical controller squares, divides, rescales and re-encodes. Each class probability is then a
-ratio of polynomials in the word amplitudes, and its integrated-gradient evidence, with the denominators held, is
-computed exactly by a finite quadrature: the **Born evidence per word (BEW)** adds up to the class probability above
-its share.
+A transformer in which every nonlinearity is a quadratic detection, so that its word evidence is exact:
+**Born evidence per word (BEW)** adds up to the class probability above its share, with no quadrature error.
 
 ## How it works
 
@@ -65,28 +56,28 @@ double precision the sum holds to $10^{-13}$ or better. Red words push towards t
 | | Born Transformer | softmax transformer |
 |---|---|---|
 | test accuracy | 77.45 +- 0.91 % | 76.62 +- 0.36 % |
-| evidence sums to the explained score | to 1e-13 at most (no quadrature error) | numerically approximated (integrated gradients); no finite-node exactness guarantee |
-| deleting the word ranked first changes the answer: evidence / attention x gradient / attention / random | 44 / 38 / 31 / 6 % | 32 / 40 / 34 / 5 % |
+| evidence sums to the explained score | to 1e-13 at most (no quadrature error) | approximated (integrated gradients) |
+| deleting the word ranked first changes the answer: evidence / gradient x input / attention x gradient / random | 44 / 43 / 38 / 6 % | 32 / 14 / 40 / 5 % |
 | ... at most (any single deletion, the ceiling) | 53 % | 55 % |
 | deleting the five words ranked last changes it (evidence) | 1.2 % | 10 % |
 | top words that annotators highlighted: evidence / attention (chance 0.35) | 0.52 / 0.51 | 0.46 / 0.54 |
 
-The softmax model's evidence here is integrated gradients of its probability over one gate per word, the same path
-as the Born evidence (with every gate at zero that model answers "neutral", so its evidence sums to the probability above
-that answer; its flip@1 is about the same on the pairs it answers "neutral" and on the others). Its denominators cannot be held as the Born
-evidence holds them: held at the input, its score overflows along the path on most pairs, and on the 4.5 % where its
-integrated gradients are finite and complete they rank worse than with the denominators free. Attention looks most like the annotators' reason, yet accounts for the
-answer less well. The same trained weights compile exactly to optics (simulated; interferometers between detectors), and their
-attention overlaps to Hadamard tests on qubits. A separate coherent attention layer with no measurement before the
-end (67 % accuracy) is one post-selected circuit equal to the model in simulation (852 CNOTs on 23 qubits with
-brickwall maps). On ibm_kingston the attention overlaps of the two shortest test pairs were read by Hadamard tests, with calibration
-circuits as deep as the overlaps in the same job: the device gave the model's answers, also on one pair without the
-one word that decides it, and each word's evidence with the device's attention row sums followed the exact one
-(correlation 0.997 on one pair; 0.962 on the other, with a calibration residual on two words). The paper also works
-out what the qubit realisation needs (98-99 % of answers from 1,000 shots per circuit, more than 99 % from 10^4;
-for evidence that cancels, each row's visibility within a few per cent). Holding the denominators matters:
-integrated gradients with them free add up to the answer above the model's answer for vanishing amplitudes, not
-above the no-information share, and account for deletion less well (33 % against 44 %; Appendix B).
+What the numbers say, and what they do not:
+
+- **Accuracy does not set the models apart.** An order-free bag of embeddings, with no attention, reaches
+  77.79 +- 0.26 % under the same protocol.
+- **Exactness buys the sum, not the best ranking.** The top-word deletion gain is the model's: its own gradient x
+  input with nothing held does as well (43 %), so does the bag's (42 %), and leave-one-out does better. Holding the
+  denominators improves the words ranked last and the agreement with annotators. Rankings by word position alone agree
+  with the annotators better than any model (0.585).
+- **On ibm_kingston** the attention of the two shortest test pairs was read by Hadamard tests and by compute-uncompute
+  circuits. The device gave the model's answers, also without the one word that decides one pair; but random overlaps
+  would pass these checks a quarter to two fifths of the time, and they test block 1 almost alone. With the device's
+  row sums the evidence followed the exact one by Hadamard tests (correlation 0.997 and 0.962), not on one of the two
+  compute-uncompute runs (0.48).
+- **What the qubit realisation needs**, including a proposition on the shots per circuit the evidence needs, is in
+  the paper's Section 5; the coherent attention layer (67 %, one post-selected circuit of 852 CNOTs on 23 qubits) is
+  simulated only.
 
 ## Contents
 
@@ -96,9 +87,9 @@ above the no-information share, and account for deletion less well (33 % against
 | [`examples/`](examples/) | [`quickstart.py`](examples/quickstart.py) (the demo in a few lines) and [`explain.py`](examples/explain.py) (any pair from the command line) |
 | [`docs/`](docs/) | [running it locally and reproducing the paper](docs/run-locally.md); the figures of this page |
 | [`src/`](src/) | the models, the exact evidence, the trainer, the evaluations, the optical and qubit compiles, the quantum-resource analysis, and the scripts that ran the IBM jobs |
-| [`results/`](results/) | the trained models of the tables (the Born Transformer, the softmax transformer and the unconstrained polynomial model, three seeds each), the ablation with the attention weight squared again ([`results/ablation/`](results/ablation/)), the coherent attention layer, and the vocabulary; see [`results/README.md`](results/README.md) |
+| [`results/`](results/) | the trained models of the tables (the Born Transformer, the softmax transformer and the unconstrained polynomial model, three seeds each), the ablation with the attention weight squared again ([`results/ablation/`](results/ablation/)), the coherent attention layer, the bag-of-embeddings baseline, and the vocabulary; see [`results/README.md`](results/README.md) |
 | [`data/`](data/) | where e-SNLI goes (downloaded and checked, not stored) |
-| [`ibm_jobs/`](ibm_jobs/) | the record of every job of the paper run on IBM's ibm_kingston: job id, times, calibration, qubits, circuits, raw counts (account details removed); to check the hardware numbers from it, or run the jobs again: [docs/check-and-repeat-ibm.md](docs/check-and-repeat-ibm.md). The jobs of the paper's earlier versions (attention squared again, arXiv v1-v2) are in this repository's history, at commit 7d94f41 ("Version 3.1"), and in its Zenodo archive of that version |
+| [`ibm_jobs/`](ibm_jobs/) | every IBM job of the paper: circuits, calibration, raw counts (account details removed); [how to check or repeat them](docs/check-and-repeat-ibm.md). Earlier versions' jobs: commit 7d94f41 ("Version 3.1") |
 
 ## A century of the Born rule
 

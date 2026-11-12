@@ -22,6 +22,7 @@ IDS = torch.tensor(d["x_test"][pick]).to(dev)
 GT = torch.tensor(d["gt_test"][pick]).to(dev)
 Y = torch.tensor(d["y_test"][pick]).to(dev)
 V, C = len(d["words"]), len(d["classes"])
+NONWORD = torch.tensor([all(not ch.isalnum() for ch in w) or w == "<sep>" for w in d["words"]], device=dev)
 
 
 def prob_fn(model):
@@ -55,8 +56,14 @@ def score(prob, ids, target, s, present, ntok, gt):
     k = g.sum(1)
     rank = torch.empty_like(order).scatter_(1, order, torch.arange(ids.shape[1], device=dev).expand_as(order))
     agree = (((rank < k[:, None]) & present & g).sum(1).double() / k.clamp(min=1).double())
+    content = present & ~NONWORD[ids]                   # content words only (as fairness.py, referee round 5)
+    gc = gt & content
+    kc = gc.sum(1)
+    oc = torch.where(content, s, -big).argsort(1, descending=True)
+    rc = torch.empty_like(oc).scatter_(1, oc, torch.arange(ids.shape[1], device=dev).expand_as(oc))
+    agc = ((rc < kc[:, None]) & gc).sum(1).double() / kc.clamp(min=1).double()
     return dict(flip1=torch.where(ntok > 1, f1, torch.nan), flip5_low=torch.where(ntok > 5, f5, torch.nan),
-                agree=torch.where(k > 0, agree, torch.nan))
+                agree=torch.where(k > 0, agree, torch.nan), agree_content=torch.where(kc > 0, agc, torch.nan))
 
 
 per = {}
@@ -68,7 +75,7 @@ for fam, name in (("born", "Born-ap"), ("softmax", "Softmax"), ("poly", "Poly-si
         model.load_state_dict(torch.load(f"results/{tag}.pt", map_location=dev))
         model.double().eval()
         prob = prob_fn(model)
-        rows = {k: [] for k in ("flip1", "flip5_low", "agree")}
+        rows = {k: [] for k in ("flip1", "flip5_low", "agree", "agree_content")}
         correct = []
         for i in range(0, len(IDS), 100):
             ids = IDS[i:i + 100]
@@ -90,7 +97,7 @@ fair = json.load(open("results/fairness.json"))
 out = {}
 for fam in ("born", "softmax", "poly"):
     out[fam] = {}
-    for key in ("flip1", "flip5_low", "agree", "agree_correct"):
+    for key in ("flip1", "flip5_low", "agree", "agree_correct", "agree_content"):
         k2 = "agree" if key == "agree_correct" else key
         a = np.stack([per[f"{fam}_s{s}_{k2}"] for s in range(3)])
         if key == "agree_correct":

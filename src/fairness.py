@@ -14,7 +14,8 @@ Methods, each a score per present token (higher = more important for the predict
   random     a random order
 Scores: flip@1 (deleting the top token changes the answer; pairs with > 1 token), flip@5 lowest (deleting the five
 lowest; pairs with > 5 tokens), agreement (share of the top-k that annotators highlighted, k = their number; all
-pairs and correctly answered pairs). Deletion is token id 0 in place (amplitude 0 for the Born model).
+pairs and correctly answered pairs), and agreement on content words (referee round 5, 2026-11-12: the highlight mask
+marks punctuation attached to a starred word, so '.' and the separator are taken out of both ranking and mask). Deletion is token id 0 in place (amplitude 0 for the Born model).
 
 python fairness.py   ->  results/fairness.npz (per pair), results/fairness.json (summary with 95 % bootstrap intervals)
 """
@@ -41,6 +42,8 @@ GT = torch.tensor(d["gt_test"][pick]).to(dev)
 Y = torch.tensor(d["y_test"][pick]).to(dev)
 PRESENT = IDS != 0
 NTOK = PRESENT.sum(1)
+NONWORD = torch.tensor([all(not ch.isalnum() for ch in w) or w == "<sep>" for w in d["words"]], device=dev)
+CONTENT = PRESENT & ~NONWORD[IDS]
 V, C = len(d["words"]), len(d["classes"])
 B = min(100, N)
 
@@ -161,6 +164,12 @@ def score(prob, ids, target, s):
     topk = (rank < k[:, None]) & PRESENT
     agree = (topk & g).sum(1).double() / k.clamp(min=1).double()
     out["agree"] = torch.where(k > 0, agree, torch.nan)
+    gc = GT & CONTENT                                       # content words only, in both ranking and mask
+    kc = gc.sum(1)
+    oc = torch.where(CONTENT, s, -big).argsort(1, descending=True)
+    rc = torch.empty_like(oc).scatter_(1, oc, torch.arange(ids.shape[1], device=dev).expand_as(oc))
+    out["agree_content"] = torch.where(kc > 0, ((rc < kc[:, None]) & gc).sum(1).double() / kc.clamp(min=1).double(),
+                                       torch.nan)
     return out
 
 
@@ -178,7 +187,7 @@ for fam, model_name in MODELS:
         model.load_state_dict(torch.load(f"results/{tag}.pt", map_location=dev))
         model.double().eval()
         prob = probs_fn(model)
-        rows = {m: {"flip1": [], "flip5_low": [], "agree": []} for m in
+        rows = {m: {"flip1": [], "flip5_low": [], "agree": [], "agree_content": []} for m in
                 ("evidence", "gated", "attention", "attgrad", "loo", "random")}
         ceiling, correct, gated_gap = [], [], []
         for i in range(0, len(IDS), B):
@@ -203,10 +212,10 @@ for fam, model_name in MODELS:
             scores["random"] = torch.rand(ids.shape, device=dev, dtype=torch.float64)
             ceiling.append(fl.cpu())
             for m, s in scores.items():
-                pres, nt, gt = PRESENT, NTOK, GT
-                PRESENT, NTOK, GT = pres[sl], nt[sl], gt[sl]                  # score() reads the slice
+                pres, nt, gt, ct = PRESENT, NTOK, GT, CONTENT
+                PRESENT, NTOK, GT, CONTENT = pres[sl], nt[sl], gt[sl], ct[sl]  # score() reads the slice
                 r = score(prob, ids, t, s)
-                PRESENT, NTOK, GT = pres, nt, gt
+                PRESENT, NTOK, GT, CONTENT = pres, nt, gt, ct
                 for key, v in r.items():
                     rows[m][key].append(v.cpu())
         for m in rows:
@@ -238,6 +247,9 @@ def pooled(fam, m, key, only_correct=False):
 
 
 summary = {"meta": meta}
+for name, mask in (("chance", PRESENT), ("chance_content", CONTENT)):
+    kk, nn = (GT & mask).sum(1).double(), mask.sum(1).double()
+    summary[name] = float((kk / nn)[kk > 0].mean())
 FAMS = [f for f, _ in MODELS]
 for fam in FAMS:
     summary[fam] = {}
@@ -245,7 +257,7 @@ for fam in FAMS:
         if per_pair[f"{fam}_s{SEEDS[0]}_{m}_flip1"].size == 0:
             continue
         summary[fam][m] = {}
-        for key in ("flip1", "flip5_low", "agree"):
+        for key in ("flip1", "flip5_low", "agree", "agree_content"):
             v, ci, _ = pooled(fam, m, key)
             summary[fam][m][key] = [v, ci]
         v, ci, _ = pooled(fam, m, "agree", only_correct=True)
