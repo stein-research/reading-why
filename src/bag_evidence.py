@@ -61,7 +61,7 @@ def score(name, ev):
     g = gt & present; k = g.sum(1); rank = torch.empty_like(order).scatter_(1, order, torch.arange(L, device=dev).expand_as(order))
     topk = (rank < k[:, None]) & present; has = k > 0
     agree = ((topk & g).sum(1).double() / k.clamp(min=1).double())[has].mean().item()
-    print(f"  {name:28s} flip@1 {f1:.3f}  of ceiling {f1/flipany.double().mean().item():.2f}  flip@5 lowest {f5:.3f}  agreement {agree:.3f}")
+    print(f"  {name:28s} flip@1 {f1:.4f}  of ceiling {f1/flipany.double().mean().item():.2f}  flip@5 lowest {f5:.3f}  agreement {agree:.4f}")
 print("ceiling (some single deletion flips):", flipany.double().mean().item())
 torch.manual_seed(0)
 score("IG of P, embeddings", igP); score("IG of logit, embeddings", igL); score("gradient x input (P)", gxi); score("leave-one-out", loo)
