@@ -20,8 +20,9 @@ Interactive companion to the paper by Teerawat Tongloy<sup>1</sup>, Jiraporn Pon
 attention overlaps ran. Red words push towards the answer, blue against it; each word's Born evidence (BEW) sums to
 the class probability above its share.*
 
-A transformer in which every nonlinearity is a quadratic detection, so that its word evidence is exact:
-**Born evidence per word (BEW)** adds up to the class probability above its share, with no quadrature error.
+A transformer in which every nonlinearity is a quadratic detection, so that its word evidence is exact: with every
+normaliser held at its input value, **Born evidence per word (BEW)** adds up to $P_g - b_g$, the class probability
+above $b_g$, the share of the camera's pixels given to class $g$, with no quadrature error.
 
 ## How it works
 
@@ -69,14 +70,14 @@ What the numbers say, and what they do not:
 - **Accuracy does not set the models apart.** An order-free bag of embeddings, with no attention, reaches
   77.79 +- 0.26 % under the same protocol.
 - **Exactness buys the sum, not the best ranking.** The top-word deletion gain is the model's: its own gradient x
-  input with nothing held does as well (43 %), so does the bag's (42 %), and leave-one-out does better. Holding the
+  input with nothing held does as well (43 %), so does the bag's (43 %, seed 0), and leave-one-out does better. Holding the
   denominators improves the words ranked last and the agreement with annotators. Rankings by word position alone agree
   with the annotators better than any model (0.585).
-- **On ibm_kingston** the attention of the two shortest test pairs was read by Hadamard tests and by compute-uncompute
-  circuits. The device gave the model's answers, also without the one word that decides one pair; but random overlaps
-  would pass these checks a quarter to two fifths of the time, and they test block 1 almost alone. With the device's
-  row sums the evidence followed the exact one by Hadamard tests (correlation 0.997 and 0.962), not on one of the two
-  compute-uncompute runs (0.48).
+- **On ibm_kingston** only the attention ran on the device: by Hadamard tests on three runs (the two shortest test
+  pairs, and one of them without the word that decides it) and by compute-uncompute circuits on two (pair 3765 and that
+  deletion). The device gave the model's answers on all five; but random overlaps would pass these checks a quarter
+  to two fifths of the time, and they test block 1 almost alone. With the device's row sums the evidence correlated
+  with the exact one at 0.997 and 0.962 by Hadamard tests, and at 0.971 and 0.48 by compute-uncompute.
 - **What the qubit realisation needs**, including a proposition on the shots per circuit the evidence needs, is in
   the paper's Section 5; the coherent attention layer (67 %, one post-selected circuit of 852 CNOTs on 23 qubits) is
   simulated only.
