@@ -25,11 +25,13 @@ These read only the files in the repository and send nothing.
 
 | in the paper | command | prints | time |
 |---|---|---|---|
-| quantum seconds of every job (Table 11) | `python src/ibm_jobs.py list` | the job list, rewritten into `ibm_jobs/index.md` | seconds |
+| quantum seconds of every job (Table 13) | `python src/ibm_jobs.py list` | the job list, rewritten into `ibm_jobs/index.md` | seconds |
 | the overlaps against their ideal values (5): correlation 0.992-0.993 over the 256 readings of each block; visibility 0.77 / 0.67 (pair 3763) and 0.81 / 0.79 (pair 3765) as the slope fitted to the 32 calibrations of each block | `python src/device_overlaps.py` (or name job keys: `... ae3d09c69431cc3d 26df20031defaaa7`) | per job and kind of circuit: correlation, slope (the visibility), offset | a minute |
 | the device runs of Table 4 (answers of pairs 3763 and 3765, and of 3763 without "aliens") and their 95 % intervals | `python src/device_bootstrap.py` (`--only "pair 3763"` for one run) | each run's P on the device, its interval, and the share of redraws that keep the answer | about 15 min a run |
-| the evidence on the device (5, Table 5, Fig. 1b): pair 3765 correlation 0.997, interval 0.988-0.999, every sign and the same top word in every redraw; pair 3763 0.962, interval 0.880-0.991, every sign in 99 % of redraws | `python src/evidence_bootstrap.py --index 3765` (and `--index 3763`; 500 redraws, `--draws 20` to see the device values in a minute) | the device's evidence, each word's interval, the correlation and its interval, the fitted calibrations | about an hour |
+| the evidence on the device (5, Table 6, Fig. 1b): pair 3765 correlation 0.997, interval 0.988-0.999, every sign and the same top word in every redraw; pair 3763 0.962, interval 0.880-0.991, every sign in 99 % of redraws | `python src/evidence_bootstrap.py --index 3765` (and `--index 3763`; 500 redraws, `--draws 20` to see the device values in a minute) | the device's evidence, each word's interval, the correlation and its interval, the fitted calibrations | about an hour |
 | which single-word deletion changes the answer on the device pairs (5): only "aliens" on pair 3763, for seed 0 (the device model) | `python src/deletion_words.py` | every deletion of both pairs in the three seeds, with each pair's exact evidence | minutes |
+| compute-uncompute against the Hadamard tests on the same 128 Born weights (Table 7: MAE 0.021 for the Hadamard tests, 0.035 for compute-uncompute; correlation 0.986 and 0.979) | `python src/hw_cu_compare.py` | each method's calibrated weights against the ideal: MAE, RMSE, bias, correlation | a minute |
+| the two compute-uncompute runs (Table 7): pair 3765, answer 0.877 and evidence correlation 0.971; 3763 without "aliens", answer 0.865 and evidence correlation 0.48 | `python src/cu_analysis.py` (`--draws 20 --ev-draws 10 --null-draws 5` to see the device values in a few minutes) | per block the calibration slope, offset and scatter against shot noise, the CZ counts; per run the answer, its 95 % interval, the evidence and its interval | minutes |
 
 The bootstraps read the counts in `ibm_jobs/` directly. To rebuild a whole pass from the raw counts
 with the script that sent it, run its device command without `--submit`: it rebuilds every circuit from the model,
@@ -41,6 +43,16 @@ python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston 
 python src/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32
 python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --delete 5
 ```
+
+The two compute-uncompute passes (`--cu`: four qubits, one circuit per overlap) rebuild the same way:
+
+```bash
+python src/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32 --cu
+python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --cal-random 32 --cu --delete 5
+```
+
+They print pair 3765: entailment 0.877 against 0.905 exact, evidence correlation 0.971; and 3763 without "aliens":
+entailment 0.865 against 0.912, evidence correlation 0.48 (Table 7).
 
 The deletion run asks only for the answer: the evidence it also prints comes from shallow self-overlap calibrations,
 which the paper does not use. Block 2's circuits are built from block 1's measured overlaps, so they are found in the ledger only if block 1's

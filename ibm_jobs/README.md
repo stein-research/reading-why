@@ -34,7 +34,7 @@ circuit per overlap (128, or 98 for the deletion) and 32 calibration circuits of
 whose $|\langle a|b\rangle|^2$ is known and spread over [0, 1]; 26 CZ gates per circuit against the Hadamard test's
 37. In all, 1,164 quantum seconds (848 by Hadamard tests, 316 by compute-uncompute).
 
-What they give (the paper's Section 5, Tables 4 and 5):
+What they give (the paper's Section 5, Tables 4, 6 and 7):
 
 | run | answer: device / noiseless | each word's evidence with the device's row sums |
 |---|---|---|
