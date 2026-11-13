@@ -150,3 +150,7 @@ Code: MIT ([`LICENSE`](LICENSE)). e-SNLI: MIT; SNLI sentences and the vocabulary
   url           = {https://arxiv.org/abs/2611.05355}
 }
 ```
+
+## Contact
+
+Teerawat Tongloy, teerawat.to@kmitl.ac.th
