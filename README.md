@@ -89,7 +89,11 @@ What the numbers say, and what they do not:
 | [`demo/`](demo/) | the two notebooks and their helpers ([`reading_why.py`](demo/reading_why.py), [`ui.py`](demo/ui.py)) |
 | [`examples/`](examples/) | [`quickstart.py`](examples/quickstart.py) (the demo in a few lines) and [`explain.py`](examples/explain.py) (any pair from the command line) |
 | [`docs/`](docs/) | [running it locally and reproducing the paper](docs/run-locally.md); the figures of this page |
-| [`src/`](src/) | the models, the exact evidence, the trainer, the evaluations, the optical and qubit compiles, the quantum-resource analysis, and the scripts that ran the IBM jobs |
+| [`src/core/`](src/core/) | the models, the datasets, the exact evidence (BEW) and the trainer |
+| [`src/evaluation/`](src/evaluation/) | the paper's checks of the evidence: deletion, rankings, baselines, node counts, the held path |
+| [`src/optics/`](src/optics/) | the exact optical compile, the mesh check and the photon draws |
+| [`src/hardware/`](src/hardware/) | the qubit circuits and their resources, the IBM job ledger, the scripts that ran the jobs and the analyses of their counts |
+| [`src/figures/`](src/figures/) | the free-path figure |
 | [`results/`](results/) | the trained models of the tables (the Born Transformer, the softmax transformer and the unconstrained polynomial model, three seeds each), the ablation with the attention weight squared again ([`results/ablation/`](results/ablation/)), the coherent attention layer, the bag-of-embeddings baseline, and the vocabulary; see [`results/README.md`](results/README.md) |
 | [`data/`](data/) | where e-SNLI goes (downloaded and checked, not stored) |
 | [`ibm_jobs/`](ibm_jobs/) | every IBM job of the paper: circuits, calibration, raw counts (account details removed); [how to check or repeat them](docs/check-and-repeat-ibm.md). Earlier versions' jobs: commit 7d94f41 ("Version 3.1") |

@@ -21,7 +21,8 @@ import numpy as np
 import torch
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "src"))
+sys.path[:0] = sorted(os.path.join(ROOT, "src", g) for g in os.listdir(os.path.join(ROOT, "src"))   # its folders
+                      if os.path.isdir(os.path.join(ROOT, "src", g)) and g != "__pycache__")
 import data as _tok                     # noqa: E402  (the tokenizer)
 import esnli                            # noqa: E402
 import math                             # noqa: E402
@@ -98,7 +99,7 @@ def attention(model, ids):
 
 
 def evidence(model, ids, target, chunk=64):
-    """evidence.evidence (src/evidence.py) for one pair, with the quadrature nodes run as one batch instead of one
+    """evidence.evidence (src/core/evidence.py) for one pair, with the quadrature nodes run as one batch instead of one
     by one: the same numbers (the denominators held at the explained input, now broadcast over the nodes), many
     times faster on a CPU. Returns (evidence [n], f(x), f(0))."""
     x0, _ = _score_fn(model, ids)
@@ -149,7 +150,7 @@ def without(r, pos):
 
 def get_esnli(files=None):
     """Download the e-SNLI files that are not yet in data/esnli (about 200 MB in all), each checked by its SHA-256
-    (src/esnli.py fetch; the scripts in src/ call it themselves when a file is missing)."""
+    (src/core/esnli.py fetch; the scripts in src/ call it themselves when a file is missing)."""
     esnli.fetch(files or tuple(esnli.SHA256))
 
 

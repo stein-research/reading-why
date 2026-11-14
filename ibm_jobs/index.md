@@ -1,6 +1,6 @@
 # IBM hardware jobs
 
-Every job run for the paper (written by `src/ibm_jobs.py`; account details removed). Quantum seconds as IBM reports them.
+Every job run for the paper (written by `src/hardware/ibm_jobs.py`; account details removed). Quantum seconds as IBM reports them.
 
 | created (UTC) | backend | job id | status | circuits x shots | quantum s | purpose | record |
 |---|---|---|---|---|---|---|---|

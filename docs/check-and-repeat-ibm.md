@@ -16,7 +16,7 @@ of the clone. `TAG` is the model the hardware jobs used (the Born Transformer, s
 TAG=esnli_Born-ap_b2_s0_e20
 ```
 
-The scripts that rebuild a pass need e-SNLI's test split, which `src/esnli.py` downloads into `data/esnli/` the first
+The scripts that rebuild a pass need e-SNLI's test split, which `src/core/esnli.py` downloads into `data/esnli/` the first
 time (see [`data/README.md`](../data/README.md)).
 
 ## 1. Check the numbers, no account
@@ -25,13 +25,13 @@ These read only the files in the repository and send nothing.
 
 | in the paper | command | prints | time |
 |---|---|---|---|
-| quantum seconds of every job (Table 13) | `python src/ibm_jobs.py list` | the job list, rewritten into `ibm_jobs/index.md` | seconds |
-| the overlaps against their ideal values (5): correlation 0.992-0.993 over the 256 readings of each block; visibility 0.77 / 0.67 (pair 3763) and 0.81 / 0.79 (pair 3765) as the slope fitted to the 32 calibrations of each block | `python src/device_overlaps.py` (or name job keys: `... ae3d09c69431cc3d 26df20031defaaa7`) | per job and kind of circuit: correlation, slope (the visibility), offset | a minute |
-| the device runs of Table 4 (answers of pairs 3763 and 3765, and of 3763 without "aliens") and their 95 % intervals | `python src/device_bootstrap.py` (`--only "pair 3763"` for one run) | each run's P on the device, its interval, and the share of redraws that keep the answer | about 15 min a run |
-| the evidence on the device (5, Table 6, Fig. 1b): pair 3765 correlation 0.997, interval 0.988-0.999, every sign and the same top word in every redraw; pair 3763 0.962, interval 0.880-0.991, every sign in 99 % of redraws | `python src/evidence_bootstrap.py --index 3765` (and `--index 3763`; 500 redraws, `--draws 20` to see the device values in a minute) | the device's evidence, each word's interval, the correlation and its interval, the fitted calibrations | about an hour |
-| which single-word deletion changes the answer on the device pairs (5): only "aliens" on pair 3763, for seed 0 (the device model) | `python src/deletion_words.py` | every deletion of both pairs in the three seeds, with each pair's exact evidence | minutes |
-| compute-uncompute against the Hadamard tests on the same 128 Born weights (Table 7: MAE 0.021 for the Hadamard tests, 0.035 for compute-uncompute; correlation 0.986 and 0.979) | `python src/hw_cu_compare.py` | each method's calibrated weights against the ideal: MAE, RMSE, bias, correlation | a minute |
-| the two compute-uncompute runs (Table 7): pair 3765, answer 0.877 and evidence correlation 0.971; 3763 without "aliens", answer 0.865 and evidence correlation 0.48 | `python src/cu_analysis.py` (`--draws 20 --ev-draws 10 --null-draws 5` to see the device values in a few minutes) | per block the calibration slope, offset and scatter against shot noise, the CZ counts; per run the answer, its 95 % interval, the evidence and its interval | minutes |
+| quantum seconds of every job (Table 13) | `python src/hardware/ibm_jobs.py list` | the job list, rewritten into `ibm_jobs/index.md` | seconds |
+| the overlaps against their ideal values (5): correlation 0.992-0.993 over the 256 readings of each block; visibility 0.77 / 0.67 (pair 3763) and 0.81 / 0.79 (pair 3765) as the slope fitted to the 32 calibrations of each block | `python src/hardware/device_overlaps.py` (or name job keys: `... ae3d09c69431cc3d 26df20031defaaa7`) | per job and kind of circuit: correlation, slope (the visibility), offset | a minute |
+| the device runs of Table 4 (answers of pairs 3763 and 3765, and of 3763 without "aliens") and their 95 % intervals | `python src/hardware/device_bootstrap.py` (`--only "pair 3763"` for one run) | each run's P on the device, its interval, and the share of redraws that keep the answer | about 15 min a run |
+| the evidence on the device (5, Table 6, Fig. 1b): pair 3765 correlation 0.997, interval 0.988-0.999, every sign and the same top word in every redraw; pair 3763 0.962, interval 0.880-0.991, every sign in 99 % of redraws | `python src/hardware/evidence_bootstrap.py --index 3765` (and `--index 3763`; 500 redraws, `--draws 20` to see the device values in a minute) | the device's evidence, each word's interval, the correlation and its interval, the fitted calibrations | about an hour |
+| which single-word deletion changes the answer on the device pairs (5): only "aliens" on pair 3763, for seed 0 (the device model) | `python src/evaluation/deletion_words.py` | every deletion of both pairs in the three seeds, with each pair's exact evidence | minutes |
+| compute-uncompute against the Hadamard tests on the same 128 Born weights (Table 7: MAE 0.021 for the Hadamard tests, 0.035 for compute-uncompute; correlation 0.986 and 0.979) | `python src/hardware/hw_cu_compare.py` | each method's calibrated weights against the ideal: MAE, RMSE, bias, correlation | a minute |
+| the two compute-uncompute runs (Table 7): pair 3765, answer 0.877 and evidence correlation 0.971; 3763 without "aliens", answer 0.865 and evidence correlation 0.48 | `python src/hardware/cu_analysis.py` (`--draws 20 --ev-draws 10 --null-draws 5` to see the device values in a few minutes) | per block the calibration slope, offset and scatter against shot noise, the CZ counts; per run the answer, its 95 % interval, the evidence and its interval | minutes |
 
 The bootstraps read the counts in `ibm_jobs/` directly. To rebuild a whole pass from the raw counts
 with the script that sent it, run its device command without `--submit`: it rebuilds every circuit from the model,
@@ -39,16 +39,16 @@ finds each job in `ibm_jobs/` by its key, takes the counts from there, and logs 
 prints `already done ... counts from the ledger, nothing sent` for each block):
 
 ```bash
-python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --cal-random 32
-python src/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32
-python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --delete 5
+python src/hardware/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --cal-random 32
+python src/hardware/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32
+python src/hardware/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --delete 5
 ```
 
 The two compute-uncompute passes (`--cu`: four qubits, one circuit per overlap) rebuild the same way:
 
 ```bash
-python src/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32 --cu
-python src/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --cal-random 32 --cu --delete 5
+python src/hardware/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32 --cu
+python src/hardware/hw_attention.py $TAG --index 3763 --shots 2000 --device ibm_kingston --cal-random 32 --cu --delete 5
 ```
 
 They print pair 3765: entailment 0.877 against 0.905 exact, evidence correlation 0.971; and 3763 without "aliens":
@@ -70,7 +70,7 @@ commit, one line `<name> <API key>` (the name is only a label, an e-mail address
 examples below call it `~/ibm_keys.txt`.
 
 ```bash
-python src/ibm_jobs.py check --keys ~/ibm_keys.txt     # logs in (sends no job): usable or not, quota left
+python src/hardware/ibm_jobs.py check --keys ~/ibm_keys.txt     # logs in (sends no job): usable or not, quota left
 ```
 
 `check` writes `ibmq_accounts_status.json` next to the keys file, never into the repository, and keeps no key in it.
@@ -93,8 +93,8 @@ goes on with ideal counts so that block 2 can be built, and says `dry run (ideal
 with `--submit` sends it. Pair 3765 again, about 5 minutes of quantum time:
 
 ```bash
-python src/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32 --keys ~/ibm_keys.txt --repeat 1
-python src/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32 --keys ~/ibm_keys.txt --repeat 1 --submit
+python src/hardware/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32 --keys ~/ibm_keys.txt --repeat 1
+python src/hardware/hw_attention.py $TAG --index 3765 --shots 2000 --device ibm_kingston --cal-random 32 --keys ~/ibm_keys.txt --repeat 1 --submit
 ```
 
 The two blocks are two jobs, one after the other: block 2's circuits are built from block 1's counts, so a repeat's
@@ -103,7 +103,7 @@ sent but whose results were not collected (the script was closed while it waited
 next time the same command runs. Without `--cal-random` the run uses self-overlap calibrations, which the transpiler
 makes shallow and which miss most of the loss; `--cal-random 32` adds 32 calibration circuits per block as deep as
 the overlaps (the deletion run asks only for the answer and does not use its calibrations).
-`--index` takes any test pair; `src/hw_plan.py` says which pairs the evidence is likely to survive.
+`--index` takes any test pair; `src/hardware/hw_plan.py` says which pairs the evidence is likely to survive.
 
 ### Another machine
 
@@ -114,9 +114,9 @@ anew for it and nothing of ours is reused.
 
 A repeat will not give our numbers to the digit. The chip's errors change from day to day: compare the
 `properties.json` in your job folder (qubit T1/T2, gate and readout errors when it was sent) with ours, and the
-qubits each circuit ran on (`record.json`). `python src/device_overlaps.py <your job key>` shows its visibility and
+qubits each circuit ran on (`record.json`). `python src/hardware/device_overlaps.py <your job key>` shows its visibility and
 offset; ours moved between 0.66 and 0.82 from job to job. To add your job to a copy of this repository, commit its
-`ibm_jobs/<key>/` folder; `python src/ibm_jobs.py list` rewrites `ibm_jobs/index.md`. Your folder records a fingerprint
+`ibm_jobs/<key>/` folder; `python src/hardware/ibm_jobs.py list` rewrites `ibm_jobs/index.md`. Your folder records a fingerprint
 of the key that sent the job (the first 12 hex digits of its SHA-256), never the key itself.
 
 ## 3. Plain Qiskit, without our scripts
